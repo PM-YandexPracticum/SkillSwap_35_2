@@ -1,1 +1,2 @@
-const a = 1
+const foo = "double quotes"; // eslint: quotes: single
+console.log(foo)
