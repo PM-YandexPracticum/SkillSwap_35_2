@@ -16,8 +16,8 @@
     "stylelint": "stylelint \"src/**/*.css\"",
     "preview": "vite preview",
     "test": "jest",
-    "storybook": "npm run sync:aliases && storybook dev -p 6006 --tsconfig tsconfig.storybook.json",
-    "storybook:build": "npm run sync:aliases && storybook build --tsconfig tsconfig.storybook.json"
+    "storybook": "npm run sync:aliases && storybook dev -p 6006",
+    "storybook:build": "npm run sync:aliases && storybook build"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

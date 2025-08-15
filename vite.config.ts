@@ -1,6 +1,10 @@
+import { createRequire } from 'module'; // <- добавляем
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import { alias } from './aliases';
+const require = createRequire(import.meta.url);
+
+const { alias } = require('./aliases.cjs'); // <- корректный импорт CommonJS
+// import { alias } from './aliases.cjs';
 
 export default defineConfig({
   plugins: [react()],

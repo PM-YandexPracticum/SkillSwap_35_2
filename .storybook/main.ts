@@ -1,6 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { alias } from '../aliases';
-
+// import { alias } from '../aliases.cjs';
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+const { alias } = require('../aliases.cjs');
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [

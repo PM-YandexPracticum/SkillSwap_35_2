@@ -4,3 +4,4 @@
 # Ignore other specific files
 sync-aliases.ts
 vitest.shims.d.ts
+aliases.cjs
