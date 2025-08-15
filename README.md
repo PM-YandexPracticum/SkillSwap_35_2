@@ -11,6 +11,10 @@
 npm install  
 npm run dev
 
+Vite: http://localhost:4000
+Storybook: http://localhost:6006
+
+
 ## использование скриптов
 npm run sync:aliases     Синхронизирует алиасы (aliases.ts) с tsconfig
 npm run predev           Синхронизация алиасов перед запуском dev
@@ -54,14 +58,15 @@ npm run sync:aliases
 Унификация окончания строк (Windows / macOS / Linux)
 Чтобы избежать проблем с окончаниями строк и кодировками между разными ОС, в проект добавлен файл .gitattributes.
 
-Убедитесь, что глобально в Git включена авто-конвертация (один раз на машине) запустите в терминале:
+#### Что делать после git pull
+1. Убедитесь, что глобально в Git включена авто-конвертация (один раз на машине) запустите в терминале:
 
 macOS / Linux:
   git config --global core.autocrlf input
 
 Windows:
-  git config --global core.autocrlf true
+  git config --global core.autocrlf true 
 
-потом сделать pull репозитория и выполнить две команды:
+потом всем надо выполнить две команды:
   git add --renormalize .
   git commit -m "Normalize line endings according to .gitattributes"
