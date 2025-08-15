@@ -1,8 +1,7 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "indentation": 2,
-    "number-leading-zero": "never",
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]*$|^[A-Z][a-zA-Z0-9]*$|^[a-z]+(-[a-z]+)*$|^[a-z]+(-[a-z]+)*--[a-z]+(-[a-z]+)*$",
     "string-quotes": "single",
     "color-no-invalid-hex": true,
     "declaration-colon-space-after": "always",
