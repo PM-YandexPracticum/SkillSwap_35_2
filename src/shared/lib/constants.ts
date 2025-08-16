@@ -1,6 +1,6 @@
 type TBadgeCategoryColors = {
-  [key: string]: string
-}
+  [key: string]: string;
+};
 export const badgeCategoryesColors: TBadgeCategoryColors = {
   'Бизнес и карьера': '#EEE7F7',
   /*Tag_Бизнес и карьера*/
@@ -14,5 +14,5 @@ export const badgeCategoryesColors: TBadgeCategoryColors = {
   /*Tag_Дом и уют*/
   'Здоровье и лайфстайл': '#E9F7E7',
   /*Tag_Здоровье и лайфстайл*/
-  '+': '#E8ECF7',
-}
+  '+': '#E8ECF7'
+};
