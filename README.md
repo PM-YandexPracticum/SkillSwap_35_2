@@ -16,7 +16,7 @@ Storybook: http://localhost:6006
 
 
 ## использование скриптов
-npm run sync:aliases     Синхронизирует алиасы (aliases.ts) с tsconfig
+npm run sync:aliases     Синхронизирует алиасы (aliases.cjs) с tsconfig
 npm run predev           Синхронизация алиасов перед запуском dev
 npm run dev              Запуск Vite dev сервера
 npm run build            Компиляция TypeScript + сборка Vite
@@ -25,6 +25,7 @@ npm run lint:fix         Авто-исправление ошибок ESLint
 npm run format           Форматирование кода Prettier
 npm run format:check     Проверка кода Prettier
 npm run stylelint        Проверка CSS через Stylelint
+npm run stylelint:fix.   Авто-исправление ошибок Stylelint
 npm run preview          Просмотр готовой сборки Vite
 npm run test             Запуск Jest
 npm run storybook        Запуск Storybook с синхронизацией алиасов
@@ -32,7 +33,7 @@ npm run storybook:build  Сборка Storybook
 
 ## Алиасы
 
-Все алиасы хранятся в aliases.ts в корне проекта.
+Все алиасы хранятся в aliases.cjs в корне проекта.
 Пример:
 ```
 import path from 'path';
@@ -43,7 +44,7 @@ export const alias = {
 
 Добавление нового алиаса
 
-1. Добавьте запись в aliases.ts:
+1. Добавьте запись в aliases.cjs:
 Пример:
 ```
 '@components': path.resolve(__dirname, 'src/components')

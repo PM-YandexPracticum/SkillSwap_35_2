@@ -4,7 +4,7 @@
  */
 
 import type { Config } from 'jest';
-import { alias } from './aliases'; // импортируем алиасы
+import { alias } from './aliases.cjs'; // импортируем алиасы
 
 // Генерируем moduleNameMapper из алиасов
 const moduleNameMapper: Record<string, string> = {};
@@ -54,11 +54,11 @@ const config: Config = {
 
   // Трансформация файлов с расширением ts/tsx
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
+    '^.+\\.(ts|tsx)$': 'ts-jest'
+  }
 
   // Файлы для настройки тестовой среды после инициализации
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  //setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,

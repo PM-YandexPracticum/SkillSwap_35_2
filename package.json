@@ -11,22 +11,23 @@
     "build": "tsc -b && vite build",
     "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx,js,jsx}' --fix",
-    "format": "prettier --write .",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,scss}'",
     "format:check": "prettier --check .",
     "stylelint": "stylelint \"src/**/*.css\"",
+    "stylelint:fix": "stylelint 'src/**/*.{css,scss}' --fix",
     "preview": "vite preview",
     "test": "jest",
     "storybook": "npm run sync:aliases && storybook dev -p 6006",
     "storybook:build": "npm run sync:aliases && storybook build"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run lint:fix",
+      "npm run format"
     ],
-    "*.{css,scss}": [
-      "stylelint --fix",
-      "prettier --write"
+    "**/*.{css,scss}": [
+      "npm run stylelint:fix",
+      "npm run format"
     ]
   },
   "dependencies": {
@@ -66,16 +67,17 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-storybook": "^9.1.2",
     "globals": "^16.3.0",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
     "lint-staged": "^16.1.5",
     "playwright": "^1.54.2",
     "prettier": "^3.6.2",
     "sass": "^1.90.0",
     "storybook": "^9.1.2",
-    "stylelint": "^14.16.1",
-    "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-standard": "^25.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^7.0.0",
+    "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
