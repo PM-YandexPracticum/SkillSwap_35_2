@@ -1,0 +1,14 @@
+@use '../../../app/styles/variables/fonts.scss' as fonts;
+@use '../../../app/styles/variables/colors.scss' as colors;
+
+.badge {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-family: fonts.$font-family-main;
+  font-weight: fonts.$font-weight-main;
+  font-size: fonts.$font-size-caption;
+  line-height: fonts.$font-line-height-caption;
+  letter-spacing: fonts.$font-letter-spacing-secondary;
+  color: colors.$font-color-primary;
+}
