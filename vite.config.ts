@@ -14,7 +14,8 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@/app/styles/globals.scss";' // глобальные переменные
+        additionalData: `@import "@/app/styles/variables/colors.scss";
+          @import "@/app/styles/variables/fonts.scss";`
       }
     }
   },
