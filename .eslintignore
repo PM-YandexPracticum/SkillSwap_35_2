@@ -1,0 +1,9 @@
+# Ignore Storybook config
+.storybook/
+
+# Ignore other specific files
+sync-aliases.ts
+vitest.shims.d.ts
+aliases.cjs
+jest.config.ts
+public/db/**

@@ -1,0 +1,44 @@
+@import '../../app/styles/variables/fonts.scss';
+@import '../../app/styles/variables/colors.scss';
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  color: $font-color-primary;
+  font-family: $font-family-main;
+}
+
+.field {
+  border: 1px solid $font-color-secondary;
+  border-radius: 12px;
+  padding: 12px 20px;
+  gap: 10px;
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  color: $font-color-secondary;
+  font-family: $font-family-main;
+
+  &:focus {
+    color: $font-color-primary;
+  }
+}
+
+.fieldError {
+  border-color: $font-color-error;
+}
+
+.error {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-caption;
+  font-family: $font-family-main;
+  color: $font-color-error;
+}

@@ -1,0 +1,51 @@
+# Все текстовые файлы — нормализуем переносы строк
+
+* text=auto
+.husky/* text eol=lf
+*.sh text eol=lf
+
+# JavaScript / TypeScript / JSON / JSX / TSX
+*.js      text eol=lf
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.jsx     text eol=lf
+*.json    text eol=lf
+
+# CSS / SCSS / Storybook
+*.css     text eol=lf
+*.scss    text eol=lf
+*.less    text eol=lf
+*.mdx     text eol=lf
+*.md      text eol=lf
+
+# Конфигурационные файлы
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.xml     text eol=lf
+*.html    text eol=lf
+
+# Сторонние бинарные файлы не трогаем
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.woff    binary
+*.woff2   binary
+*.eot     binary
+*.ttf     binary
+*.mp3     binary
+*.mp4     binary
+*.mov     binary
+
+# Игнорируем node_modules и сборки
+node_modules/**  -text
+dist/**          -text
+build/**         -text
+
+# Storybook лог файлы
+*.log            -text
+
+# OS специфичные файлы
+.DS_Store        -text
+Thumbs.db        -text

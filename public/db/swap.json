@@ -1,0 +1,42 @@
+[
+    {
+      "swapId": "swap_id_0001",
+      "name": "Игра на барабанах",
+      "category": "Творчество и искусство",
+      "subcategory": "Музыка и звук",
+      "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
+      "images": ["/db/images/swap_01.jpg", "/db/images/swap_02.jpg", "/db/images/swap_03.jpg", "/db/images/swap_04.jpg"],
+      "requestOwner": {
+        "id": "user_id_0001",
+        "profileImage_full": "/db/images/user_0001_full.jpg",
+        "name": "Иван",
+        "city": "Санкт-Петербург",
+        "dateOfBirth": "01.01.1991",
+        "description": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
+        "requiredSkill": {
+          "category": "Творчество и искусство",
+          "subcategory": ["Музыка и звук"],
+          "skillName": "Игра на барабанах"
+        },
+        "proposedSkill": [
+          {
+            "category": "Бизнес и карьера",
+            "subcategory": ["Тайм менеджмент"]
+          },
+          {
+            "category": "Дом и уют",
+            "subcategory": ["Ремонт"]
+          },
+          {
+            "category": "Здоровье и лайфстайл",
+            "subcategory": ["Йога и медитация"]
+          }
+        ]
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    }
+  ]
