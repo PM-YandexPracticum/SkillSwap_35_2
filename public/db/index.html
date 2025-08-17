@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mock Data Smoke Test</title>
+    <style>
+      :root { --maxw: 1100px; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: #f6f7f9; color: #111827; }
+      header { position: sticky; top: 0; background: white; border-bottom: 1px solid #e5e7eb; padding: 10px 16px; z-index: 10; }
+      header h1 { margin: 0; font-size: 18px; }
+      .container { max-width: var(--maxw); margin: 24px auto; padding: 0 16px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+      .card { background: white; border: 1px solid #e5e7eb; border-radius: 14px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+      .card h3 { margin: 0 0 8px; font-size: 16px; }
+      .muted { color: #6b7280; }
+      .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid #e5e7eb; font-size: 12px; line-height: 18px; background: #f9fafb; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; }
+      img.thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; border: 1px solid #e5e7eb; background: #f3f4f6; }
+      details { margin-top: 8px; }
+      code.inline { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 12px; }
+      .section { margin: 28px 0; }
+      .kvs { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; color: #374151; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px; overflow: auto; }
+      .pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px; background: #eef2ff; border: 1px solid #e5e7eb; font-size: 12px; }
+      footer { text-align: center; color: #6b7280; padding: 30px 0 40px; }
+      .status { font-weight: 600; }
+      .status.none { color: #6b7280; }
+      .status.requested { color: #1d4ed8; }
+      .status.ok { color: #047857; }
+      .status.decline { color: #b91c1c; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Проверка мок-данных (skills / swap / users / auth.user)</h1>
+    </header>
+
+    <div class="container">
+      <section class="section" id="stats">
+        <div class="grid">
+          <div class="card"><h3>Статистика</h3>
+            <div id="counts" class="row muted"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="auth">
+        <div class="grid">
+          <div class="card">
+            <h3>Текущий пользователь (auth.user)</h3>
+            <div id="authUser"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <h2>Skills - список навыков для меню в хедер</h2>
+        <div id="skillsGrid" class="grid"></div>
+      </section>
+
+      <section class="section" id="swaps">
+        <h2>Swaps - пример карточки с подробной информацией об обмене</h2>
+        <div id="swapsGrid" class="grid"></div>
+      </section>
+
+      <section class="section" id="users">
+        <h2>Users - пользователи для карточек в галерее</h2>
+        <div id="usersGrid" class="grid"></div>
+      </section>
+    </div>
+
+    <script>
+      // Быстрый загрузчик JSON из той же папки
+      async function loadJSON(path) {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + path);
+        return res.json();
+      }
+
+      function el(html) { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; }
+
+      function kv(obj) {
+        return '<div class="kvs">' + Object.entries(obj).map(([k,v]) => `<div><strong>${k}</strong>: ${typeof v === 'object' ? JSON.stringify(v) : v}</div>`).join('') + '</div>';
+      }
+
+      function fmtDate(str) {
+        try { return new Date(str).toLocaleString(); } catch { return str; }
+      }
+
+      function statusPill(status) {
+        const cls = 'status ' + status;
+        const label = status;
+        return `<span class="pill ${cls}">status: <span class="${cls}">${label}</span></span>`;
+      }
+
+      async function main() {
+        try {
+          const [skills, swaps, users, user] = await Promise.all([
+            loadJSON('./skills.json'),
+            loadJSON('./swap.json'),
+            loadJSON('./users.json'),
+            loadJSON('./user.json'),
+          ]);
+
+          // Статистика
+          const counts = document.getElementById('counts');
+          counts.innerHTML = '';
+          counts.append(
+            el(`<span class="badge">skills: ${skills.length}</span>`),
+            el(`<span class="badge">swaps: ${swaps.length}</span>`),
+            el(`<span class="badge">users: ${users.length}</span>`),
+            el(`<span class="badge">auth.user: ${user?.name ?? '—'}</span>`),
+          );
+
+          // Auth user
+          const auth = document.getElementById('authUser');
+          auth.innerHTML = '';
+          auth.append(el(`
+            <div class="row" style="align-items:center; gap:12px;">
+              <img src="${user.profileImage_full}" alt="avatar" class="thumb" style="max-width:180px; height:180px;" />
+              <div>
+                <div><strong>${user.name}</strong> <span class="muted">(${user.city})</span></div>
+                <div class="muted">email: <code class="inline">${user.email}</code></div>
+                <div class="muted">DOB: <code class="inline">${user.dateOfBirth}</code></div>
+                <details><summary>Описание</summary><p>${user.description}</p></details>
+              </div>
+            </div>
+          `));
+
+          // Skills
+          const skillsGrid = document.getElementById('skillsGrid');
+          skillsGrid.innerHTML = '';
+          skills.forEach(s => {
+            skillsGrid.append(el(`
+              <div class="card">
+                <h3>${s.category}</h3>
+                <div class="row">${(s.subcategory || []).map(sc => `<span class="badge">${sc}</span>`).join('')}</div>
+              </div>
+            `));
+          });
+
+          // Swaps
+          const swapsGrid = document.getElementById('swapsGrid');
+          swapsGrid.innerHTML = '';
+          swaps.forEach(sw => {
+            swapsGrid.append(el(`
+              <div class="card">
+                <h3>${sw.name}</h3>
+                <div class="muted">${sw.category} • ${sw.subcategory}</div>
+                ${Array.isArray(sw.images) && sw.images[0] ? `<img class="thumb" src="${sw.images[0]}" alt="${sw.name}" />` : ''}
+                <p>${sw.description}</p>
+                <div class="row">
+                  ${statusPill(sw.requestStatus)}
+                  <span class="badge">favorite: ${String(sw.favorite)}</span>
+                  <span class="badge">likes: ${sw.likeOwner?.length ?? 0}</span>
+                </div>
+                <details>
+                  <summary>Владелец</summary>
+                  <div class="row" style="align-items:center; gap:12px; margin-top:6px;">
+                    <img src="${sw.requestOwner.profileImage_full}" alt="owner" class="thumb" style="max-width:140px; height:140px;" />
+                    <div>
+                      <div><strong>${sw.requestOwner.name}</strong> <span class="muted">(${sw.requestOwner.city})</span></div>
+                      <div class="muted">DOB: <code class="inline">${sw.requestOwner.dateOfBirth}</code></div>
+                      <details><summary>Описание</summary><p>${sw.requestOwner.description}</p></details>
+                      <div style="margin-top:6px;">
+                        <div class="muted">requiredSkill:</div>
+                        ${kv(sw.requestOwner.requiredSkill)}
+                        <div class="muted" style="margin-top:6px;">proposedSkill:</div>
+                        <div class="row">${(sw.requestOwner.proposedSkill||[]).map(ps => `<span class="badge">${ps.category}: ${(ps.subcategory||[]).join(', ')}</span>`).join('')}</div>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+                <div class="muted" style="margin-top:8px;">created: ${fmtDate(sw.createdAt)} • updated: ${fmtDate(sw.updatedAt)}</div>
+              </div>
+            `));
+          });
+
+          // Users
+          const usersGrid = document.getElementById('usersGrid');
+          usersGrid.innerHTML = '';
+          users.forEach(u => {
+            usersGrid.append(el(`
+              <div class="card">
+                <h3>${u.name}</h3>
+                <div class="muted">${u.city} • DOB: <code class="inline">${u.dateOfBirth}</code></div>
+                <img class="thumb" src="${u.profileImage_mobile}" alt="${u.name}" />
+                <div style="margin-top:8px;">
+                  <div><strong>requiredSkill:</strong> <span class="badge">${u.requiredSkill.category}</span> — "${u.requiredSkill.skillName}"</div>
+                  <div style="margin-top:6px;"><strong>proposedSkill:</strong> <div class="row">${(u.proposedSkill||[]).map(ps => `<span class=badge>${ps.category}: ${(ps.subcategory||[]).join(', ')}</span>`).join('')}</div></div>
+                </div>
+                <div class="row" style="margin-top:8px;">
+                  <span class="badge">favorite: ${String(u.favorite)}</span>
+                  <span class="badge">likes: ${u.likeOwner?.length ?? 0}</span>
+                  <span class="badge">swapId: ${u.swapId}</span>
+                </div>
+              </div>
+            `));
+          });
+
+          console.info('[mock smoke test] loaded', { skills, swaps, users, user });
+        } catch (e) {
+          console.error('[mock smoke test] error:', e);
+          alert('Ошибка загрузки мок-данных: ' + e.message);
+        }
+      }
+
+      main();
+    </script>
+  </body>
+</html>
