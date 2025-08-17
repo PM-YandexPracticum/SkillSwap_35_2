@@ -1,10 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-// import pkg from './aliases.js';
-// const { alias } = pkg;
-// .storybook/main.ts
-
-// import { alias } from './aliases.cjs';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
