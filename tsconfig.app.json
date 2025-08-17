@@ -33,6 +33,7 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "src/styles.d.ts"
   ]
 }
