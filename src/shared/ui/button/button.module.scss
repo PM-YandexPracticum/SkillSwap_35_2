@@ -1,21 +1,10 @@
-// чтобу линтер не ругался, нужно вернуть в .stylelintrc.json:
-// {
-//   "extends": "stylelint-config-standard-scss",
-//   "rules": {
-//     "at-rule-no-unknown": null,
-//     "scss/at-rule-no-unknown": [
-//       true,
-//       {
-//         "ignoreAtRules": ["extend"]
-//       }
-//     ]
-//   }
-// }
-
 // $disabled-text: #9CA197 отсутствует в глобальных стилях
 $disabled-text: #9ca197;
 
-.baseButton {
+/* Общие стили для всех кнопок */
+.primary,
+.secondary,
+.tertiary {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -62,9 +51,8 @@ $disabled-text: #9ca197;
   }
 }
 
+/* Стили для primary-кнопки */
 .primary {
-  @extend .baseButton;
-
   background: $accent-color;
   min-width: 248px;
   
@@ -84,9 +72,8 @@ $disabled-text: #9ca197;
   }
 }
 
+/* Стили для secondary-кнопки */
 .secondary {
-  @extend .baseButton;
-
   background: $card-color;
   border: 1px solid $accent-color;
   min-width: 200px;
@@ -94,7 +81,7 @@ $disabled-text: #9ca197;
   &:disabled {
     background: $card-color;
     border: 1px solid $disabled-color;
-    color: $disabled-text
+    color: $disabled-text;
     // $disabled-text: #9CA197 отсутствует в глобальных стилях
   }
 
@@ -112,9 +99,8 @@ $disabled-text: #9ca197;
   }
 }
 
+/* Стили для tertiary-кнопки */
 .tertiary {
-  @extend .baseButton;
-
   background: $card-color;
   min-width: 200px;
 }
