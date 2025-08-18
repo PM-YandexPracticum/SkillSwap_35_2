@@ -14,10 +14,8 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
-        additionalData: `
-    @import "@/app/styles/variables/fonts.scss";
-    @import "@/app/styles/variables/colors.scss";
-  ` // глобальные переменные/миксины
+        additionalData: `@import "@/app/styles/variables/colors.scss";
+              @import "@/app/styles/variables/fonts.scss";`
       }
     }
   },
