@@ -1,68 +1,68 @@
 /* color */
 
+/* Text - цвет основного текста */
 $font-color-primary: #253017;
 
-/* Text - цвет основного текста */
+/* Caption - цвет подзаголовков */
 $font-color-secondary: #69735d;
 
-/* Caption - цвет подзаголовков */
-$toggle-color: #abd27a;
+/* Disabled Text */
+$font-color-disabled: #9CA197;
 
 /* Toggle - цвет переключателя */
-$font-color-disabled: #fff;
-
-/* Disabled Text */
-$disabled-color: #e4e8df;
+$toggle-color: #B2B9A9;
 
 /* Disabled */
+$disabled-color: #e4e8df;
+
+/* Card, input - цвет фона карточек и кнопок */
 $card-color: #fff;
 
 /* Card, input - цвет фона карточек и кнопок */
 $input-color: $card-color;
 
-/* Card, input - цвет фона карточек и кнопок */
-
+/* Button pressed */
 $button-color-pressed: #508826;
 
-/* Button pressed */
+/* Accent color - задан акцент */
 $accent-color: #abd27a;
 
-/* Accent color - задан акцент */
-$button-hover-color: $accent-color;
-
 /* Button hover */
+$button-hover-color: #DEEBC5;
+
+/* Background color */
 $bg-color: #f9faf7;
 
-/* Background colorа */
+/* alarm */
 $font-color-alarm: #e0796e;
 
-/* alarm */
+/* Error */
 $font-color-error: #bf3920;
 
-/* Error */
+/* Text link, Button pressed */
 $text-link-color: $button-color-pressed;
 
-/* Text link, Button pressed */
+/* Tag_Бизнес и карьера */
 
 $tag-business-color: #eee7f7;
 
-/* Tag_Бизнес и карьера */
+/* Tag_Творчество и искусство */
 $tag-creation-color: #f7e7f2;
 
-/* Tag_Творчество и искусство */
+/* Tag_Иностранные языки */
 $tag-languages-color: #ebe5c5;
 
-/* Tag_Иностранные языки */
+/* Tag_Образование и развитие */
 $tag-education-color: #e7f2f6;
 
-/* Tag_Образование и развитие */
+/* Tag_Дом и уют */
 $tag-house-color: #f7ebe5;
 
-/* Tag_Дом и уют */
+/* Tag_Здоровье и лайфстайл */
 $tag-health-color: #e9f7e7;
 
-/* Tag_Здоровье и лайфстайл */
+/* Tag_+ */
 $tag-plus-color: #e8ecf7;
 
-/* Tag_+ */
+/*Цвет кнопки*/
 $button-color-primary-color: $accent-color;
