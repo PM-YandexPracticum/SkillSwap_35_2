@@ -1,0 +1,11 @@
+{
+  "id": "user_id_0001",
+  "name": "Иван",
+  "dateOfBirth": "01.01.1991",
+  "gender": "Мужской",
+  "city": "Санкт-Петербург",
+  "description": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
+  "profileImage_mobile": "/db/images/user_0001_mobile.jpg",
+  "profileImage_full": "/db/images/user_0001_full.jpg",
+  "email": "ivan@yandex.ru"
+}
