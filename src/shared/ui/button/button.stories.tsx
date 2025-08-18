@@ -1,4 +1,3 @@
-import React from 'react'; 
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 
@@ -6,35 +5,38 @@ import { Button } from './button';
 const meta: Meta<typeof Button> = {
   title: 'Shared/UI/Button', // Путь в сторибуке
   component: Button,
+  parameters: {
+    layout: 'centered'
+  },
   tags: ['autodocs'], // Автоматическая генерация документации
   argTypes: {
     buttonType: {
       control: 'select',
       options: ['primary', 'secondary', 'tertiary'],
-      description: 'Тип кнопки',
+      description: 'Тип кнопки'
     },
     text: {
       control: 'text',
-      description: 'Текст кнопки',
+      description: 'Текст кнопки'
     },
     icon: {
       control: 'object',
-      description: 'React-нода иконки',
+      description: 'React-нода иконки'
     },
     iconPosition: {
       control: 'radio',
       options: ['left', 'right'],
-      description: 'Позиция иконки относительно текста',
+      description: 'Позиция иконки относительно текста'
     },
     disabled: {
       control: 'boolean',
-      description: 'Состояние disabled',
+      description: 'Состояние disabled'
     },
-    onClick: { 
+    onClick: {
       action: 'clicked',
-      description: 'Обработчик клика',
-    },
-  },
+      description: 'Обработчик клика'
+    }
+  }
 };
 
 export default meta;
@@ -46,22 +48,22 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: {
     buttonType: 'primary',
-    text: 'Primary Button',
-  },
+    text: 'Primary Button'
+  }
 };
 
 export const Secondary: Story = {
   args: {
     buttonType: 'secondary',
-    text: 'Secondary Button',
-  },
+    text: 'Secondary Button'
+  }
 };
 
 export const Tertiary: Story = {
   args: {
     buttonType: 'tertiary',
-    text: 'Tertiary Button',
-  },
+    text: 'Tertiary Button'
+  }
 };
 
 export const WithIconLeft: Story = {
@@ -69,8 +71,8 @@ export const WithIconLeft: Story = {
     buttonType: 'primary',
     text: 'Button with Icon',
     icon: '★',
-    iconPosition: 'left',
-  },
+    iconPosition: 'left'
+  }
 };
 
 export const WithIconRight: Story = {
@@ -78,14 +80,14 @@ export const WithIconRight: Story = {
     buttonType: 'primary',
     text: 'Button with Icon',
     icon: '★',
-    iconPosition: 'right',
-  },
+    iconPosition: 'right'
+  }
 };
 
 export const Disabled: Story = {
   args: {
     buttonType: 'primary',
     text: 'Disabled Button',
-    disabled: true,
-  },
+    disabled: true
+  }
 };

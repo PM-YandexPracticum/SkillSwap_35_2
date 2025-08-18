@@ -1,0 +1,106 @@
+
+$disabled-text: #9ca197;
+
+.baseButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: auto; 
+  min-width: fit-content; 
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: $font-color-primary;
+  font: $font-body;
+  // font-family: $font-family-main;
+  // font-weight: 400;
+  // font-size: 16px;
+  // font-style: normal;
+  // line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  //фокуса в фигме нет, сделал на свой вкус на всякий случай
+  &:focus-visible {
+    outline: 2px solid $button-color-pressed;
+    outline-offset: 2px;
+  }
+
+  .buttonIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .buttonText {
+    flex: 0 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.primary {
+  @extend .baseButton;
+
+  background: $accent-color;
+  min-width: 248px;
+  
+  &:disabled {
+    background: $disabled-color;
+    color: $font-color-secondary;
+  }
+
+  &:hover:not(:disabled) {
+    background: $button-hover-color;
+    //нужен фикс цвета в глобальных стилях $button-hover-color: #DEEBC5;
+  }
+
+  &:active:not(:disabled) {
+    background: $button-color-pressed;
+    color: $font-color-disabled;
+  }
+}
+
+.secondary {
+  @extend .baseButton;
+
+  background: $card-color;
+  border: 1px solid $accent-color;
+  min-width: 200px;
+  
+  &:disabled {
+    background: $card-color;
+    border: 1px solid $disabled-color;
+    color: $disabled-text
+    // $disabled-text: #9CA197 отсутствует в глобальных стилях
+  }
+
+  &:hover:not(:disabled) {
+    background: $card-color;
+    border: 1px solid $button-hover-color;
+    //нужен фикс цвета в глобальных стилях $button-hover-color: #DEEBC5;
+    color: $font-color-secondary;
+  }
+
+  &:active:not(:disabled) {
+    background: $card-color;
+    border: 1px solid $button-color-pressed;
+    color: $font-color-primary;
+  }
+}
+
+.tertiary {
+  @extend .baseButton;
+
+  background: $card-color;
+  min-width: 200px;
+}
