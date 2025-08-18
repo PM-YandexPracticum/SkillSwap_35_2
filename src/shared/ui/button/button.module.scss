@@ -1,4 +1,18 @@
+// чтобу линтер не ругался, нужно вернуть в .stylelintrc.json:
+// {
+//   "extends": "stylelint-config-standard-scss",
+//   "rules": {
+//     "at-rule-no-unknown": null,
+//     "scss/at-rule-no-unknown": [
+//       true,
+//       {
+//         "ignoreAtRules": ["extend"]
+//       }
+//     ]
+//   }
+// }
 
+// $disabled-text: #9CA197 отсутствует в глобальных стилях
 $disabled-text: #9ca197;
 
 .baseButton {

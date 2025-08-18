@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 
+
 // Метаданные компонента
 const meta: Meta<typeof Button> = {
   title: 'Shared/UI/Button', // Путь в сторибуке
