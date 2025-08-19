@@ -6,7 +6,7 @@ $font-family-title: 'Jost', 'Arial', serif;
 $font-weight-main: 400;
 $font-weight-title: 500;
 $font-style-medium: normal;
-$font-style-regular: "Regular";
+$font-style-regular: 'Regular';
 
 $font-letter-spacing-primary: -0.011em;
 $font-letter-spacing-secondary: 0.02em;
@@ -15,30 +15,34 @@ $font-letter-spacing-secondary: 0.02em;
 $font-size-h1: 32px;
 $font-line-height-h1: 40px;
 $font-h1: $font-style-medium $font-size-h1/$font-line-height-h1
-$font-weight-title $font-family-title $font-letter-spacing-primary;
+  $font-weight-title $font-family-title $font-letter-spacing-primary;
 
 /* m - размер заголовков h2 */
 $font-size-h2: 24px;
 $font-line-height-h2: 32px;
-$font-h2: $font-style-medium $font-size-h2/$font-line-height-h2 $font-weight-title $font-family-title $font-letter-spacing-primary;
+$font-h2: $font-style-medium $font-size-h2/$font-line-height-h2
+  $font-weight-title $font-family-title $font-letter-spacing-primary;
 
 /* m - размер заголовков h3 */
 $font-size-h3: 20px;
 $font-line-height-h3: 24px;
-$font-h3: $font-style-medium $font-size-h3/$font-line-height-h3 $font-weight-title $font-family-title $font-letter-spacing-primary;
+$font-h3: $font-style-medium $font-size-h3/$font-line-height-h3
+  $font-weight-title $font-family-title $font-letter-spacing-primary;
 
 /* m - размер заголовков h4 */
 $font-size-h4: 16px;
 $font-line-height-h4: 24px;
-$font-h4: $font-style-medium $font-size-h4/$font-line-height-h4 $font-weight-title $font-family-main $font-letter-spacing-secondary;
+$font-h4: $font-style-medium $font-size-h4/$font-line-height-h4
+  $font-weight-title $font-family-main $font-letter-spacing-secondary;
 
 /* s - размер Body основного теста */
 $font-size-body: 16px;
 $font-line-height-body: 24px;
-$font-body: $font-style-regular $font-size-body/$font-line-height-body $font-weight-main $font-family-main $font-letter-spacing-secondary;
+$font-body: $font-style-regular $font-size-body/$font-line-height-body
+  $font-weight-main $font-family-main $font-letter-spacing-secondary;
 
 /* s - размер Caption текста кнопок, подзаголовков */
 $font-size-caption: 12px;
 $font-line-height-caption: 16px;
 $font-caption: $font-style-regular $font-size-caption/$font-line-height-caption
-$font-weight-main $font-family-main $font-letter-spacing-secondary;
+  $font-weight-main $font-family-main $font-letter-spacing-secondary;
