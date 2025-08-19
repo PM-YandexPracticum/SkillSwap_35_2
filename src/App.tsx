@@ -1,8 +1,9 @@
+import { BadgeUI } from './shared/ui/badge/badge';
+
 function App() {
   return (
     <>
       <h1>Skill swap project</h1>
-
     </>
   );
 }
