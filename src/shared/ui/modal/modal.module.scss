@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  margin: auto;
+  padding: 62px 60px 72px;
+  background-color: $card-color;
+  border-radius: 12px;
+}
+
+.header {
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.description {
+  font-family: $font-family-main;
+  font-size: $font-size-caption;
+  line-height: $font-line-height-caption;
+  font-weight: $font-weight-main;
+  letter-spacing: $font-letter-spacing-secondary;
+  font-style: $font-style-regular;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
