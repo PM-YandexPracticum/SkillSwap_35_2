@@ -1,4 +1,4 @@
-@use '@/app/styles/variables/colors' as colors;
+@use '@/app/styles/variables/colors.' as colors;
 @use '@/app/styles/variables/fonts' as fonts;
 
 .checkbox {
@@ -17,6 +17,17 @@
   color: colors.$font-color-primary;
 }
 
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('./checkbox-unchecked.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 200ms;
+}
+
 .checkbox-input {
   position: absolute;
   opacity: 0;
@@ -28,15 +39,4 @@
   &:checked[data-variant='minus'] + .checkmark {
     background-image: url('./checkbox-minus.svg');
   }
-}
-
-.checkmark {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url('./checkbox-unchecked.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: 200ms;
 }

@@ -1,5 +1,3 @@
-import { BadgeUI } from './shared/ui/badge/badge';
-
 function App() {
   return (
     <>
