@@ -1,0 +1,42 @@
+@use '@/app/styles/variables/colors.' as colors;
+@use '@/app/styles/variables/fonts' as fonts;
+
+.checkbox {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: fonts.$font-family-main;
+  font-size: fonts.$font-size-body;
+  color: colors.$font-color-primary;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('./checkbox-unchecked.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 200ms;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+
+  &:checked[data-variant='tick'] + .checkmark {
+    background-image: url('./checkbox-tick.svg');
+  }
+
+  &:checked[data-variant='minus'] + .checkmark {
+    background-image: url('./checkbox-minus.svg');
+  }
+}
