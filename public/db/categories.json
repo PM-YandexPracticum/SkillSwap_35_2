@@ -1,0 +1,206 @@
+[
+    {
+      "categoryId": 1,
+      "title": "Бизнес и карьера",
+      "subcategories": [
+        {
+          "subcagegoryId": 11,
+          "title": "Управление командой"
+        },
+        {
+          "subcagegoryId": 12,
+          "title": "Маркетинг и реклама"
+        },
+        {
+          "subcagegoryId": 13,
+          "title": "Продажи и переговоры"
+        },
+        {
+          "subcagegoryId": 14,
+          "title": "Личный бренд"
+        },
+        {
+          "subcagegoryId": 15,
+          "title": "Резюме и собеседование"
+        },
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм-менеджмент"
+        },
+        {
+          "subcagegoryId": 17,
+          "title": "Проектное управление"
+        },
+        {
+          "subcagegoryId": 18,
+          "title": "Предпринимательство"
+        }
+      ]
+    },
+    {
+      "categoryId": 2,
+      "title": "Иностранные языки",
+      "subcategories": [
+        {
+          "subcagegoryId": 21,
+          "title": "Английский"
+        },
+        {
+          "subcagegoryId": 22,
+          "title": "Французский"
+        },
+        {
+          "subcagegoryId": 23,
+          "title": "Испанский"
+        },
+        {
+          "subcagegoryId": 24,
+          "title": "Немецкий"
+        },
+        {
+          "subcagegoryId": 25,
+          "title": "Китайский"
+        },
+        {
+          "subcagegoryId": 26,
+          "title": "Японский"
+        },
+        {
+          "subcagegoryId": 27,
+          "title": "Подготовка к экзаменам(IELTS, TOEFL)"
+        }
+      ]
+    },
+    {
+      "categoryId": 3,
+      "title": "Дом и уют",
+      "subcategories": [
+        {
+          "subcagegoryId": 31,
+          "title": "Уборка и организация"
+        },
+        {
+          "subcagegoryId": 32,
+          "title": "Домашние финансы"
+        },
+        {
+          "subcagegoryId": 33,
+          "title": "Приготовление еды"
+        },
+        {
+          "subcagegoryId": 34,
+          "title": "Домашние растения"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 36,
+          "title": "Хранение вещей"
+        }
+      ]
+    },
+    {
+      "categoryId": 4,
+      "title": "Творчество и искусство",
+      "subcategories": [
+        {
+          "subcagegoryId": 41,
+          "title": "Рисование и иллюстрация"
+        },
+        {
+          "subcagegoryId": 42,
+          "title": "Фотография"
+        },
+        {
+          "subcagegoryId": 43,
+          "title": "Видеомонтаж"
+        },
+        {
+          "subcagegoryId": 44,
+          "title": "Музыка и звук"
+        },
+        {
+          "subcagegoryId": 45,
+          "title": "Актёрское мастерство"
+        },
+        {
+          "subcagegoryId": 46,
+          "title": "Креативное письмо"
+        },
+        {
+          "subcagegoryId": 47,
+          "title": "Арт-терапия"
+        },
+        {
+          "subcagegoryId": 48,
+          "title": "Декор и DIY"
+        }
+      ]
+    },
+    {
+      "categoryId": 5,
+      "title": "Образование и развитие",
+      "subcategories": [
+        {
+          "subcagegoryId": 51,
+          "title": "Личностное развитие"
+        },
+        {
+          "subcagegoryId": 52,
+          "title": "Навыки обучения"
+        },
+        {
+          "subcagegoryId": 53,
+          "title": "Когнитивные техники"
+        },
+        {
+          "subcagegoryId": 54,
+          "title": "Скорочтение"
+        },
+        {
+          "subcagegoryId": 55,
+          "title": "Навыки преподавания"
+        },
+        {
+          "subcagegoryId": 56,
+          "title": "Коучинг"
+        }
+      ]
+    },
+    {
+      "categoryId": 6,
+      "title": "Здоровье и лайфстайл",
+      "subcategories": [
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        },
+        {
+          "subcagegoryId": 62,
+          "title": "Питание и ЗОЖ"
+        },
+        {
+          "subcagegoryId": 63,
+          "title": "Ментальное здоровье"
+        },
+        {
+          "subcagegoryId": 64,
+          "title": "Осознанность"
+        },
+        {
+          "subcagegoryId": 65,
+          "title": "Физические тренировки"
+        },
+        {
+          "subcagegoryId": 66,
+          "title": "Сон и восстановление"
+        },
+        {
+          "subcagegoryId": 67,
+          "title": "Баланс жизни и работы"
+        }
+      ]
+    }
+  ]
