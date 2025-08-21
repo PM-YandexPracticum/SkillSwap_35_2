@@ -1,0 +1,65 @@
+.radioWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover .radioCircle {
+    border-color: $button-hover-color; // hover-эффект
+  }
+}
+
+.input {
+  position: absolute;
+  opacity: 0; /* скрываем визуально, но оставляем в DOM */
+  width: 0;
+  height: 0;
+
+  &:focus-visible + .radioCircle {
+    outline: 2px solid $button-color-pressed;
+    outline-offset: 2px;
+  }
+}
+
+.radioCircle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000; /* черный контур */
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  background-color: transparent;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $button-color-pressed;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+.input:checked + .radioCircle {
+  border-color: $button-color-pressed; /* зеленый контур */
+  background-color: transparent;
+
+  &::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.label {
+  color: $font-color-primary;
+  font: $font-body;
+}

@@ -1,0 +1,11 @@
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.groupTitle {
+  font: $font-h3;
+  color: $font-color-primary;
+  margin-bottom: 20px;
+}
