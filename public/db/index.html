@@ -34,7 +34,7 @@
   </head>
   <body>
     <header>
-      <h1>Проверка мок-данных (skills / swap / users / auth.user)</h1>
+      <h1>Проверка мок-данных (categories / swap / cards / auth.user)</h1>
     </header>
 
     <div class="container">
@@ -55,19 +55,24 @@
         </div>
       </section>
 
-      <section class="section" id="skills">
-        <h2>Skills - список навыков для меню в хедер</h2>
-        <div id="skillsGrid" class="grid"></div>
+      <section class="section" id="categories">
+        <h2>Categories - список навыков для меню в хедер</h2>
+        <div id="categoriesGrid" class="grid"></div>
+      </section>
+
+      <section class="section" id="skillRequests">
+        <h2>SkillRequest - пример карточки с подробной информацией об обмене</h2>
+        <div id="skillRequestsGrid" class="grid"></div>
       </section>
 
       <section class="section" id="swaps">
-        <h2>Swaps - пример карточки с подробной информацией об обмене</h2>
+        <h2>Swaps - запросы на обмен</h2>
         <div id="swapsGrid" class="grid"></div>
       </section>
 
-      <section class="section" id="users">
-        <h2>Users - пользователи для карточек в галерее</h2>
-        <div id="usersGrid" class="grid"></div>
+      <section class="section" id="cards">
+        <h2>Cards - пользователи для карточек в галерее</h2>
+        <div id="cardsGrid" class="grid"></div>
       </section>
     </div>
 
@@ -97,20 +102,22 @@
 
       async function main() {
         try {
-          const [skills, swaps, users, user] = await Promise.all([
-            loadJSON('./skills.json'),
-            loadJSON('./swap.json'),
-            loadJSON('./users.json'),
-            loadJSON('./user.json'),
+          const [categories, skillRequests, swaps, cards, user] = await Promise.all([
+            loadJSON('./categories.json'), // список категорий
+            loadJSON('./skillRequests.json'), // карточка навыка "Подробнее"
+            loadJSON('./swaps.json'), // предложение обмена
+            loadJSON('./cards.json'), // список карточек
+            loadJSON('./user.json'), // пользователь
           ]);
 
           // Статистика
           const counts = document.getElementById('counts');
           counts.innerHTML = '';
           counts.append(
-            el(`<span class="badge">skills: ${skills.length}</span>`),
+            el(`<span class="badge">categories: ${categories.length}</span>`),
+            el(`<span class="badge">skillRequests: ${skillRequests.length}</span>`),
             el(`<span class="badge">swaps: ${swaps.length}</span>`),
-            el(`<span class="badge">users: ${users.length}</span>`),
+            el(`<span class="badge">cards: ${cards.length}</span>`),
             el(`<span class="badge">auth.user: ${user?.name ?? '—'}</span>`),
           );
 
@@ -119,9 +126,9 @@
           auth.innerHTML = '';
           auth.append(el(`
             <div class="row" style="align-items:center; gap:12px;">
-              <img src="${user.profileImage_full}" alt="avatar" class="thumb" style="max-width:180px; height:180px;" />
+              <img src="${user.profileImage}" alt="avatar" class="thumb" style="max-width:180px; height:180px;" />
               <div>
-                <div><strong>${user.name}</strong> <span class="muted">(${user.city})</span></div>
+                <div><strong>${user.name}</strong> <span class="muted">(${user.location})</span></div>
                 <div class="muted">email: <code class="inline">${user.email}</code></div>
                 <div class="muted">DOB: <code class="inline">${user.dateOfBirth}</code></div>
                 <details><summary>Описание</summary><p>${user.description}</p></details>
@@ -129,14 +136,54 @@
             </div>
           `));
 
-          // Skills
-          const skillsGrid = document.getElementById('skillsGrid');
-          skillsGrid.innerHTML = '';
-          skills.forEach(s => {
-            skillsGrid.append(el(`
+          // Categories
+          const categoriesGrid = document.getElementById('categoriesGrid');
+          categoriesGrid.innerHTML = '';
+          categories.forEach(s => {
+            categoriesGrid.append(el(`
               <div class="card">
-                <h3>${s.category}</h3>
-                <div class="row">${(s.subcategory || []).map(sc => `<span class="badge">${sc}</span>`).join('')}</div>
+                <h3>Id категории: ${s.categoryId}: ${s.title}</h3>
+                <div class="row">${(s.subcategories || []).map(sc => `<span class="badge">${sc.title}</span>`).join('')}</div>
+              </div>
+            `));
+          });
+
+          // SkillRequests
+          const skillRequestsGrid = document.getElementById('skillRequestsGrid');
+          skillRequestsGrid.innerHTML = '';
+          skillRequests.forEach(sr => {
+            skillRequestsGrid.append(el(`
+              <div class="card">
+                <h3>${sr.skill.skillName}</h3>
+                <div class="muted">${sr.skill.categoryId} • ${sr.skill.subcategoryId}</div>
+                ${Array.isArray(sr.images) && sr.images[0] ? `<img class="thumb" src="${sr.images[0]}" alt="${sr.skill.skillName}" />` : ''}
+                <p>${sr.description}</p>
+                <div class="row">
+                  ${statusPill(sr.requestStatus)}
+                  <span class="badge">favorite: ${String(sr.favorite)}</span>
+                  <span class="badge">likes: ${sr.likeOwner?.length ?? 0}</span>
+                </div>
+                <details>
+                  <summary>Владелец</summary>
+                  <div class="row" style="align-items:center; gap:12px; margin-top:6px;">
+                    <img src="${sr.skillOwner.profileImage}" alt="owner" class="thumb" style="max-width:140px; height:140px;" />
+                    <div>
+                      <div><strong>${sr.skillOwner.name}</strong> <span class="muted">(${sr.skillOwner.location})</span></div>
+                      <div class="muted">DOB: <code class="inline">${sr.skillOwner.birthDate}</code></div>
+                      <div style="margin-top:6px;">
+                        <div class="muted">Может научить:</div>
+                          <span class="badge">
+                            ${sr.skill.skillName}
+                          </span>
+                        <div class="muted" style="margin-top:6px;">Хочет научиться:</div>
+                          <div class="row">
+                            ${(sr.wantTolearn || []).map(wl => `<span class="badge">${wl.subcagegoryId}: ${wl.title}</span>`).join('')}
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </details>
+                <div class="muted" style="margin-top:8px;">created: ${fmtDate(sr.createdAt)} • updated: ${fmtDate(sr.updatedAt)}</div>
               </div>
             `));
           });
@@ -147,9 +194,9 @@
           swaps.forEach(sw => {
             swapsGrid.append(el(`
               <div class="card">
-                <h3>${sw.name}</h3>
-                <div class="muted">${sw.category} • ${sw.subcategory}</div>
-                ${Array.isArray(sw.images) && sw.images[0] ? `<img class="thumb" src="${sw.images[0]}" alt="${sw.name}" />` : ''}
+                <h3>${sw.skill.skillName}</h3>
+                <div class="muted">${sw.skill.categoryId} • ${sw.skill.subcategoryId}</div>
+                ${Array.isArray(sw.images) && sw.images[0] ? `<img class="thumb" src="${sw.images[0]}" alt="${sw.skill.skillName}" />` : ''}
                 <p>${sw.description}</p>
                 <div class="row">
                   ${statusPill(sw.requestStatus)}
@@ -159,18 +206,36 @@
                 <details>
                   <summary>Владелец</summary>
                   <div class="row" style="align-items:center; gap:12px; margin-top:6px;">
-                    <img src="${sw.requestOwner.profileImage_full}" alt="owner" class="thumb" style="max-width:140px; height:140px;" />
+                    <img src="${sw.skillOwner.profileImage}" alt="owner" class="thumb" style="max-width:140px; height:140px;" />
                     <div>
-                      <div><strong>${sw.requestOwner.name}</strong> <span class="muted">(${sw.requestOwner.city})</span></div>
-                      <div class="muted">DOB: <code class="inline">${sw.requestOwner.dateOfBirth}</code></div>
-                      <details><summary>Описание</summary><p>${sw.requestOwner.description}</p></details>
+                      <div><strong>${sw.skillOwner.name}</strong> <span class="muted">(${sw.skillOwner.location})</span></div>
+                      <div class="muted">DOB: <code class="inline">${sw.skillOwner.birthDate}</code></div>
                       <div style="margin-top:6px;">
-                        <div class="muted">requiredSkill:</div>
-                        ${kv(sw.requestOwner.requiredSkill)}
-                        <div class="muted" style="margin-top:6px;">proposedSkill:</div>
-                        <div class="row">${(sw.requestOwner.proposedSkill||[]).map(ps => `<span class="badge">${ps.category}: ${(ps.subcategory||[]).join(', ')}</span>`).join('')}</div>
-                      </div>
+                        <div class="muted">Может научить:</div>
+                          <span class="badge">
+                            ${sw.skill.skillName}
+                          </span>
+                        <div class="muted" style="margin-top:6px;">Хочет научиться:</div>
+                          <div class="row">
+                            ${(sw.wantTolearn || []).map(wl => `<span class="badge">${wl.subcagegoryId}: ${wl.title}</span>`).join('')}
+                          </div>
+                        </div>
                     </div>
+                  </div>
+                  <summary>Кто прежложил обмен</summary>
+                  <div class="row" style="align-items:center; gap:12px; margin-top:6px;">
+                    <div class="muted">Айди пользователя </div>
+                    <span class="badge">
+                      ${sw.swapOwner}
+                    </span>
+                    <div class="muted">Айди обмена</div>
+                    <span class="badge">
+                      ${sw.swapId}
+                    </span>
+                    <div class="muted">Дата обмена</div>
+                    <span class="badge">
+                      ${sw.swapDate}
+                    </span>
                   </div>
                 </details>
                 <div class="muted" style="margin-top:8px;">created: ${fmtDate(sw.createdAt)} • updated: ${fmtDate(sw.updatedAt)}</div>
@@ -178,29 +243,34 @@
             `));
           });
 
-          // Users
-          const usersGrid = document.getElementById('usersGrid');
-          usersGrid.innerHTML = '';
-          users.forEach(u => {
-            usersGrid.append(el(`
+          // Cards
+          const cardsGrid = document.getElementById('cardsGrid');
+          cardsGrid.innerHTML = '';
+          cards.forEach(u => {
+            cardsGrid.append(el(`
               <div class="card">
-                <h3>${u.name}</h3>
-                <div class="muted">${u.city} • DOB: <code class="inline">${u.dateOfBirth}</code></div>
-                <img class="thumb" src="${u.profileImage_mobile}" alt="${u.name}" />
+                <h3>${u.skillOwner.name}</h3>
+                <div class="muted">${u.skillOwner.location} • DOB: <code class="inline">${u.skillOwner.birthDate}</code></div>
+                <img class="thumb" src="${u.skillOwner.profileImage}" alt="${u.skillOwner.name}" />
                 <div style="margin-top:8px;">
-                  <div><strong>requiredSkill:</strong> <span class="badge">${u.requiredSkill.category}</span> — "${u.requiredSkill.skillName}"</div>
-                  <div style="margin-top:6px;"><strong>proposedSkill:</strong> <div class="row">${(u.proposedSkill||[]).map(ps => `<span class=badge>${ps.category}: ${(ps.subcategory||[]).join(', ')}</span>`).join('')}</div></div>
-                </div>
+                  <div><strong>requiredSkill:</strong> <span class="badge">${u.skill.categoryId}.${u.skill.subcategoryId}</span> — "${u.skill.skillName}"</div>
+                    <div style="margin-top:6px;">
+                      <strong>proposedSkill:</strong>
+                      <div class="row">
+                        ${(u.wantTolearn || []).map(wl => `<span class="badge">${wl.subcagegoryId}: ${Array.isArray(wl.title) ? wl.title.join(', ') : wl.title}</span>`).join('')}
+                      </div>
+                    </div>
+                  </div>
                 <div class="row" style="margin-top:8px;">
                   <span class="badge">favorite: ${String(u.favorite)}</span>
                   <span class="badge">likes: ${u.likeOwner?.length ?? 0}</span>
-                  <span class="badge">swapId: ${u.swapId}</span>
+                  <span class="badge">skillId: ${u.skillId}</span>
                 </div>
               </div>
             `));
           });
 
-          console.info('[mock smoke test] loaded', { skills, swaps, users, user });
+          console.info('[mock smoke test] loaded', { categories, skillRequests, swaps, cards, user });
         } catch (e) {
           console.error('[mock smoke test] error:', e);
           alert('Ошибка загрузки мок-данных: ' + e.message);
