@@ -10,20 +10,34 @@ import {
 } from './api/skill-api';
 
 function App() {
-  useEffect(() => {
+    useEffect(() => {
     async function runSmokeTest() {
       try {
-        const [categoriesRes, cardsRes, userRes, skillRes, swapRes] =
-          await Promise.all([
-            getCategoriesApi(),
-            getCardsApi(),
-            getUserApi(),
-            getSkillByIdApi('skill_id_0001'),
-            getSwapByIdApi('swap_id_0001')
-          ]);
+        const [
+          categoriesRes,
+          cardsRes1,
+          cardsRes2,
+          userRes,
+          skillRes,
+          swapRes
+        ] = await Promise.all([
+          getCategoriesApi(),
+          getCardsApi({
+            page: 1,
+            limit: 12
+          }),
+          getCardsApi({
+            page: 2,
+            limit: 12
+          }),
+          getUserApi(),
+          getSkillByIdApi('skill_id_0001'),
+          getSwapByIdApi('swap_id_0001')
+        ]);
 
         console.log('✅ categories:', categoriesRes.data);
-        console.log('✅ cards:', cardsRes.data);
+        console.log('✅ cards 1-12:', cardsRes1.data);
+        console.log('✅ cards 2-12:', cardsRes2.data);
         console.log('✅ user:', userRes);
         console.log('✅ skillRequest:', skillRes.skillRequest);
         console.log('✅ swap:', swapRes.swap);

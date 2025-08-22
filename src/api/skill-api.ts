@@ -26,7 +26,7 @@ const mockLoginData = {
   password: '123456qwerty'
 };
 
-type TCategoriesResponse = {
+export type TCategoriesResponse = {
   success: boolean;
   data: TCategories[];
 };
@@ -42,23 +42,89 @@ export const getCategoriesApi = (): Promise<TCategoriesResponse> =>
     }, 1500);
   });
 
-type TCardsResponse = {
-  success: boolean;
-  data: TSkillCard[];
+export type TPagination = {
+  page?: number; // номер страницы
+  limit?: number; // количество карточек на странице
 };
 
-// получение данных пользователей для карточек
-export const getCardsApi = (): Promise<TCardsResponse> =>
+export type TCardsResponse = {
+  success: boolean;
+  data: TSkillCard[];
+  total: number;
+};
+
+// получение данных карточек
+// без передачи page с бэка - отправляется запрос с аргументами на номер страницы и количество карточек на странице
+// вызов для санки getCardsApi({page: (номер страницы), limit: (кол-во карточек)})
+export const getCardsApi = (
+  pagination: TPagination = {
+    page: 1,
+    limit: 12
+  }
+): Promise<TCardsResponse> =>
   new Promise((resolve) => {
     setTimeout(() => {
+      const { page = 1, limit = 20 } = pagination;
+      const start = (page - 1) * limit;
+      const end = start + limit;
+
       resolve({
         success: true,
-        data: cards
+        data: cards.slice(start, end),
+        total: cards.length
       });
     }, 2000);
   });
 
-type TSkillRequestResponse = {
+// related "Популярное" - сортировка по длине массива likeOwner
+export const getPopularCardsApi = (): Promise<TCardsResponse> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      const popularCards = [...cards].sort(
+        (a, b) => b.likeOwner.length - a.likeOwner.length
+      );
+      resolve({
+        success: true,
+        data: popularCards,
+        total: popularCards.length
+      });
+    }, 350);
+  });
+
+// related "Новое" - сортировка updatedAt
+export const getNewCardsApi = (): Promise<TCardsResponse> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      const newCards = [...cards].sort(
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+      );
+      resolve({
+        success: true,
+        data: newCards,
+        total: newCards.length
+      });
+    }, 350);
+  });
+
+// related "Рекомендуем" - аргументом вставляем номер категории, которую ходим показать в выдаче
+export const getRecommendedCardsApi = (
+  categoryId: number
+): Promise<TCardsResponse> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      const recCards = [...cards].filter(
+        (card) => card.skill.categoryId === categoryId
+      );
+      resolve({
+        success: true,
+        data: recCards,
+        total: recCards.length
+      });
+    }, 350);
+  });
+
+export type TSkillRequestResponse = {
   success: boolean;
   skillRequest: TSkillRequest;
 };
@@ -80,7 +146,7 @@ export const getSkillByIdApi = (
     }, 1500);
   });
 
-type TSwapResponse = {
+export type TSwapResponse = {
   success: boolean;
   swap: TSwap;
 };
@@ -108,14 +174,14 @@ export const getSwapByIdApi = (swapId: string): Promise<TSwapResponse> =>
   );
 
 // у свапов есть владелец карточки и тот, кто предложил обмен - swapOwner
-type TSwapRequestsResponse = {
+export type TSwapRequestsResponse = {
   success: boolean;
   swaps?: TSwap[];
   message?: string;
 };
 
 // у скилов есть только владелец
-type TSkillRequestsResponse = {
+export type TSkillRequestsResponse = {
   success: boolean;
   skillRequests?: TSkillRequest[];
   message?: string;
