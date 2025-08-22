@@ -1,0 +1,527 @@
+[
+    {
+      "skillId": "skill_id_0001",
+      "skill": {
+        "skillName": "Игра на барабанах",
+        "categoryId": 4,
+        "subcategoryId": 43
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0001",
+        "name": "Иван",
+        "profileImage": "/db/images/user_0001_full.jpg",
+        "gender": "male",
+        "location": "Санкт-Петербург",
+        "birthDate": "01.01.1991"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0002",
+      "skill": {
+        "skillName": "Игра на барабанах",
+        "categoryId": 4,
+        "subcategoryId": 43
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0002",
+        "name": "Виктория",
+        "profileImage": "/db/images/user_0002_full.jpg",
+        "gender": "female",
+        "location": "Кемерово",
+        "birthDate": "10.10.1994"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0003",
+      "skill": {
+        "skillName": "Игра на барабанах",
+        "categoryId": 4,
+        "subcategoryId": 43
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0003",
+        "name": "Елизавета",
+        "profileImage": "/db/images/user_0003_full.jpg",
+        "gender": "female",
+        "location": "Владивосток",
+        "birthDate": "20.05.2000"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0004",
+      "skill": {
+        "skillName": "Игра на барабанах",
+        "categoryId": 4,
+        "subcategoryId": 43
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0004",
+        "name": "Виктория",
+        "profileImage": "/db/images/user_0004_full.jpg",
+        "gender": "female",
+        "location": "Сочи",
+        "birthDate": "30.01.1995"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0005",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0005",
+        "name": "Анна",
+        "profileImage": "/db/images/user_0005_full.jpg",
+        "gender": "female",
+        "location": "Казань",
+        "birthDate": "31.12.1999"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0006",
+      "skill": {
+        "skillName": "Бизнес план",
+        "categoryId": 1,
+        "subcategoryId": 12
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0006",
+        "name": "Максим",
+        "profileImage": "/db/images/user_0006_full.jpg",
+        "gender": "male",
+        "location": "Москва",
+        "birthDate": "15.05.2002"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0007",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0007",
+        "name": "Илона",
+        "profileImage": "/db/images/user_0007_full.jpg",
+        "gender": "female",
+        "location": "Екатеринбург",
+        "birthDate": "19.03.1992"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0008",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0008",
+        "name": "Михаил",
+        "profileImage": "/db/images/user_0008_full.jpg",
+        "gender": "male",
+        "location": "Новосибирск",
+        "birthDate": "22.11.1995"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0009",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0009",
+        "name": "Мария",
+        "profileImage": "/db/images/user_0009_full.jpg",
+        "gender": "female",
+        "location": "Краснодар",
+        "birthDate": "05.09.2004"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0010",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0010",
+        "name": "Екатерина",
+        "profileImage": "/db/images/user_0010_full.jpg",
+        "gender": "female",
+        "location": "Пермь",
+        "birthDate": "01.01.1992"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0011",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0011",
+        "name": "Дарья",
+        "profileImage": "/db/images/user_0011_full.jpg",
+        "gender": "female",
+        "location": "Ярославль",
+        "birthDate": "01.01.1999"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0012",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0012",
+        "name": "Константин",
+        "profileImage": "/db/images/user_0012_full.jpg",
+        "gender": "male",
+        "location": "Иркутск",
+        "birthDate": "01.01.1989"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0013",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0013",
+        "name": "Елена",
+        "profileImage": "/db/images/user_0013_full.jpg",
+        "gender": "female",
+        "location": "Красноярск",
+        "birthDate": "01.01.1998"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0014",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0014",
+        "name": "София",
+        "profileImage": "/db/images/user_0014_full.jpg",
+        "gender": "female",
+        "location": "Абакан",
+        "birthDate": "01.01.2001"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    },
+    {
+      "skillId": "skill_id_0015",
+      "skill": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantTolearn": [
+        {
+          "subcagegoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcagegoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcagegoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0015",
+        "name": "Алла",
+        "profileImage": "/db/images/user_0015_full.jpg",
+        "gender": "female",
+        "location": "Архангельск",
+        "birthDate": "01.01.2003"
+      },
+      "requestStatus": "none",
+      "favorite": false,
+      "likeOwner": [],
+      "createdAt": "2025-08-01T14:47:21.979Z",
+      "updatedAt": "2025-08-01T14:47:21.979Z"
+    }
+  ]

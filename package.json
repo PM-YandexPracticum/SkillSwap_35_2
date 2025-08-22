@@ -9,8 +9,8 @@
     "predev": "npm run sync:aliases",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
-    "lint:fix": "eslint 'src/**/*.{ts,tsx,js,jsx}' --fix",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,scss}'",
     "format:check": "prettier --check .",
     "stylelint": "stylelint \"src/**/*.css\"",
@@ -21,13 +21,16 @@
     "storybook:build": "npm run sync:aliases && storybook build"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "npm run lint:fix",
-      "npm run format"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ],
-    "**/*.{css,scss}": [
-      "npm run stylelint:fix",
-      "npm run format"
+    "src/**/*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.json": [
+      "prettier --write"
     ]
   },
   "dependencies": {

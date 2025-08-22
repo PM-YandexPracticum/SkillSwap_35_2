@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TitleUI } from './title';
 
 const meta = {
-  title: 'Shared/UI',
+  title: 'Shared/UI/Title',
   component: TitleUI,
   tags: ['autodocs']
 } satisfies Meta<typeof TitleUI>;

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Input, InputText, InputEmail, InputPassword } from './input';
 
 const meta: Meta<typeof Input> = {
-  title: 'Example/Input',
+  title: 'Shared/UI/Input',
   component: Input,
   tags: ['autodocs']
 };
