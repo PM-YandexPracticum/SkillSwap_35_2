@@ -1,3 +1,4 @@
+@import './reset.scss';
 @import '../styles/variables/fonts.scss';
 @import '../styles/variables/colors.scss';
 
@@ -23,4 +24,17 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
+  color: $font-color-primary;
+  background-color: $bg-color;
+  box-sizing: border-box;
 }
