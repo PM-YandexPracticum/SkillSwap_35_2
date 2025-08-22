@@ -6,16 +6,16 @@ import type { TLikeButtonProps } from './type';
 
 export const LikeButtonUI: FC<TLikeButtonProps> = ({
   liked,
+  setLiked,
   onClick
 }: TLikeButtonProps) => {
-  const [isLiked, setIsLiked] = useState(liked);
   const handleClick = (evt: SyntheticEvent) => {
-    setIsLiked((isLiked) => !isLiked);
+    setLiked((liked) => !liked);
     onClick(evt);
   };
   return (
     <button onClick={handleClick} className={styles.button}>
-      {isLiked ? (
+      {liked ? (
         <img src={likedIcon} alt='Убрать лайк' />
       ) : (
         <img src={likeIcon} alt='Лайкнуть' />
