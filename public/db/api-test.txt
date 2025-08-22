@@ -1,0 +1,41 @@
+# вставьте код ниже в App для проверки доступа к данным апи
+
+import { useEffect } from 'react';
+import {
+  getCategoriesApi,
+  getCardsApi,
+  getUserApi,
+  getSkillByIdApi,
+  getSwapByIdApi
+} from './api/skill-api';
+
+function App() {
+  useEffect(() => {
+    async function runSmokeTest() {
+      try {
+        const [categoriesRes, cardsRes, userRes, skillRes, swapRes] =
+          await Promise.all([
+            getCategoriesApi(),
+            getCardsApi(),
+            getUserApi(),
+            getSkillByIdApi('skill_id_0001'),
+            getSwapByIdApi('swap_id_0001')
+          ]);
+
+        console.log('✅ categories:', categoriesRes.data);
+        console.log('✅ cards:', cardsRes.data);
+        console.log('✅ user:', userRes);
+        console.log('✅ skillRequest:', skillRes.skillRequest);
+        console.log('✅ swap:', swapRes.swap);
+      } catch (err) {
+        console.error('❌ Ошибка в smoke-test:', err);
+      }
+    }
+
+    runSmokeTest();
+  }, []);
+
+  return <h1>Smoke test запускается, смотри консоль 👀</h1>;
+}
+
+export default App;
