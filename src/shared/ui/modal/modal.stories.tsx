@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ModalUI } from './modal';
 
 const meta = {
-  title: 'Shared/UI',
+  title: 'Shared/UI/Modal',
   component: ModalUI,
   tags: ['autodocs']
 } satisfies Meta<typeof ModalUI>;
