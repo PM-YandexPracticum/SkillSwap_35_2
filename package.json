@@ -21,13 +21,16 @@
     "storybook:build": "npm run sync:aliases && storybook build"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "npm run lint:fix",
-      "npm run format"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ],
-    "**/*.{css,scss}": [
-      "npm run stylelint:fix",
-      "npm run format"
+    "src/**/*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.json": [
+      "prettier --write"
     ]
   },
   "dependencies": {
