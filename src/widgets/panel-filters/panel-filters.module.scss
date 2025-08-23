@@ -1,0 +1,27 @@
+.panel {
+  margin: 32px 24px 0 36px;
+  background-color: $card-color;
+  width: fit-content;
+  white-space: nowrap;
+
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px 0px;  
+  gap: 49px;
+}
+
+.section {
+  padding: 20px 20px 12px;
+}
+
+.resetBtn {
+  font: $font-body;
+  color: #508826;
+  min-width: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
