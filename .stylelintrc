@@ -10,6 +10,7 @@
     "declaration-colon-space-after": "always",
     "declaration-colon-space-before": "never",
     "declaration-block-trailing-semicolon": "always",
+    "no-descending-specificity": null,
     "at-rule-no-unknown": null
   }
 }
