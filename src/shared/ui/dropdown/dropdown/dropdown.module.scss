@@ -1,3 +1,6 @@
+@use 'src/ui/dropdown/variables/colors.scss' as colors;
+@use 'src/ui/dropdown/variables/fonts.scss' as fonts;
+
 .dropdownContainer {
 	width: 100%;
 	max-width: 460px;
@@ -14,24 +17,24 @@
 }
 
 .dropdownInput.placeholder {
-	color: $font-color-secondary;
+	color: colors.$font-color-secondary;
 }
 
 .dropdownInput.selected {
-	color: $font-color-primary;
+	color: colors.$font-color-primary;
 }
 
 .dropdownContent {
 	width: 100%;
 	border-radius: 12px;
-	border: 1px solid $font-color-secondary;
-	background-color: $card-color;
+	border: 1px solid colors.$font-color-secondary;
+	background-color: colors.$card-color;
 	position: absolute;
 }
 
 .error {
 	border: 1px solid;
-	color: $font-color-error;
+	color: colors.$font-color-error;
 }
 
 .dropdownHeader {
@@ -43,7 +46,7 @@
 }
 
 .dropdownInput {
-	font: $font-body;
+	font: fonts.$font-body;
 	color: inherit;
 	width: 100%;
 	border: none;
@@ -77,47 +80,47 @@
 }
 
 .selectItem {
-	font: $font-body;
+	font: fonts.$font-body;
 	padding: 4px 20px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	color: $font-color-primary;
+	color: colors.$font-color-primary;
 	gap: 8px;
 }
 
 .selectItem:hover {
 	transition: background-color 0.3s ease;
-	background-color: $button-hover-color;
+	background-color: colors.$button-hover-color;
 }
 
 .selectItem.selected {
-	color: $button-color-pressed;
+	color: colors.$button-color-pressed;
 }
 
 .notFound {
 	padding: 4px 20px;
-	color: $font-color-secondary;
+	color: colors.$font-color-secondary;
 }
 
 .helperText {
-	color: $font-color-secondary;
+	color: colors.$font-color-secondary;
 	font-size: 12px;
 	line-height: 16px;
-	font-family: $font-body;
+	font-family: fonts.$font-body;
 	position: absolute;
 	bottom: -15px;
 }
 
 .helperText.errorText {
-	color: $font-color-error;
+	color: colors.$font-color-error;
 	font-size: 12px;
 	line-height: 16px;
-	font-family: $font-body;
+	font-family: fonts.$font-body;
 }
 
 .error {
-	border: 1px solid $font-color-error;
+	border: 1px solid colors.$font-color-error;
 }
 
 .hiddenCheckbox .checkmark {
@@ -130,9 +133,9 @@
 }
 
 .title {
-	font-family: $font-body;
+	font-family: fonts.$font-body;
 	font-size: 16px;
-	color: $font-color-primary;
+	color: colors.$font-color-primary;
 	margin-bottom: 12px;
 	font-weight: 400;
 }
