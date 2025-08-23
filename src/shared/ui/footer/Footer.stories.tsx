@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Footer } from './Footer';
 import { MemoryRouter } from 'react-router-dom';
+import { Footer } from './Footer';
 //
 const meta = {
   title: 'Shared/UI/Footer',
@@ -11,7 +11,7 @@ const meta = {
       <MemoryRouter>
         <Story />
       </MemoryRouter>
-    ),
+    )
   ],
   parameters: {
     layout: 'centered',
@@ -19,10 +19,10 @@ const meta = {
       default: 'dark',
       values: [
         { name: 'dark', value: '#333' },
-        { name: 'light', value: '#fff' },
-      ],
-    },
-  },
+        { name: 'light', value: '#fff' }
+      ]
+    }
+  }
 } satisfies Meta<typeof Footer>;
 
 export default meta;
