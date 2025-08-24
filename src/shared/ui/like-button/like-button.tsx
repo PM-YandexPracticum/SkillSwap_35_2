@@ -1,17 +1,14 @@
-import { useState, type FC, type SyntheticEvent } from 'react';
 import likeIcon from '../../assets/icons/like.svg';
 import likedIcon from '../../assets/icons/likedIcon.svg';
-import styles from './likeButton.module.scss';
+import styles from './like-button.module.scss';
 import type { TLikeButtonProps } from './type';
 
-export const LikeButtonUI: FC<TLikeButtonProps> = ({
-  liked,
-  setLiked,
-  onClick
+export const LikeButtonUI = ({
+  liked, // начальное состояние кнопки
+  setLiked // функция изменения состояния (например, из useState)
 }: TLikeButtonProps) => {
-  const handleClick = (evt: SyntheticEvent) => {
+  const handleClick = () => {
     setLiked((liked) => !liked);
-    onClick(evt);
   };
   return (
     <button onClick={handleClick} className={styles.button}>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LikeButtonUI } from './likeButton';
+import { LikeButtonUI } from './like-button';
 
 const meta = {
   title: 'Shared/UI/LikeButton',
@@ -13,13 +13,13 @@ type Story = StoryObj<typeof meta>;
 export const Liked: Story = {
   args: {
     liked: true,
-    onClick: (evt) => {}
+    setLiked: (clb) => false
   }
 };
 
 export const UnLiked: Story = {
   args: {
     liked: false,
-    onClick: (evt) => {}
+    setLiked: (clb) => true
   }
 };
