@@ -1,5 +1,3 @@
-import type { TSkill } from '@/api/types';
-
 export type TUserOfferProps = {
   skillName: string;
   categoryName: string;

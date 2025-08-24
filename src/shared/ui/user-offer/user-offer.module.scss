@@ -1,3 +1,60 @@
 .card {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 440px;
+  padding: 32px 52px 40px;
+  border: 1px solid red;
+  border-radius: 12px;
+}
+
+.card__actions {
+  grid-column: 1/-1;
+  block-size: 24px;
+}
+
+.card__main {
+  grid-column: 1/2;
+  min-inline-size: 400px;
+  max-inline-size: 600px;
+}
+
+.card__category {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-caption;
+  line-height: $font-line-height-caption;
+  color: $font-color-secondary;
+}
+
+.card__text {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
+  color: $font-color-primary;
+}
+
+.card__galery {
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: repeat(4, 92px);
+  grid-template-rows: repeat(3, 92px);
+  gap: 24px;
+}
+
+.card__img-wrapper {
+  aspect-ratio: 1/1;
+}
+
+.card__img-wrapper:first-child {
+  grid-column: 1/4;
+  grid-row: 1/4;
+}
+
+.card__img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
 }
