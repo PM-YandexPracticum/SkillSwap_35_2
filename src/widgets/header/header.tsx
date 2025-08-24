@@ -2,7 +2,7 @@
 //import { Logo } from '../Logo';
 // src/shared/ui/header/Header.tsx
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '@/shared/ui/input/input';
 import ChevronDownIcon from '@icons/chevron-down.svg?react';
 import SearchIcon from '@icons/search.svg?react';
@@ -10,9 +10,10 @@ import styles from './header.module.scss';
 
 interface HeaderProps {
   user?: string;
-  isAuth: boolean;
+  isAuth?: boolean;
 }
 export const Header = ({ user, isAuth }: HeaderProps) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   return (
     <header className={styles.header}>
@@ -44,15 +45,15 @@ export const Header = ({ user, isAuth }: HeaderProps) => {
 
       {/* Поиск */}
       <form className={styles.searchForm} role='search' aria-label='Search'>
-        {/* <SearchIcon className={styles.searchIcon} aria-hidden='true' /> */}
         <Input
-          // className={styles.searchInput}
+          // label='Search'
           type='search'
           placeholder='Искать навык'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           icon={<SearchIcon />}
-          iconPosition='left'
+          iconStyleOverride={{ left: '12px' }}
+          inputPadding={{ paddingLeft: '44px' }}
           inputClassName={styles.searchInput}
           aria-label='Search input'
         />
@@ -60,12 +61,18 @@ export const Header = ({ user, isAuth }: HeaderProps) => {
 
       {/* Действия пользователя */}
       <div className={styles.userActions}>
-        <Link to='/login' className={styles.loginLink}>
+        <button
+          className={styles.loginButton}
+          onClick={() => navigate('/login')}
+        >
           Войти
-        </Link>
-        <Link to='/register' className={styles.registerLink}>
+        </button>
+        <button
+          className={styles.registerButton}
+          onClick={() => navigate('/register')}
+        >
           Регистрация
-        </Link>
+        </button>
       </div>
     </header>
   );

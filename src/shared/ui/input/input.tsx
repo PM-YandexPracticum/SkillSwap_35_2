@@ -1,40 +1,3 @@
-// import React from 'react';
-// import clsx from 'clsx';
-// import styles from './input.module.scss';
-// import type { inputProps } from './inputTypes';
-
-// export function Input({
-//   className,
-//   inputClassName,
-//   label,
-//   type = 'text',
-//   placeholder,
-//   value,
-//   onChange,
-//   error
-// }: inputProps) {
-//   return (
-//     <div className={clsx(styles.input, className)}>
-//       {label && <label className={styles.label}>{label}</label>}
-
-//       <input
-//         className={clsx(
-//           styles.field,
-//           error && styles.fieldError,
-//           inputClassName
-//         )}
-//         type={type}
-//         placeholder={placeholder}
-//         value={value}
-//         onChange={onChange}
-//       />
-
-//       {error && <span className={styles.error}>{error}</span>}
-//     </div>
-//   );
-// }
-
-//import React from 'react';
 import clsx from 'clsx';
 import styles from './input.module.scss';
 import type { InputProps } from './inputTypes';
@@ -49,25 +12,16 @@ export function Input({
   onChange,
   error,
   icon,
-  iconPosition = 'left'
+  iconStyleOverride,
+  inputPadding
 }: InputProps) {
-  const inputPaddingStyle =
-    icon && iconPosition === 'left'
-      ? { paddingLeft: '44px' }
-      : icon && iconPosition === 'right'
-        ? { paddingRight: '44px' }
-        : undefined;
-
-  const iconStyle =
-    iconPosition === 'left' ? { left: '12px' } : { right: '12px' };
-
   return (
     <div className={clsx(styles.input, className)}>
       {label && <label className={styles.label}>{label}</label>}
 
       <div className={styles.fieldWrapper}>
         {icon && (
-          <span className={styles.icon} style={iconStyle}>
+          <span className={styles.icon} style={iconStyleOverride}>
             {icon}
           </span>
         )}
@@ -81,7 +35,7 @@ export function Input({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          style={inputPaddingStyle}
+          style={icon ? inputPadding : undefined}
         />
       </div>
 
@@ -90,12 +44,12 @@ export function Input({
   );
 }
 
-export const InputText = (props: inputProps) => (
+export const InputText = (props: InputProps) => (
   <Input {...props} type='text' />
 );
-export const InputEmail = (props: inputProps) => (
+export const InputEmail = (props: InputProps) => (
   <Input {...props} type='email' />
 );
-export const InputPassword = (props: inputProps) => (
+export const InputPassword = (props: InputProps) => (
   <Input {...props} type='password' />
 );

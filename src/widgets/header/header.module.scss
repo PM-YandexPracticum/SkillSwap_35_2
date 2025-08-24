@@ -49,21 +49,14 @@
 }
 
 .searchForm {
-  position: relative;
+  // position: relative;
   display: flex;
   align-items: center;
   inline-size: 527px;
   box-sizing: border-box;
 }
-.searchIcon {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  fill: $font-color-disabled;
-}
+
 .searchInput {
-  //padding-left: 44px;
   inline-size: 100%;
   block-size: 48px;
 

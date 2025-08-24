@@ -18,17 +18,30 @@
 
 .fieldWrapper {
   position: relative;
-  // inline-size: 100%;
 }
 
 .field {
   border: 1px solid $font-color-secondary;
   border-radius: 12px;
+  padding: 12px 20px;
+  inline-size: 100%;
   font-size: $font-size-body;
   font-weight: $font-weight-main;
   line-height: $font-line-height-body;
   color: $font-color-secondary;
   font-family: $font-family-main;
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  /* Убираем крестик в IE и Edge Legacy */
+  &::-ms-clear {
+    display: none;
+  }
 
   &:focus {
     color: $font-color-primary;
