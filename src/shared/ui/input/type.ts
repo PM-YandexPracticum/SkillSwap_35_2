@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
 
-export interface InputProps {
+export interface IInputProps {
   className?: string;
   inputClassName?: string; // дополнительный класс для тега input
   label?: string; // название поля input сверху
