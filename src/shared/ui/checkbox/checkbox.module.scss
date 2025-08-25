@@ -12,13 +12,14 @@
   font-family: $font-family-main;
   font-size: $font-size-body;
   color: $font-color-primary;
+  cursor: pointer;
 }
 
 .checkmark {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url('./checkbox-unchecked.svg');
+  background-image: url('../../assets/icons/checkbox-empty.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -29,11 +30,11 @@
   position: absolute;
   opacity: 0;
 
-  &:checked[data-variant='tick'] + .checkmark {
-    background-image: url('./checkbox-tick.svg');
+  &:checked[data-variant='category'] + .checkmark {
+    background-image: url('../../assets/icons/checkbox-done.svg');
   }
 
-  &:checked[data-variant='minus'] + .checkmark {
-    background-image: url('./checkbox-minus.svg');
+  &:checked[data-variant='subcategory'] + .checkmark {
+    background-image: url('../../assets/icons/checkbox-remove.svg');
   }
 }
