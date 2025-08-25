@@ -2,7 +2,7 @@ import { Button } from '../../shared/ui/button/button';
 import { useNavigate } from 'react-router-dom';
 import styles from './Page404.module.scss';
 import image404 from '../../shared/assets/images/error 404.svg';
-import { Footer } from '@/shared/ui/footer/Footer';
+//import { Footer } from '@/shared/ui/footer/Footer'; //
 //import { Header } from '@/shared/ui/footer/Header';
 
 export const NotFound404 = () => {
@@ -17,7 +17,6 @@ export const NotFound404 = () => {
   };
   return (
 	<div className={styles.page}>
-			<Footer />
     <div className={styles.container}>
       <img className={styles.image} src={image404} alt='404' />
       <div className={styles.textPage}>
@@ -48,7 +47,6 @@ export const NotFound404 = () => {
         </Button>
       </div>
     </div>
-	<Footer />
 	</div>
 	
   );
