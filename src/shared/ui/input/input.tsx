@@ -4,7 +4,6 @@ import type { IInputProps } from './type';
 
 export function Input({
   className,
-  className,
   inputClassName,
   label,
   type = 'text',
