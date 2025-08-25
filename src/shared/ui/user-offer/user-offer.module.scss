@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: auto 440px;
   padding: 32px 52px 40px;
-  border: 1px solid red;
   border-radius: 12px;
+  justify-content: space-between;
+  background-color: $card-color;
 }
 
 .card__actions {
@@ -13,8 +14,8 @@
 
 .card__main {
   grid-column: 1/2;
-  min-inline-size: 400px;
-  max-inline-size: 600px;
+  max-inline-size: 400px;
+  margin-inline-end: 52px;
 }
 
 .card__category {
