@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './input.module.scss';
-import type { InputProps } from './inputTypes';
+import type { IInputProps } from './type';
 
 export function Input({
   className,
@@ -14,7 +14,7 @@ export function Input({
   icon,
   iconStyleOverride,
   inputPadding
-}: InputProps) {
+}: IInputProps) {
   return (
     <div className={clsx(styles.input, className)}>
       {label && <label className={styles.label}>{label}</label>}
@@ -44,12 +44,12 @@ export function Input({
   );
 }
 
-export const InputText = (props: InputProps) => (
+export const InputText = (props: IInputProps) => (
   <Input {...props} type='text' />
 );
-export const InputEmail = (props: InputProps) => (
+export const InputEmail = (props: IInputProps) => (
   <Input {...props} type='email' />
 );
-export const InputPassword = (props: InputProps) => (
+export const InputPassword = (props: IInputProps) => (
   <Input {...props} type='password' />
 );
