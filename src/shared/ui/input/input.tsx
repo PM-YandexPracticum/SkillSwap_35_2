@@ -39,26 +39,6 @@ export function Input({
           style={icon ? inputPadding : undefined}
         />
       </div>
-      <div className={styles.fieldWrapper}>
-        {icon && (
-          <span className={styles.icon} style={iconStyleOverride}>
-            {icon}
-          </span>
-        )}
-        <input
-          className={clsx(
-            styles.field,
-            error && styles.fieldError,
-            inputClassName
-          )}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          style={icon ? inputPadding : undefined}
-        />
-      </div>
-
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );
