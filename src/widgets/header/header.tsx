@@ -8,11 +8,11 @@ import ChevronDownIcon from '@icons/chevron-down.svg?react';
 import SearchIcon from '@icons/search.svg?react';
 import styles from './header.module.scss';
 
-interface HeaderProps {
+interface IHeaderProps {
   user?: string;
   isAuth?: boolean;
 }
-export const Header = ({ user, isAuth }: HeaderProps) => {
+export const Header = ({ user, isAuth }: IHeaderProps) => {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
   return (
@@ -46,7 +46,6 @@ export const Header = ({ user, isAuth }: HeaderProps) => {
       {/* Поиск */}
       <form className={styles.searchForm} role='search' aria-label='Search'>
         <Input
-          // label='Search'
           type='search'
           placeholder='Искать навык'
           value={search}
