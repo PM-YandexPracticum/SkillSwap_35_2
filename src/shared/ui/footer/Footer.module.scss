@@ -8,7 +8,7 @@
 
 .footerSignature {
   color: $font-color-primary;
-  font-family: $font-style-regular;
+  font-family: $font-family-main;
   font-size: $font-size-caption;
   font-weight: $font-weight-main;
   line-height: $font-line-height-caption;
@@ -20,12 +20,13 @@
   display: grid;
   grid-template-columns: repeat(3, 324px);
   justify-content: end;
-  /*font: $font-body;*/
+
+  /* font: $font-body; */
   font-family: $font-family-main;
   font-size: $font-size-body;
   font-weight: $font-weight-main;
   line-height: $font-line-height-body;
-  margin: 40px 0px 0px 189px;
+  margin: 40px 0 0 189px;
   row-gap: 12px;
   column-gap: 24px;
   list-style: none;
@@ -35,7 +36,6 @@
 .footerNavBlock a {
   text-decoration: none;
   color: $font-color-primary;
- 
 
   &:hover {
     color: $font-color-primary;

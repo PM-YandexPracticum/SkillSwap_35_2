@@ -1,10 +1,8 @@
-// @import '../../app/styles/variables/fonts.scss';
-// @import '../../app/styles/variables/colors.scss';
-
 .input {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  inline-size: 100%;
 }
 
 .label {
@@ -15,20 +13,46 @@
   font-family: $font-family-main;
 }
 
+.fieldWrapper {
+  position: relative;
+}
+
 .field {
   border: 1px solid $font-color-secondary;
   border-radius: 12px;
   padding: 12px 20px;
-  gap: 10px;
+  inline-size: 100%;
   font-size: $font-size-body;
   font-weight: $font-weight-main;
   line-height: $font-line-height-body;
   color: $font-color-secondary;
   font-family: $font-family-main;
 
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  /* Убираем крестик в IE и Edge Legacy */
+  &::-ms-clear {
+    display: none;
+  }
+
   &:focus {
     color: $font-color-primary;
   }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; // чтобы клики проходили на input
 }
 
 .fieldError {

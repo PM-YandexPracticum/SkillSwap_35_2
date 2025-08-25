@@ -1,40 +1,55 @@
-// import React from 'react';
 import clsx from 'clsx';
 import styles from './input.module.scss';
-import type { inputProps } from './inputTypes';
+import type { IInputProps } from './type';
 
 export function Input({
   className,
+  className,
+  inputClassName,
   label,
   type = 'text',
   placeholder,
   value,
   onChange,
-  error
-}: inputProps) {
+  error,
+  icon,
+  iconStyleOverride,
+  inputPadding
+}: IInputProps) {
   return (
     <div className={clsx(styles.input, className)}>
       {label && <label className={styles.label}>{label}</label>}
 
-      <input
-        className={clsx(styles.field, error && styles.fieldError)}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-
+      <div className={styles.fieldWrapper}>
+        {icon && (
+          <span className={styles.icon} style={iconStyleOverride}>
+            {icon}
+          </span>
+        )}
+        <input
+          className={clsx(
+            styles.field,
+            error && styles.fieldError,
+            inputClassName
+          )}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          style={icon ? inputPadding : undefined}
+        />
+      </div>
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );
 }
 
-export const InputText = (props: inputProps) => (
+export const InputText = (props: IInputProps) => (
   <Input {...props} type='text' />
 );
-export const InputEmail = (props: inputProps) => (
+export const InputEmail = (props: IInputProps) => (
   <Input {...props} type='email' />
 );
-export const InputPassword = (props: inputProps) => (
+export const InputPassword = (props: IInputProps) => (
   <Input {...props} type='password' />
 );

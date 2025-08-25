@@ -17,7 +17,7 @@
   height: 0;
 
   &:focus-visible + .radioCircle {
-    outline: 2px solid $button-color-pressed; 
+    outline: 2px solid $button-color-pressed;
     outline-offset: 2px;
   }
 }
@@ -47,7 +47,7 @@
     transition: opacity 0.2s ease;
     transform: translate(-50%, -50%) scale(0);
   }
-}  
+}
 
 .input:checked + .radioCircle {
   border-color: $button-color-pressed; /* зеленый контур */
@@ -56,7 +56,7 @@
   &::after {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-  }  
+  }
 }
 
 .label {
