@@ -1,8 +1,7 @@
-import React from 'react';
+import type { IButtonProps } from './button-types';
 import styles from './button.module.scss';
-import type { ButtonProps } from './buttonTypes';
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   buttonType = 'primary',
   disabled = false,
   onClick,
@@ -11,7 +10,7 @@ export const Button: React.FC<ButtonProps> = ({
   iconPosition = 'none',
   className = '',
   ...props
-}) => (
+}: IButtonProps) => (
   <button
     className={`${styles[buttonType]} ${disabled ? styles.disabled : ''} ${className}`}
     disabled={disabled}
@@ -19,12 +18,18 @@ export const Button: React.FC<ButtonProps> = ({
     aria-disabled={disabled}
     {...props}
   >
-    {icon && iconPosition === 'left' && (
+    {buttonType === 'iconOnly' ? (
       <span className={styles.buttonIcon}>{icon}</span>
-    )}
-    {text && <span className={styles.buttonText}>{text}</span>}
-    {icon && iconPosition === 'right' && (
-      <span className={styles.buttonIcon}>{icon}</span>
+    ) : (
+      <>
+        {icon && iconPosition === 'left' && (
+          <span className={styles.buttonIcon}>{icon}</span>
+        )}
+        {text && <span className={styles.buttonText}>{text}</span>}
+        {icon && iconPosition === 'right' && (
+          <span className={styles.buttonIcon}>{icon}</span>
+        )}
+      </>
     )}
   </button>
 );
