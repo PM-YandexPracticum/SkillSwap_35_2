@@ -1,0 +1,167 @@
+[
+  {
+    "id": "user_id_0001",
+    "name": "Иван",
+    "profileImage": "/db/images/user_0001_full.jpg",
+    "gender": "male",
+    "location": "Санкт-Петербург",
+    "birthDate": "1991-01-01",
+    "bio": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
+    "email": "ivan@example.com",
+    "password": "1234qwer"
+  },
+  {
+    "id": "user_id_0002",
+    "name": "Виктория",
+    "profileImage": "/db/images/user_0002_full.jpg",
+    "gender": "female",
+    "location": "Кемерово",
+    "birthDate": "1991-04-04",
+    "bio": "Формирую не только мышцы, но и привычки — потому что настоящая сила рождается в дисциплине",
+    "email": "victoria@example.com",
+    "password": "12qwer"
+  },
+  {
+    "id": "user_id_0003",
+    "name": "Елизавета",
+    "profileImage": "/db/images/user_0003_full.jpg",
+    "gender": "female",
+    "location": "Владивосток",
+    "birthDate": "2000-05-20",
+    "bio": "Помогаю детям видеть математику не как науку, а как игру с бесконечными возможностями",
+    "email": "liza@example.com",
+    "password": "555aaaa"
+  },
+  {
+    "id": "user_id_0004",
+    "name": "Кристина",
+    "profileImage": "/db/images/user_0004_full.jpg",
+    "gender": "female",
+    "location": "Сочи",
+    "birthDate": "1995-01-30",
+    "bio": "Акварель — это медитация в цвете. Я помогаю найти свой ритм и свой оттенок счастья. Здесь не бывает ошибок — только неожиданные повороты, которые превращаются в стиль",
+    "email": "chris@example.com",
+    "password": "0987bbbb"
+  },
+  {
+    "id": "user_id_0005",
+    "name": "Анна",
+    "profileImage": "/db/images/user_0005_full.jpg",
+    "gender": "female",
+    "location": "Казань",
+    "birthDate": "1999-12-31",
+    "bio": "Дневник эмоций — не про жалость к себе, а про силу быть честным с собой. Эмоции — не помеха, а сигнал. Вместе учимся их слышать и действовать с умом.",
+    "email": "anna@example.com",
+    "password": "biba666"
+  },
+  {
+    "id": "user_id_0006",
+    "name": "Максим",
+    "profileImage": "/db/images/user_0006_full.jpg",
+    "gender": "male",
+    "location": "Москва",
+    "birthDate": "2002-05-15",
+    "bio": "Не мастер на все руки — а гид по дому, который знает, где гвоздь, а где шуруп",
+    "email": "max@example.com",
+    "password": "boba333"
+  },
+  {
+    "id": "user_id_0007",
+    "name": "Илона",
+    "profileImage": "/db/images/user_0007_full.jpg",
+    "gender": "female",
+    "location": "Екатеринбург",
+    "birthDate": "1992-03-19",
+    "bio": "Где другие видят риски, я вижу возможности — и расставляю их по пунктам. Помогаю не только составить план, но и поверить в него — потому что детали решают всё.",
+    "email": "ilona@example.com",
+    "password": "aboba999"
+  },
+  {
+    "id": "user_id_0008",
+    "name": "Михаил",
+    "profileImage": "/db/images/user_0008_full.jpg",
+    "gender": "male",
+    "location": "Новосибирск",
+    "birthDate": "1995-11-22",
+    "bio": "Не просто преподаватель — ваш личный мотиватор в мире языков",
+    "email": "michael@example.com",
+    "password": "mishka777"
+  },
+  {
+    "id": "user_id_0009",
+    "name": "Мария",
+    "profileImage": "/db/images/user_0009_full.jpg",
+    "gender": "female",
+    "location": "Краснодар",
+    "birthDate": "2004-09-05",
+    "bio": "Научу находить общий язык, убеждать и закрывать сделки даже в сложных ситуациях.",
+    "email": "maria@example.com",
+    "password": "zxcvb3"
+  },
+  {
+    "id": "user_id_0010",
+    "name": "Екатерина",
+    "profileImage": "/db/images/user_0010_full.jpg",
+    "gender": "female",
+    "location": "Краснодар",
+    "birthDate": "2004-09-05",
+    "bio": "Создаю культуру удалённой работы, где важен не статус в чате, а вклад в проект. Строю сильные онлайн-команды, где каждый знает своё «зачем» и движется к общему результату.",
+    "email": "ekaterina@example.com",
+    "password": "awawa01"
+  },
+  {
+    "id": "user_id_0011",
+    "name": "Дарья",
+    "profileImage": "/db/images/user_0011_full.jpg",
+    "gender": "female",
+    "location": "Пермь",
+    "birthDate": "1992-09-08",
+    "bio": "Не нужны студии и камеры: покажу, как делать цепляющий контент с нуля и в кадре.",
+    "email": "daria@example.com",
+    "password": "ewewe02"
+  },
+  {
+    "id": "user_id_0012",
+    "name": "Константин",
+    "profileImage": "/db/images/user_0012_full.jpg",
+    "gender": "male",
+    "location": "Иркутск",
+    "birthDate": "1989-05-13",
+    "bio": "Моя философия: экология в тарелке, удовольствие на вкус и энергия в теле.",
+    "email": "kostia@example.com",
+    "password": "uwuwu03"
+  },
+  {
+    "id": "user_id_0013",
+    "name": "Елена",
+    "profileImage": "/db/images/user_0013_full.jpg",
+    "gender": "female",
+    "location": "Красноярск",
+    "birthDate": "1998-03-04",
+    "bio": "Твой бренд — это не ник и аватарка. Это энергия, стиль и влияние — и я помогаю их раскрыть.",
+    "email": "helen@example.com",
+    "password": "rabota666"
+  },
+  {
+    "id": "user_id_0014",
+    "name": "София",
+    "profileImage": "/db/images/user_0014_full.jpg",
+    "gender": "female",
+    "location": "Абакан",
+    "birthDate": "2001-02-23",
+    "bio": "Учу языку, который звучит в Шанхае, Пекине и на вашем смартфоне. Каждый урок — шаг к путешествию, карьере или просто новому миру в голове.",
+    "email": "sofia@example.com",
+    "password": "privet11"
+  },
+  {
+    "id": "user_id_0015",
+    "name": "Алла",
+    "profileImage": "/db/images/user_0015_full.jpg",
+    "gender": "female",
+    "location": "Архангельск",
+    "birthDate": "2003-12-09",
+    "bio": "Твой внутренний компас — это не метафора. Я помогаю его найти и слышать.",
+    "email": "alla@example.com",
+    "password": "lalala0"
+  }
+]
