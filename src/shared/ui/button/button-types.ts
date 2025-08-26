@@ -1,0 +1,15 @@
+import React from 'react';
+
+type TButtonType = 'primary' | 'secondary' | 'tertiary' | 'iconOnly';
+type TIconPosition = 'left' | 'right' | 'none';
+
+export interface IButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  buttonType?: TButtonType;
+  disabled?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  text?: string;
+  icon?: React.ReactNode;
+  iconPosition?: TIconPosition;
+  className?: string;
+}
