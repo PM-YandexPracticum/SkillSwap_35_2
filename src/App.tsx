@@ -1,3 +1,5 @@
+import './app/styles/index.scss';
+
 function App() {
   return (
     <>
