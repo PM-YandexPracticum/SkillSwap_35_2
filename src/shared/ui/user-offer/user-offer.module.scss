@@ -1,0 +1,121 @@
+.card {
+  display: grid;
+  grid-template-columns: auto 440px;
+  padding: 32px 52px 40px;
+  border-radius: 12px;
+  justify-content: space-between;
+  background-color: $card-color;
+}
+
+.card__actions {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: end;
+  block-size: 24px;
+}
+
+.card__main {
+  grid-column: 1/2;
+  max-inline-size: 400px;
+  margin-inline-end: 52px;
+}
+
+.card__category {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-caption;
+  line-height: $font-line-height-caption;
+  color: $font-color-secondary;
+}
+
+.card__text {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
+  color: $font-color-primary;
+}
+
+.card__galery {
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: repeat(4, 92px);
+  grid-template-rows: repeat(3, 92px);
+  gap: 24px;
+}
+
+.card__img-wrapper {
+  aspect-ratio: 1/1;
+}
+
+.card__img-wrapper:first-child {
+  position: relative;
+  grid-column: 1/4;
+  grid-row: 1/4;
+}
+
+.card__img-wrapper:last-child {
+  position: relative;
+}
+
+.card__last-img-cover {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  block-size: 100%;
+  inline-size: 100%;
+  background-color: rgba($color: #fff, $alpha: 0.5);
+
+  /* +3 */
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: $font-letter-spacing-primary;
+  color: $font-color-primary;
+}
+
+.card__img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+
+.card__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.card__button_big {
+  inline-size: 100%;
+}
+
+.card__button_small {
+  inline-size: 45%;
+}
+
+.galery__button {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 32px;
+  inline-size: 32px;
+  border-radius: 50%;
+  background-color: $disabled-color;
+  border: 0 solid transparent;
+}
+
+.galery__button_left {
+  rotate: 180deg;
+  left: 16px;
+}
