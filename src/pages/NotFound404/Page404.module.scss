@@ -1,12 +1,12 @@
 .page {
-	color: $font-color-primary;
-	font-family: $font-style-regular;
-	width: 100%;
-	max-width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	background-color: $bg-color;
+  color: $font-color-primary;
+  font-family: $font-family-main;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-color;
 }
 .container {
   color: $font-color-primary;
