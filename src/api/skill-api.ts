@@ -1,15 +1,12 @@
-import cards from '../../public/db/cards.json'; // карточки
 import categories from '../../public/db/categories.json'; // категории и сабкатегории
-import skillRequests from '../../public/db/skillRequests.json'; // навыки подробнее по id
-import swaps from '../../public/db/swaps.json'; // обмены
+import skills from '../../public/db/skills.json'; // все навыки
 import user from '../../public/db/user.json'; // профиль пользователя
+// import users from '../../public/db/users.json'; // все профили пользователей
 
 import { setCookie, getCookie, deleteCookie } from '../shared/lib/cookie';
 import type {
   TCategories,
-  TSkillCard,
-  TSkillRequest,
-  TSwap,
+  TSkill,
   TUser
   /*
   TRegisterLogin,
@@ -23,7 +20,7 @@ const mockAccessToken = 'mock_access_token_123';
 const mockRefreshToken = 'mock_refresh_token_456';
 const mockLoginData = {
   email: 'ivan@example.ru',
-  password: '123456qwerty'
+  password: '1234qwer'
 };
 
 export type TCategoriesResponse = {
@@ -42,212 +39,22 @@ export const getCategoriesApi = (): Promise<TCategoriesResponse> =>
     }, 1500);
   });
 
-export type TPagination = {
-  page?: number; // номер страницы
-  limit?: number; // количество карточек на странице
-};
-
-export type TCardsResponse = {
+export type TSkillsResponse = {
   success: boolean;
-  data: TSkillCard[];
+  data: TSkill[];
   total: number;
 };
 
-// получение данных карточек
-// без передачи page с бэка - отправляется запрос с аргументами на номер страницы и количество карточек на странице
-// вызов для санки getCardsApi({page: (номер страницы), limit: (кол-во карточек)})
-export const getCardsApi = (
-  pagination: TPagination = {
-    page: 1,
-    limit: 12
-  }
-): Promise<TCardsResponse> =>
+export const getSkillsApi = (): Promise<TSkillsResponse> =>
   new Promise((resolve) => {
     setTimeout(() => {
-      const { page = 1, limit = 20 } = pagination;
-      const start = (page - 1) * limit;
-      const end = start + limit;
-
       resolve({
         success: true,
-        data: cards.slice(start, end),
-        total: cards.length
-      });
-    }, 2000);
-  });
-
-// related "Популярное" - сортировка по длине массива likeOwner
-export const getPopularCardsApi = (): Promise<TCardsResponse> =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      const popularCards = [...cards].sort(
-        (a, b) => b.likeOwner.length - a.likeOwner.length
-      );
-      resolve({
-        success: true,
-        data: popularCards,
-        total: popularCards.length
-      });
-    }, 350);
-  });
-
-// related "Новое" - сортировка updatedAt
-export const getNewCardsApi = (): Promise<TCardsResponse> =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      const newCards = [...cards].sort(
-        (a, b) =>
-          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-      );
-      resolve({
-        success: true,
-        data: newCards,
-        total: newCards.length
-      });
-    }, 350);
-  });
-
-// related "Рекомендуем" - аргументом вставляем номер категории, которую ходим показать в выдаче
-export const getRecommendedCardsApi = (
-  categoryId: number
-): Promise<TCardsResponse> =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      const recCards = [...cards].filter(
-        (card) => card.skill.categoryId === categoryId
-      );
-      resolve({
-        success: true,
-        data: recCards,
-        total: recCards.length
-      });
-    }, 350);
-  });
-
-export type TSkillRequestResponse = {
-  success: boolean;
-  skillRequest: TSkillRequest;
-};
-
-// получение навыка по id - не требует доступа к токенам
-export const getSkillByIdApi = (
-  skillId: string
-): Promise<TSkillRequestResponse> =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      const found =
-        (skillRequests as TSkillRequest[]).find((s) => s.skillId === skillId) ||
-        null;
-
-      resolve({
-        success: !!found,
-        skillRequest: found as TSkillRequest
+        data: skills,
+        total: skills.length
       });
     }, 1500);
   });
-
-export type TSwapResponse = {
-  success: boolean;
-  swap: TSwap;
-};
-
-// получение обмена по id - пользователь должен быть авторизован
-export const getSwapByIdApi = (swapId: string): Promise<TSwapResponse> =>
-  getUserApi().then(
-    (user) =>
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (!user) {
-            reject({ success: false, message: 'Not authorized' });
-            return;
-          }
-
-          const found =
-            (swaps as TSwap[]).find((s) => s.swapId === swapId) || null;
-
-          resolve({
-            success: !!found,
-            swap: found as TSwap
-          });
-        }, 750);
-      })
-  );
-
-// у свапов есть владелец карточки и тот, кто предложил обмен - swapOwner
-export type TSwapRequestsResponse = {
-  success: boolean;
-  swaps?: TSwap[];
-  message?: string;
-};
-
-// у скилов есть только владелец
-export type TSkillRequestsResponse = {
-  success: boolean;
-  skillRequests?: TSkillRequest[];
-  message?: string;
-};
-
-// ЛК: заявки обмена, доступ через accessToken (status=requested user либо владелец навыка, либо предложил обмен)
-export const getUserSwapRequestsApi = (): Promise<TSwap[]> =>
-  getUserApi().then((user) =>
-    new Promise<TSwapRequestsResponse>((resolve) => {
-      setTimeout(() => {
-        const result = swaps.filter(
-          (s) =>
-            s.requestStatus === 'requested' &&
-            (s.skillOwner.id === user.id || s.swapOwner === user.id)
-        );
-        resolve({ success: true, swaps: result });
-      }, 1000);
-    }).then((data) => (data.success ? data.swaps || [] : Promise.reject(data)))
-  );
-
-// ЛК: одобренные обмены (status=ok, user либо владелец навыка, либо предложил обмен)
-export const getUserApprovedSwapsApi = (): Promise<TSwap[]> =>
-  getUserApi().then((user) =>
-    new Promise<TSwapRequestsResponse>((resolve) => {
-      setTimeout(() => {
-        const result = swaps.filter(
-          (s) =>
-            s.requestStatus === 'ok' &&
-            (s.skillOwner.id === user.id || s.swapOwner === user.id)
-        );
-        resolve({ success: true, swaps: result });
-      }, 1000);
-    }).then((data) => (data.success ? data.swaps || [] : Promise.reject(data)))
-  );
-
-// ЛК: избранное favorite=true + текущий пользователь есть в likeOwner, поиск в SkillRequests
-export const getUserFavoriteSkillsApi = (): Promise<TSkillRequest[]> =>
-  getUserApi().then((user) =>
-    new Promise<TSkillRequestsResponse>((resolve) => {
-      setTimeout(() => {
-        const result = (skillRequests as TSkillRequest[]).filter((s) => {
-          const likes = (s.likeOwner ?? []) as string[];
-          return s.favorite && likes.includes(user.id as string);
-        });
-        resolve({ success: true, skillRequests: result });
-      }, 1000);
-    }).then((data) =>
-      data.success ? data.skillRequests || [] : Promise.reject(data)
-    )
-  );
-
-// ЛК: мои навыки (status='none', текущий пользователь = skillOwner, поиск в SkillRequests)
-export const getUserMySwapsApi = (): Promise<TSkillRequest[]> =>
-  getUserApi().then((user) =>
-    new Promise<TSkillRequestsResponse>((resolve) => {
-      setTimeout(() => {
-        const result = (swaps as TSwap[]).filter(
-          (s) => s.requestStatus === 'none' && s.skillOwner.id === user.id
-        );
-
-        resolve({ success: true, skillRequests: result });
-      }, 1000);
-    }).then((data) =>
-      data.success ? data.skillRequests || [] : Promise.reject(data)
-    )
-  );
 
 // получение пользователя по токену
 export const getUserApi = (): Promise<TUser> => {
@@ -262,7 +69,7 @@ export const getUserApi = (): Promise<TUser> => {
   return new Promise<TUser>((resolve, reject) => {
     setTimeout(() => {
       if (!accessToken) {
-        reject({ success: false, message: 'Not authorized' });
+        reject({ success: false, message: 'Не авторизован' });
         return;
       }
       resolve(user);

@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import EditIcon from '../../assets/icons/edit.svg';
+import GoogleIcon from '../../assets/icons/Google.svg';
 import { Button } from './button';
 
 // Метаданные компонента
@@ -69,8 +71,14 @@ export const Tertiary: Story = {
 export const WithIconLeft: Story = {
   args: {
     buttonType: 'primary',
-    text: 'Button with Icon',
-    icon: '★',
+    text: 'Редактировать',
+    icon: (
+      <img
+        src={EditIcon}
+        alt='Edit'
+        style={{ width: '20px', height: '20px' }}
+      />
+    ),
     iconPosition: 'left'
   }
 };
@@ -78,8 +86,14 @@ export const WithIconLeft: Story = {
 export const WithIconRight: Story = {
   args: {
     buttonType: 'primary',
-    text: 'Button with Icon',
-    icon: '★',
+    text: 'Редактировать',
+    icon: (
+      <img
+        src={EditIcon}
+        alt='Edit'
+        style={{ width: '20px', height: '20px' }}
+      />
+    ),
     iconPosition: 'right'
   }
 };
@@ -89,5 +103,19 @@ export const Disabled: Story = {
     buttonType: 'primary',
     text: 'Disabled Button',
     disabled: true
+  }
+};
+
+export const IconOnly: Story = {
+  args: {
+    buttonType: 'iconOnly',
+    icon: (
+      <img
+        src={GoogleIcon}
+        alt='Google'
+        style={{ width: '24px', height: '24px' }}
+      />
+    ),
+    text: '' // Пустой текст
   }
 };

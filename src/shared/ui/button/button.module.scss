@@ -9,8 +9,6 @@ $disabled-text: #9ca197;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  // width: auto;
-  // min-width: fit-content;
   height: 48px;
   border: none;
   border-radius: 12px;
@@ -18,11 +16,6 @@ $disabled-text: #9ca197;
   color: $font-color-primary;
   font: $font-body;
   letter-spacing: $font-letter-spacing-secondary;
-  // font-family: $font-family-main;
-  // font-weight: 400;
-  // font-size: 16px;
-  // font-style: normal;
-  // line-height: 24px;
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
@@ -44,19 +37,12 @@ $disabled-text: #9ca197;
     align-items: center;
     justify-content: center;
   }
-
-  .buttonText {
-    flex: 0 1 auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
 /* Стили для primary-кнопки */
 .primary {
   background: $accent-color;
-  // min-width: 248px;
-
+  
   &:disabled {
     background: $disabled-color;
     color: $font-color-secondary;
@@ -77,8 +63,7 @@ $disabled-text: #9ca197;
 .secondary {
   background: $card-color;
   border: 1px solid $accent-color;
-  // min-width: 200px;
-
+  
   &:disabled {
     background: $card-color;
     border: 1px solid $disabled-color;
@@ -103,5 +88,28 @@ $disabled-text: #9ca197;
 /* Стили для tertiary-кнопки */
 .tertiary {
   background: $card-color;
-  // min-width: 200px;
+}
+
+//стили отдельной иконки
+.iconOnly {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: $font-color-primary;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $button-color-pressed;
+    outline-offset: 2px;
+  }
 }

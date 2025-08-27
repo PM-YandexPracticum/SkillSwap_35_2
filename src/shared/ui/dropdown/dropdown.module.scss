@@ -1,0 +1,148 @@
+.dropdownContainer {
+  width: 100%;
+  min-width: 400px;
+  max-width: 460px;
+  height: 48px;
+  position: relative;
+}
+
+.dropdownInput {
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: $font-body;
+  color: inherit;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+}
+
+.dropdownInput.placeholder {
+  color: $font-color-secondary;
+}
+
+.dropdownInput.selected {
+  color: $font-color-primary;
+}
+
+.dropdownContent {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid $font-color-secondary;
+  background-color: $card-color;
+  position: absolute;
+}
+
+.error {
+  border: 1px solid $font-color-error;
+  color: $font-color-error;
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  &.withBorder {
+    border-block-end: 1px solid #e4e8df;
+  }
+}
+
+
+.dropdownInput:focus {
+  outline: none;
+}
+
+.clearButton:focus {
+  outline: none;
+}
+
+.clearButton::-moz-focus-inner {
+  border: 0;
+}
+
+.selectMenu {
+  margin: 8px 0;
+  max-height: 96px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding: 0;
+  list-style: none;
+}
+
+.selectItem {
+  font: $font-body;
+  padding: 4px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: $font-color-primary;
+  gap: 8px;
+}
+
+.selectItem:hover {
+  transition: background-color 0.3s ease;
+  background-color: $button-hover-color;
+}
+
+.selectItem.selected {
+  color: $button-color-pressed;
+}
+
+.notFound {
+  padding: 4px 20px;
+  color: $font-color-secondary;
+}
+
+.helperText {
+  color: $font-color-secondary;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: $font-body;
+  position: absolute;
+  bottom: -15px;
+}
+
+.helperText.errorText {
+  color: $font-color-error;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: $font-body;
+}
+
+.hiddenCheckbox .checkmark {
+  display: none !important;
+}
+
+.hiddenCheckbox input {
+  opacity: 0;
+  position: absolute;
+}
+
+.title {
+  font-family: $font-body;
+  font-size: 16px;
+  color: $font-color-primary;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
