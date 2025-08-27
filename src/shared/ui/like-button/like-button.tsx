@@ -1,5 +1,5 @@
-import likeIcon from '../../assets/icons/like.svg';
-import likedIcon from '../../assets/icons/likedIcon.svg';
+import LikeIcon from '../../assets/icons/like.svg';
+import LikedIcon from '../../assets/icons/likedIcon.svg';
 import styles from './like-button.module.scss';
 import type { TLikeButtonProps } from './type';
 
@@ -12,11 +12,7 @@ export const LikeButtonUI = ({
   };
   return (
     <button onClick={handleClick} className={styles.button}>
-      {liked ? (
-        <img src={likedIcon} alt='Убрать лайк' />
-      ) : (
-        <img src={likeIcon} alt='Лайкнуть' />
-      )}
+      {liked ? <LikedIcon /> : <LikeIcon />}
     </button>
   );
 };
