@@ -9,14 +9,15 @@ $disabled-text: #9ca197;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  width: auto;
-  min-width: fit-content;
+  // width: auto;
+  // min-width: fit-content;
   height: 48px;
   border: none;
   border-radius: 12px;
   padding: 12px 24px;
   color: $font-color-primary;
   font: $font-body;
+  letter-spacing: $font-letter-spacing-secondary;
   // font-family: $font-family-main;
   // font-weight: 400;
   // font-size: 16px;
@@ -54,7 +55,7 @@ $disabled-text: #9ca197;
 /* Стили для primary-кнопки */
 .primary {
   background: $accent-color;
-  min-width: 248px;
+  // min-width: 248px;
 
   &:disabled {
     background: $disabled-color;
@@ -76,7 +77,7 @@ $disabled-text: #9ca197;
 .secondary {
   background: $card-color;
   border: 1px solid $accent-color;
-  min-width: 200px;
+  // min-width: 200px;
 
   &:disabled {
     background: $card-color;
@@ -102,5 +103,5 @@ $disabled-text: #9ca197;
 /* Стили для tertiary-кнопки */
 .tertiary {
   background: $card-color;
-  min-width: 200px;
+  // min-width: 200px;
 }

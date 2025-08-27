@@ -1,33 +1,74 @@
 /// <reference types="vite-plugin-svgr/client" />
-//import { Logo } from '../Logo';
-// src/shared/ui/header/Header.tsx
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Logo from '@/shared/assets/images/logo.svg';
+import { Button } from '@/shared/ui/button/button';
 import { Input } from '@/shared/ui/input/input';
 import ChevronDownIcon from '@icons/chevron-down.svg?react';
+import CrossIcon from '@icons/cross.svg?react';
+import LikeFilledIcon from '@icons/like-filled.svg?react';
+import LikeIcon from '@icons/like.svg?react';
+import MoonIcon from '@icons/moon.svg?react';
+import NotificationIcon from '@icons/notification.svg?react';
 import SearchIcon from '@icons/search.svg?react';
 import styles from './header.module.scss';
+import UserAvatar from './User-photo.png';
 
 interface IHeaderProps {
-  user?: string;
   isAuth?: boolean;
+  isFormOpen?: boolean;
+  isFiltered?: boolean;
+  hasNewNotifications?: boolean;
+  isFavorites?: boolean;
 }
-export const Header = ({ user, isAuth }: IHeaderProps) => {
+
+export const Header = ({
+  isAuth,
+  isFormOpen,
+  isFiltered,
+  hasNewNotifications,
+  isFavorites: isFavoritesProp
+}: IHeaderProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isFavorites = isFavoritesProp ?? location.pathname === '/favorites';
   const [search, setSearch] = useState('');
-  return (
+
+  return isFormOpen ? (
+    <header className={styles.headerWithFormOpen}>
+      {/* Логотип */}
+      <Link
+        to='/'
+        className={styles.logoLink}
+        aria-label='SkillSwap: перейти на главную'
+      >
+        <img src={Logo} alt='SkillSwap Logo' className={styles.logoImage} />
+      </Link>
+
+      {/* Закрыть форму */}
+      <Button
+        buttonType='tertiary'
+        text='Закрыть'
+        icon={<CrossIcon />}
+        iconPosition='right'
+        className={styles.closeButton}
+        aria-label='Закрыть форму'
+        onClick={() => navigate(-1)}
+      />
+    </header>
+  ) : (
     <header className={styles.header}>
       {/* Логотип */}
-      <Link to='/' className={styles.logoLink}>
-        <img
-          src='https://placehold.co/150x50/2563eb/white?text=SkillSwap'
-          alt='SkillSwap Logo'
-          className={styles.logoImage}
-        />
+      <Link
+        to='/'
+        className={styles.logoLink}
+        aria-label='SkillSwap: перейти на главную'
+      >
+        <img src={Logo} alt='SkillSwap Logo' className={styles.logoImage} />
       </Link>
 
       {/* Навигация */}
-      <nav className={styles.nav}>
+      <nav className={styles.nav} aria-label='Основное меню'>
         <ul className={styles.navList}>
           <li>
             <Link to='/' className={styles.navLink}>
@@ -44,35 +85,109 @@ export const Header = ({ user, isAuth }: IHeaderProps) => {
       </nav>
 
       {/* Поиск */}
-      <form className={styles.searchForm} role='search' aria-label='Search'>
-        <Input
-          type='search'
-          placeholder='Искать навык'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          icon={<SearchIcon />}
-          iconStyleOverride={{ left: '12px' }}
-          inputPadding={{ paddingLeft: '44px' }}
-          inputClassName={styles.searchInput}
-          aria-label='Search input'
-        />
-      </form>
+      {!isFiltered && (
+        <form
+          className={styles.searchForm}
+          role='search'
+          aria-label='Поиск навыка'
+        >
+          <Input
+            type='search'
+            placeholder='Искать навык'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            icon={<SearchIcon />}
+            iconStyleOverride={{ left: '12px' }}
+            inputPadding={{ paddingLeft: '44px' }}
+            inputClassName={styles.searchInput}
+            aria-label='Поле поиска навыка'
+          />
+        </form>
+      )}
 
       {/* Действия пользователя */}
-      <div className={styles.userActions}>
-        <button
-          className={styles.loginButton}
-          onClick={() => navigate('/login')}
-        >
-          Войти
-        </button>
-        <button
-          className={styles.registerButton}
-          onClick={() => navigate('/register')}
-        >
-          Регистрация
-        </button>
-      </div>
+      {!isAuth ? (
+        <div className={styles.userNotAuth}>
+          <Button
+            buttonType='tertiary'
+            icon={<MoonIcon />}
+            iconPosition='left'
+            className={styles.actionIcons}
+            aria-label='Сменить тему'
+            onClick={() => console.log('смена темы')}
+          />
+          <div className={styles.userActions}>
+            <Button
+              buttonType='secondary'
+              text='Войти'
+              className={styles.loginButton}
+              aria-label='Войти'
+              onClick={() => navigate('/login')}
+            />
+            <Button
+              buttonType='primary'
+              text='Зарегистрироваться'
+              className={styles.registerButton}
+              aria-label='Зарегистрироваться'
+              onClick={() => navigate('/register')}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className={styles.userBar}>
+          <div className={styles.userIcons}>
+            {/* Смена темы */}
+            <Button
+              buttonType='tertiary'
+              icon={<MoonIcon />}
+              iconPosition='left'
+              className={styles.actionIcons}
+              aria-label='Сменить тему'
+              onClick={() => console.log('смена темы')}
+            />
+
+            {/* Уведомления */}
+            <Button
+              buttonType='tertiary'
+              icon={
+                <div className={styles.notificationWrapper}>
+                  <NotificationIcon />
+                  {hasNewNotifications && (
+                    <span
+                      className={styles.notificationDot}
+                      aria-label='Новое уведомление'
+                    />
+                  )}
+                </div>
+              }
+              iconPosition='left'
+              className={styles.actionIcons}
+              onClick={() => console.log('показать уведомления')}
+            />
+
+            {/* Избранное */}
+            <Button
+              buttonType='tertiary'
+              icon={isFavorites ? <LikeFilledIcon /> : <LikeIcon />}
+              iconPosition='left'
+              className={styles.actionIcons}
+              onClick={() => navigate('/favorites')}
+            />
+          </div>
+
+          {/* Информация о пользователе */}
+          <div className={styles.userInfo}>
+            <p>Имя пользователя</p>
+            <Link to='/profile' aria-label='Профиль пользователя'>
+              <img
+                src={UserAvatar}
+                alt='Аватар пользователя'
+                className={styles.userAvatar}
+              />
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

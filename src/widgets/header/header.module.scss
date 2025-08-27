@@ -1,21 +1,31 @@
-.header {
+@mixin headerBase {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  row-gap: 32px;
-  block-size: 104px;
+  gap: 32px;
   inline-size: 100%;
   max-inline-size: 1440px;
-  padding: 36px 36px 20px;
-  box-sizing: border-box;
   background-color: $bg-color;
-  font-family: $font-family-main;
-  font-weight: $font-weight-main;
-  font-size: $font-size-body;
-  line-height: $font-line-height-body;
+  font: $font-body;
   letter-spacing: $font-letter-spacing-secondary;
   color: $font-color-primary;
+}
+
+.header {
+  @include headerBase;
+
+  justify-content: flex-start;
+  block-size: 104px;
+  padding: 36px 36px 20px;
+  box-sizing: border-box;
+}
+
+.headerWithFormOpen {
+  @include headerBase;
+
+  justify-content: space-between;
+  block-size: 84px;
+  padding: 36px 36px 0;
 }
 
 .logoLink {
@@ -23,10 +33,16 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  block-size: 40px;
+  inline-size: 160px;
+}
+.logoImage {
+  object-fit: contain;
 }
 
 .nav {
   inline-size: 227px;
+  flex: 0 0 auto;
 }
 
 .navList {
@@ -51,7 +67,8 @@
   // position: relative;
   display: flex;
   align-items: center;
-  inline-size: 527px;
+  min-inline-size: 527px;
+  flex: 1 1 auto;
   box-sizing: border-box;
 }
 
@@ -68,4 +85,81 @@
     border-color: $accent-color;
     box-shadow: 0 0 0 4px rgba($accent-color, 0.2);
   }
+}
+
+.userNotAuth {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.userBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.userIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.loginButton {
+  inline-size: 92px;
+}
+
+.registerButton {
+  inline-size: 208px;
+}
+
+.closeButton {
+  inline-size: 147px;
+}
+
+.actionIcons {
+  inline-size: 24px;
+  block-size: 24px;
+  background-color: inherit;
+  padding: 0;
+}
+
+.notificationWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.notificationDot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $notification-dot-color; // яркий цвет
 }
