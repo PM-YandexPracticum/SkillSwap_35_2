@@ -71,8 +71,10 @@ export const UserOfferUI = ({
   onClick,
   onClickReady = () => {}
 }: TUserOfferProps) => {
+  // внутреннее состояние в котором сохраняется порядок картинок. Нужно чтобы они перелистывались
   const [imagesList, setImagesList] = useState(images);
 
+  // обработчик нажатия на левую кнопку-стрелку
   const handleGaleryLeftButton = (e: SyntheticEvent) => {
     let arr = [...imagesList];
     // Сохраняем последний элемент
@@ -85,6 +87,7 @@ export const UserOfferUI = ({
     console.log(imagesList);
   };
 
+  // обработчик нажатия на правую кнопку-стрелку
   const handleGaleryRightButton = (e: SyntheticEvent) => {
     let arr = [...imagesList];
     // Сохраняем первый элемент
@@ -99,9 +102,11 @@ export const UserOfferUI = ({
 
   return (
     <div className={styles.card}>
+      {/*блок кнопок лайка, поделиться и т.п.*/}
       <div className={styles.cardActions}>
         <LikeButtonUI liked={isLiked} setLiked={setIsLiked} />
       </div>
+      {/*Левая сторона карточки с текстом и кнопками*/}
       <div className={styles.cardMain}>
         <TitleUI size='h1' text={skillName} />
         <p className={styles.cardCategory}>
@@ -126,7 +131,9 @@ export const UserOfferUI = ({
                 className={styles.cardButtonSmall}
               />
             </>
-          ) : requestStatus === 'sended' ? ( // если обмен отправлен, то показываем кнопку с соответствующим текстом и иконкой
+          ) : requestStatus === 'sended' ? (
+            // если обмен отправлен, то показываем кнопку
+            // с соответствующим текстом и иконкой
             <Button
               buttonType='secondary'
               text='Обмен предложен'
@@ -136,6 +143,8 @@ export const UserOfferUI = ({
               className={styles.cardButtonBig}
             />
           ) : requestStatus === 'rejected' ? (
+            // если обмен отменен, то показываем кнопку
+            // с соответствующим текстом и иконкой
             <Button
               buttonType='secondary'
               text='Запрос отклонен'
@@ -143,6 +152,8 @@ export const UserOfferUI = ({
               className={styles.cardButtonBig}
             />
           ) : requestStatus === 'approved' ? (
+            // если обмен принят, то показываем кнопку
+            // с соответствующим текстом и иконкой
             <Button
               buttonType='secondary'
               text='Запрос принят'
@@ -150,6 +161,7 @@ export const UserOfferUI = ({
               className={styles.cardButtonBig}
             />
           ) : (
+            // отображается если requestStatus === 'none'
             <Button
               text='Предложить обмен'
               onClick={onClick}
@@ -159,6 +171,7 @@ export const UserOfferUI = ({
         </div>
       </div>
       <CardGalery
+        skillName={skillName}
         images={imagesList}
         handleGaleryLeftButton={handleGaleryLeftButton}
         handleGaleryRightButton={handleGaleryRightButton}
