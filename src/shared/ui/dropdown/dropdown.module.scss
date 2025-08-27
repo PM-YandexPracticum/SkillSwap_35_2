@@ -7,11 +7,16 @@
 }
 
 .dropdownInput {
-  line-height: 1.5;
   width: 100%;
   border: none;
   background: none;
   cursor: pointer;
+  font: $font-body;
+  color: inherit;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 20px;
 }
 
 .dropdownInput.placeholder {
@@ -31,7 +36,7 @@
 }
 
 .error {
-  border: 1px solid;
+  border: 1px solid $font-color-error;
   color: $font-color-error;
 }
 
@@ -41,20 +46,12 @@
   padding: 10px 20px;
   border-radius: 12px;
   cursor: pointer;
+
+  &.withBorder {
+    border-block-end: 1px solid #e4e8df;
+  }
 }
 
-.dropdownInput {
-  font: $font-body;
-  color: inherit;
-  width: 100%;
-  border: none;
-  background: none;
-  cursor: pointer;
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding-right: 20px;
-}
 
 .dropdownInput:focus {
   outline: none;
@@ -117,10 +114,6 @@
   font-family: $font-body;
 }
 
-.error {
-  border: 1px solid $font-color-error;
-}
-
 .hiddenCheckbox .checkmark {
   display: none !important;
 }
@@ -136,12 +129,6 @@
   color: $font-color-primary;
   margin-bottom: 12px;
   font-weight: 400;
-}
-
-.dropdownHeader {
-  &.withBorder {
-    border-block-end: 1px solid #e4e8df;
-  }
 }
 
 .icon {
