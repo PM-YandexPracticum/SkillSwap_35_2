@@ -27,7 +27,8 @@ export const DefaultUserOffer: Story = {
       '/db/images/swap_01.jpg',
       '/db/images/swap_02.jpg',
       '/db/images/swap_03.jpg',
-      '/db/images/swap_04.jpg'
+      '/db/images/swap_04.jpg',
+      '/db/images/user_0001_full.jpg'
     ],
     requestStatus: 'none',
     justAdded: false,
