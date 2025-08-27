@@ -1,7 +1,8 @@
 import { TitleUI } from '@/shared/ui/title';
-import clockIcon from '../../assets/icons/clock.svg';
-import editIcon from '../../assets/icons/edit.svg';
+import ClockIcon from '../../assets/icons/clock.svg';
+import EditIcon from '../../assets/icons/edit.svg';
 import { Button } from '../button/button';
+import { LikeButtonUI } from '../like-button';
 import type { TUserOfferProps } from './user-offer-types';
 import styles from './user-offer.module.scss';
 
@@ -13,37 +14,70 @@ export const UserOfferUI = ({
   images,
   requestStatus,
   justAdded,
-  isLiked
+  isLiked,
+  setIsLiked,
+  onClick,
+  onClickReady = () => {}
 }: TUserOfferProps) => (
   <div className={styles.card}>
-    <div className={styles.cardActions} />
+    <div className={styles.cardActions}>
+      <LikeButtonUI liked={isLiked} setLiked={setIsLiked} />
+    </div>
     <div className={styles.cardMain}>
-      <TitleUI size='H1' text={skillName} />
+      <TitleUI size='h1' text={skillName} />
       <p className={styles.cardCategory}>
         {categoryName} / {subcategoryName}
       </p>
       <p className={styles.cardText}>{description}</p>
-      {justAdded ? (
-        <Button
-          buttonType='secondary'
-          text='Редактировать'
-          icon={editIcon}
-          iconPosition='right'
-        />
-      ) : requestStatus === 'sended' ? (
-        <Button
-          buttonType='secondary'
-          text='Обмен предложен'
-          icon={clockIcon}
-          iconPosition='left'
-        />
-      ) : requestStatus === 'rejected' ? (
-        <Button buttonType='secondary' text='Запрос отклонен' />
-      ) : requestStatus === 'approved' ? (
-        <Button buttonType='secondary' text='Запрос принят' />
-      ) : (
-        <Button text='Предложить обмен' />
-      )}
+      <div className={styles.cardButtons}>
+        {justAdded ? ( // если только добавлено, то показываем возможность редактировать
+          <>
+            <Button
+              buttonType='secondary'
+              text='Редактировать'
+              icon={<EditIcon />}
+              iconPosition='right'
+              onClick={onClick}
+              className={styles.cardButtonSmall}
+            />
+            <Button
+              buttonType='primary'
+              text='Готово'
+              onClick={onClickReady}
+              className={styles.cardButtonSmall}
+            />
+          </>
+        ) : requestStatus === 'sended' ? ( // если обмен отправлен, то показываем кнопку с соответствующим текстом и иконкой
+          <Button
+            buttonType='secondary'
+            text='Обмен предложен'
+            icon={<ClockIcon />}
+            iconPosition='left'
+            onClick={onClick}
+            className={styles.cardButtonBig}
+          />
+        ) : requestStatus === 'rejected' ? (
+          <Button
+            buttonType='secondary'
+            text='Запрос отклонен'
+            onClick={onClick}
+            className={styles.cardButtonBig}
+          />
+        ) : requestStatus === 'approved' ? (
+          <Button
+            buttonType='secondary'
+            text='Запрос принят'
+            onClick={onClick}
+            className={styles.cardButtonBig}
+          />
+        ) : (
+          <Button
+            text='Предложить обмен'
+            onClick={onClick}
+            className={styles.cardButtonBig}
+          />
+        )}
+      </div>
     </div>
     <div className={styles.cardGalery}>
       {images.map((img, index) => (

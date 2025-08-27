@@ -9,6 +9,8 @@
 
 .card__actions {
   grid-column: 1/-1;
+  display: flex;
+  justify-content: end;
   block-size: 24px;
 }
 
@@ -58,4 +60,17 @@
   object-fit: cover;
   object-position: center;
   border-radius: 12px;
+}
+
+.card__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.card__button_big {
+  inline-size: 100%;
+}
+
+.card__button_small {
+  inline-size: 45%;
 }

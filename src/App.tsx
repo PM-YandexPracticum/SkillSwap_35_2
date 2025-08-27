@@ -14,8 +14,10 @@ function App() {
       '/db/images/swap_04.jpg'
     ],
     requestStatus: 'none',
-    justAdded: false,
-    isLiked: false
+    justAdded: true,
+    isLiked: false,
+    setIsLiked: (isLiked: boolean) => !isLiked,
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => {}
   };
   return (
     <>

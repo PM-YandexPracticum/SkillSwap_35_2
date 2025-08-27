@@ -4,7 +4,13 @@ import { UserOfferUI } from './user-offer';
 const meta = {
   title: 'Shared/UI/user-offer',
   component: UserOfferUI,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    requestStatus: {
+      control: 'select',
+      options: ['none', 'sended', 'rejected', 'approved']
+    }
+  }
 } satisfies Meta<typeof UserOfferUI>;
 
 export default meta;
@@ -25,6 +31,8 @@ export const DefaultUserOffer: Story = {
     ],
     requestStatus: 'none',
     justAdded: false,
-    isLiked: false
+    isLiked: false,
+    setIsLiked: (clb) => true,
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => {}
   }
 };
