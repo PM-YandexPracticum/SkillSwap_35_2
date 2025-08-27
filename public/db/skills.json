@@ -1,0 +1,593 @@
+[
+    {
+      "skillId": "skill_id_0001",
+      "canTeach": {
+        "skillName": "Игра на барабанах",
+        "categoryId": 4,
+        "subcategoryId": 43
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 16,
+          "title": "Тайм менеджмент"
+        },
+        {
+          "subcategoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcategoryId": 61,
+          "title": "Йога и медитация"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0001",
+        "name": "Иван",
+        "profileImage": "/db/images/user_0001_full.jpg",
+        "gender": "male",
+        "location": "Санкт-Петербург",
+        "birthDate": "1991-01-01",
+        "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое"
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_01-1.jpg", "/db/images/swap_01-2.jpg", "/db/images/swap_01-3.jpg", "/db/images/swap_01-4.jpg"],
+      "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": []
+      },
+      "updatedAt": "2025-08-01T14:47:21.979Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0002",
+      "canTeach": {
+        "skillName": "Йога FYSM",
+        "categoryId": 6,
+        "subcategoryId": 61
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 56,
+          "title": "Коучинг"
+        },
+        {
+          "subcategoryId": 46,
+          "title": "Арт-терапия"
+        },
+        {
+          "subcategoryId": 21,
+          "title": "Английский"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0002",
+        "name": "Виктория",
+        "profileImage": "/db/images/user_0002_full.jpg",
+        "gender": "female",
+        "location": "Кемерово",
+        "birthDate": "1991-04-04",
+        "bio": "Формирую не только мышцы, но и привычки — потому что настоящая сила рождается в дисциплине"
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_02-1.jpg", "/db/images/swap_02-2.jpg", "/db/images/swap_02-3.jpg"],
+      "description": "Ищете баланс между силой тела и спокойствием ума? Я преподаю йогу по методике FYSM — это динамика, осознанность и глубокая проработка тела в каждом движении. Мои занятия подойдут тем, кто хочет не просто растянуть мышцы, а почувствовать поток энергии, укрепить тело и научиться возвращать себе покой даже в ритме большого города. Добро, дыхание и результат — в каждом уроке.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0005", "user_id_0001"]
+      },
+      "updatedAt": "2025-08-25T13:44:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0003",
+      "canTeach": {
+        "skillName": "Ментальная арифметика",
+        "categoryId": 5,
+        "subcategoryId": 51
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 62,
+          "title": "Питание и зож"
+        },
+        {
+          "subcategoryId": 41,
+          "title": "Фотография"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0003",
+        "name": "Елизавета",
+        "profileImage": "/db/images/user_0003_full.jpg",
+        "gender": "female",
+        "location": "Владивосток",
+        "birthDate": "2000-05-20",
+        "bio": "Помогаю детям видеть математику не как науку, а как игру с бесконечными возможностями"
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_03-1.jpg", "/db/images/swap_03-2.jpg"],
+      "description": "Хотите, чтобы ваш ребёнок считал быстрее калькулятора и уверенно решал любые задачи? Обучаю ментальной арифметике по авторской методике — развиваем оба полушария мозга, память, концентрацию и уверенность в себе.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0015"]
+      },
+      "updatedAt": "2025-05-15T13:44:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0004",
+      "canTeach": {
+        "skillName": "Картина акварелью",
+        "categoryId": 4,
+        "subcategoryId": 47
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 34,
+          "title": "Домашние растения"
+        },
+        {
+          "subcategoryId": 64,
+          "title": "Осознанность"
+        },
+        {
+          "subcategoryId": 51,
+          "title": "Личностное развитие"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0004",
+        "name": "Кристина",
+        "profileImage": "/db/images/user_0004_full.jpg",
+        "gender": "female",
+        "location": "Сочи",
+        "birthDate": "1995-01-30",
+        "bio": "Акварель — это медитация в цвете. Я помогаю найти свой ритм и свой оттенок счастья. Здесь не бывает ошибок — только неожиданные повороты, которые превращаются в стиль"
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_04-1.jpg", "/db/images/swap_04-2.jpg", "/db/images/swap_04-3.jpg", "/db/images/swap_04-4.jpg"],
+      "description": "Освоим технику от простого к сложному: от мягкого набрызга до точных деталей, от цветовых переходов до создания глубины и света. Уроки проходят в удобном формате — онлайн или очно, с индивидуальной программой и поддержкой на каждом этапе.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0001", "user_id_0002", "user_id_0003"]
+      },
+      "updatedAt": "2025-08-01T19:44:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0005",
+      "canTeach": {
+        "skillName": "Дневник эмоций",
+        "categoryId": 6,
+        "subcategoryId": 63
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 56,
+          "title": "Коучинг"
+        },
+        {
+          "subcategoryId": 14,
+          "title": "Личный бренд"
+        },
+        {
+          "subcategoryId": 51,
+          "title": "Личностное развитие"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0005",
+        "name": "Анна",
+        "profileImage": "/db/images/user_0005_full.jpg",
+        "gender": "female",
+        "location": "Казань",
+        "birthDate": "1999-12-31",
+        "bio": "Дневник эмоций — не про жалость к себе, а про силу быть честным с собой. Эмоции — не помеха, а сигнал. Вместе учимся их слышать и действовать с умом."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_05-1.jpg", "/db/images/swap_05-2.jpg", "/db/images/swap_05-3.jpg"],
+      "description": "Помогаю превратить хаос чувств в ясность и контроль — через ведение дневника эмоций по методике, основанной на когнитивно-поведенческой терапии. Научу замечать свои реакции, понимать их причины и менять нездоровые паттерны — с поддержкой, структурой и без осуждения. Подходит всем, кто хочет лучше понимать себя, снижать тревожность и жить осознанно.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0011"]
+      },
+      "updatedAt": "2025-06-06T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0006",
+      "canTeach": {
+        "skillName": "Мини-ремонт",
+        "categoryId": 3,
+        "subcategoryId": 35
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 18,
+          "title": "Предпринимательство"
+        },
+        {
+          "subcategoryId": 23,
+          "title": "Испанский"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0006",
+        "name": "Максим",
+        "profileImage": "/db/images/user_0006_full.jpg",
+        "gender": "male",
+        "location": "Москва",
+        "birthDate": "2002-05-15",
+        "bio": "Не мастер на все руки — а гид по дому, который знает, где гвоздь, а где шуруп"
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_06-1.jpg", "/db/images/swap_06-2.jpg"],
+      "description": "Быстро и аккуратно решу любые бытовые задачи — от замены розетки до сборки мебели и мелкого ремонта в квартире. Работаю с 2015 года, имею весь инструмент и опыт: подключу технику, повешу карниз, устраню течь, отрегулирую двери — всё чётко, по договорённости и с гарантией качества.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0001", "user_id_0002", "user_id_0003"]
+      },
+      "updatedAt": "2025-01-31T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0007",
+      "canTeach": {
+        "skillName": "Бизнес план",
+        "categoryId": 1,
+        "subcategoryId": 12
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 31,
+          "title": "Уборка и организация"
+        },
+        {
+          "subcategoryId": 54,
+          "title": "Скорочтение"
+        },
+        {
+          "subcategoryId": 64,
+          "title": "Осознанность"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0007",
+        "name": "Илона",
+        "profileImage": "/db/images/user_0007_full.jpg",
+        "gender": "female",
+        "location": "Екатеринбург",
+        "birthDate": "1992-03-19",
+        "bio": "Где другие видят риски, я вижу возможности — и расставляю их по пунктам. Помогаю не только составить план, но и поверить в него — потому что детали решают всё."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_07-1.jpg", "/db/images/swap_07-2.jpg", "/db/images/swap_07-3.jpg", "/db/images/swap_07-4.jpg", "/db/images/swap_07-5.jpg"],
+      "description": "Помогаю превратить идею в реальный бизнес — создаём проработанный и понятный бизнес-план, который работает на инвестора, партнёра и вас. Объясняю сложное просто: рассчитаем финансы, найдём УТП, спрогнозируем риски и выстроим стратегию роста — так, чтобы вы видели каждый шаг к успеху.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0010", "user_id_0012", "user_id_0013", "user_id_0014", "user_id_0015"]
+      },
+      "updatedAt": "2025-07-31T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0008",
+      "canTeach": {
+        "skillName": "Английский язык",
+        "categoryId": 2,
+        "subcategoryId": 21
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 15,
+          "title": "Резюме и собеседование"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0008",
+        "name": "Михаил",
+        "profileImage": "/db/images/user_0008_full.jpg",
+        "gender": "male",
+        "location": "Новосибирск",
+        "birthDate": "1995-11-22",
+        "bio": "Не просто преподаватель — ваш личный мотиватор в мире языков"
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_08-1.jpg", "/db/images/swap_08-2.jpg", "/db/images/swap_08-3.jpg"],
+      "description": "Научу говорить на английском с уверенностью — без зубрёжки, по шаблонам и страха ошибиться. Занятия проходят живо и по делу: разговорная практика, реальные ситуации, грамматика в контексте и прогресс уже с первых уроков. Подготовлю к экзаменам, путешествиям или работе — индивидуально под ваш уровень и цели.",
+      "favorite": {
+        "likeStatus": true,
+        "likeOwners": ["user_id_0001", "user_id_0002", "user_id_0003", "user_id_0004", "user_id_0005"]
+      },
+      "updatedAt": "2025-08-21T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0009",
+      "canTeach": {
+        "skillName": "Ведение бизнес переговоров",
+        "categoryId": 1,
+        "subcategoryId": 13
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 27,
+          "title": "Подготовка к экзаменам(IELTS, TOEFL)"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0009",
+        "name": "Мария",
+        "profileImage": "/db/images/user_0009_full.jpg",
+        "gender": "female",
+        "location": "Краснодар",
+        "birthDate": "2004-09-05",
+        "bio": "Научу находить общий язык, убеждать и закрывать сделки даже в сложных ситуациях."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_09-1.jpg"],
+      "description": "Научу вести переговоры так, чтобы вас слышали, уважали и соглашались — даже в сложных ситуациях. Разберём стратегии влияния, психологию общения и аргументацию, которая работает: от подготовки до фиксации договорённостей. Подойдёт предпринимателям, руководителям и специалистам, которые хотят заключать сделки уверенно и с выгодой.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0005"]
+      },
+      "updatedAt": "2025-08-09T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0010",
+      "canTeach": {
+        "skillName": "Управление удалённой командой",
+        "categoryId": 1,
+        "subcategoryId": 11
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 26,
+          "title": "Японский"
+        },
+        {
+          "subcategoryId": 25,
+          "title": "Китайский"
+        },
+        {
+          "subcategoryId": 41,
+          "title": "Фотография"
+        },
+        {
+          "subcategoryId": 42,
+          "title": "Видеомонтаж"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0010",
+        "name": "Екатерина",
+        "profileImage": "/db/images/user_0010_full.jpg",
+        "gender": "female",
+        "location": "Краснодар",
+        "birthDate": "2004-09-05",
+        "bio": "Создаю культуру удалённой работы, где важен не статус в чате, а вклад в проект. Строю сильные онлайн-команды, где каждый знает своё «зачем» и движется к общему результату."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_10-1.jpg", "/db/images/swap_10-2.jpg"],
+      "description": "Хотите, чтобы ваша команда работала как часы — без постоянного контроля? Обучаю управлению удалёнками через систему, а не через давление. В программе: тайм-менеджмент, геймификация, обратная связь и удержание талантов на расстоянии.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0005", "user_id_0015", "user_id_0004"]
+      },
+      "updatedAt": "2025-08-19T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0011",
+      "canTeach": {
+        "skillName": "Съёмка и монтаж коротких видеороликов",
+        "categoryId": 4,
+        "subcategoryId": 42
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 62,
+          "title": "Питание и ЗОЖ"
+        },
+        {
+          "subcategoryId": 67,
+          "title": "Баланс жизни и работы"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0011",
+        "name": "Дарья",
+        "profileImage": "/db/images/user_0011_full.jpg",
+        "gender": "female",
+        "location": "Пермь",
+        "birthDate": "1992-09-08",
+        "bio": "Не нужны студии и камеры: покажу, как делать цепляющий контент с нуля и в кадре."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_11-1.jpg", "/db/images/swap_11-2.jpg", "/db/images/swap_11-3.jpg"],
+      "description": "Съёмка и монтаж коротких видео — это не магия, а навык, который можно освоить быстро. Работаю с новичками и теми, кто уже пробовал, но не получил результата. Показываю, как создавать цепляющий контент на телефон, выстраивать динамичный монтаж и делать видео, которые действительно смотрят. Практика, обратная связь и работа над вашими проектами — без воды, только по делу.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0014", "user_id_0007", "user_id_0009", "user_id_0013"]
+      },
+      "updatedAt": "2025-07-19T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0012",
+      "canTeach": {
+        "skillName": "Готовка вегетарианских блюд",
+        "categoryId": 3,
+        "subcategoryId": 33
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 24,
+          "title": "Немецкий"
+        },
+        {
+          "subcategoryId": 56,
+          "title": "Коучинг"
+        },
+        {
+          "subcategoryId": 46,
+          "title": "Арт-терапия"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0012",
+        "name": "Константин",
+        "profileImage": "/db/images/user_0012_full.jpg",
+        "gender": "male",
+        "location": "Иркутск",
+        "birthDate": "1989-05-13",
+        "bio": "Моя философия: экология в тарелке, удовольствие на вкус и энергия в теле."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_12-1.jpg"],
+      "description": "Хотите, чтобы вегетарианская еда была не просто кашей, а яркой, вкусной и разнообразной? Покажу, как готовить блюда, которые вдохновляют — из доступных продуктов, с балансом вкуса, текстуры и пользы. Будем экспериментировать с крупами, бобовыми, овощами и специями так, чтобы даже мясоеды просили добавки. Готовим легко, красиво и с удовольствием — без стресса и лишних сложностей.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": []
+      },
+      "updatedAt": "2025-03-10T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0013",
+      "canTeach": {
+        "skillName": "Личный бренд в соцсетях",
+        "categoryId": 1,
+        "subcategoryId": 14
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 22,
+          "title": "Французский"
+        },
+        {
+          "subcategoryId": 36,
+          "title": "Хранение вещей"
+        },
+        {
+          "subcategoryId": 54,
+          "title": "Скорочтение"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0013",
+        "name": "Елена",
+        "profileImage": "/db/images/user_0013_full.jpg",
+        "gender": "female",
+        "location": "Красноярск",
+        "birthDate": "1998-03-04",
+        "bio": "Твой бренд — это не ник и аватарка. Это энергия, стиль и влияние — и я помогаю их раскрыть."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_13-1.jpg", "/db/images/swap_13-2.jpg"],
+      "description": "Помогаю вам зазвучать громко и чётко в соцсетях — так, чтобы вас замечали, цитировали и хотели сотрудничать. Покажу, как выстроить личный бренд, который отражает вашу суть: от позиционирования и стиля до контент-стратегии и вовлечения аудитории. Работаем с голосом, визуалом и системой, чтобы вы не просто постите, а строите влияние.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0007", "user_id_0009"]
+      },
+      "updatedAt": "2025-07-19T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0014",
+      "canTeach": {
+        "skillName": "Основы китайского",
+        "categoryId": 2,
+        "subcategoryId": 25
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 35,
+          "title": "Ремонт"
+        },
+        {
+          "subcategoryId": 45,
+          "title": "Креативное письмо"
+        },
+        {
+          "subcategoryId": 64,
+          "title": "Осознанность"
+        },
+        {
+          "subcategoryId": 54,
+          "title": "Скорочтение"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0014",
+        "name": "София",
+        "profileImage": "/db/images/user_0014_full.jpg",
+        "gender": "female",
+        "location": "Абакан",
+        "birthDate": "2001-02-23",
+        "bio": "Учу языку, который звучит в Шанхае, Пекине и на вашем смартфоне. Каждый урок — шаг к путешествию, карьере или просто новому миру в голове."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_14-1.jpg", "/db/images/swap_14-2.jpg", "/db/images/swap_14-3.jpg", "/db/images/swap_14-4.jpg"],
+      "description": "Китайский язык — это не страшно, если знать, с чего начать. Помогаю погружаться в язык легко: через пиньинь, живое общение и понимание структуры иероглифов. Уже на первых занятиях вы будете говорить и понимать больше, чем ожидали.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0009"]
+      },
+      "updatedAt": "2025-03-29T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    },
+    {
+      "skillId": "skill_id_0015",
+      "canTeach": {
+        "skillName": "Практика медитации",
+        "categoryId": 6,
+        "subcategoryId": 61
+      },
+      "wantToLearn": [
+        {
+          "subcategoryId": 65,
+          "title": "Физческие тренировки"
+        },
+        {
+          "subcategoryId": 44,
+          "title": "Актерское мастерство"
+        }
+      ],
+      "skillOwner": {
+        "id": "user_id_0015",
+        "name": "Алла",
+        "profileImage": "/db/images/user_0015_full.jpg",
+        "gender": "female",
+        "location": "Архангельск",
+        "birthDate": "2003-12-09",
+        "bio": "Твой внутренний компас — это не метафора. Я помогаю его найти и слышать."
+      },
+      "requestStatus": "none",
+      "images": ["/db/images/swap_15-1.jpg"],
+      "description": "Медитация начинается не с идеального сидения, а с первого вдоха. Провожу практики, которые помогают снять напряжение, успокоить ум и почувствовать опору — даже в дне, полном суеты. Всё просто: никакого пафоса, только живая поддержка и внимание к вашему ритму.",
+      "favorite": {
+        "likeStatus": false,
+        "likeOwners": ["user_id_0011", "user_id_0012", "user_id_0014", "user_id_0004", "user_id_0006", "user_id_0008"]
+      },
+      "updatedAt": "2025-08-11T19:17:05.300Z",
+      "swapOwner": null,
+      "swapDate": null
+    }
+  ]

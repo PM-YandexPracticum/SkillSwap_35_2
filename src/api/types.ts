@@ -7,34 +7,32 @@ export type TCategories = {
 
 // сабкатегория
 export type TSubcategories = {
-  subcagegoryId: number;
+  subcategoryId: number;
   title: string;
 };
 
 // поле карточки
-export type TSkill = {
+export type TSkillInfo = {
   skillName: string; // подставляется в бейдж
   categoryId: number; // для подстановки цвета бейджа и поиска по фильтру
   subcategoryId: number; // для поиска по фильтру
 };
 
-// карточка навыка
-export type TSkillCard = {
-  skillId: string; // ид карточки
-  skill: TSkill; // название, категория и подкатегория(сопоставление по id)
-  wantTolearn: TSubcategories[]; // навыки для обучения
-  skillOwner: TUserCard; // объект с владельцем
-  requestStatus: string; // статус обмена: нет/отправлен запрос/одобрен запрос/отклонен запрос
-  favorite: boolean; // 2 состояния кнопки лайка
-  likeOwner: string[]; //будем искать себя среди лайкнувших, чтобы выводить в меню "Избранное" как в "Место"
-  createdAt: string; // дата создания в формате iso, Z в конце указывает часовой пояс UTC(+00)
-  updatedAt: string; // обновление карточки навыка, оба поля нужны для related выдачи
-};
-
-// карточка навыка в "Подробнее"
-export type TSkillRequest = TSkillCard & {
-  description: string;
-  images: string[]; // стоит подумать об ограничении галереи или заглушках, если пользователь на загрузит фото
+export type TSkill = {
+  skillId: string; // айди карточки
+  canTeach: TSkillInfo; // название навыка + привязка к категории для цвета бейджа и фильтрации
+  wantToLearn: TSubcategories[]; // хочет изучать - список сабкатегорий
+  skillOwner: TUserCard; // владелец навыка, разные враианты отображения в навыке и в карточке, но суть одна
+  requestStatus: string; // статус обмена (нет статуса/ предложен обмен/ отменен обмен/ одобрен обмен)
+  images: string[]; // галерея картинок навыка
+  description: string; // описание навыка
+  favorite: {
+    likeStatus: boolean; // статус лайка
+    likeOwners: string[]; // массив владельцев лайков
+  };
+  updatedAt: string; // когда карточка создана/обновлена
+  swapOwner: string | null; // кто предложил обмен
+  swapDate: string | null; // дата предложения обмена для тост-уведомления и статус бара уведомлений
 };
 
 // профиль пользователя для карточки
@@ -45,19 +43,13 @@ export type TUserCard = {
   gender: string; // пол
   location: string; // город
   birthDate: string; // дата рождения
-};
-
-// тип данных для обмена, когда пользователь нажал на кнопку "Предложить обмен"
-export type TSwap = TSkillRequest & {
-  swapOwner: string; // id предложившего обмен
-  swapId: string; // айди для обмена, можно присваивать с помощью uuid
-  swapDate: string; // нужен для показа даты запроса в уведомлениях или запросах в ЛК, метка timestamp
+  bio: string; // описание
 };
 
 // профиль пользователя в личном кабинете
 export type TUser = TUserCard & {
-  description: string;
   email: string;
+  password: string;
 };
 
 // первый экран регистрации
@@ -67,12 +59,23 @@ export type TRegisterLogin = {
 };
 
 // второй экран регистрации
-export type TRegisterUser = TUserCard & {
-  wantTolearn: TSubcategories[];
+export type TRegisterUser = {
+  profileImage: string;
+  name: string;
+  birthDate: string;
+  gender: string;
+  wantTolearn: {
+    category: number;
+    subcategory: TSubcategories[];
+  };
 };
 
 // третий экран регистрации
-export type TRegisterSkill = TSkill & TSkillRequest;
+export type TRegisterSkill = {
+  canTeach: TSkillInfo;
+  images: [];
+  description: string;
+};
 
 // все данные для регистрации собираем по нескольким формам
 export type TRegisterData = TRegisterLogin & TRegisterUser & TRegisterSkill;
