@@ -1,19 +1,16 @@
-import React from 'react';
-import styles from './radioButton.module.scss';
-import type { IRadioButtonProps } from './radioButtonTypes';
+import type { IRadioButtonProps } from './radio-button-types';
+import styles from './radio-button.module.scss';
 
-export const RadioButton: React.FC<IRadioButtonProps> = ({
+export const RadioButton = ({
   label,
   value,
   name,
   checked,
   onChange,
   className = ''
-}) => {
+}: IRadioButtonProps) => {
   const handleChange = () => {
-    if (onChange) {
-      onChange(value);
-    }
+    onChange?.(value);
   };
 
   return (

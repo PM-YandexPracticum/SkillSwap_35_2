@@ -27,8 +27,8 @@
       "@/*": [
         "src/*"
       ],
-      "@components/*": [
-        "src/components/*"
+      "@icons/*": [
+        "src/shared/assets/icons/*"
       ]
     }
   },

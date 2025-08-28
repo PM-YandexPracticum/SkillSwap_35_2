@@ -1,16 +1,15 @@
-import React from 'react';
-import { RadioButton } from '../radioButton/radioButton';
-import styles from './radioGroup.module.scss';
-import type { IRadioGroupProps } from './radioGroupTypes';
+import { RadioButton } from '../radio-button/radio-button';
+import type { IRadioGroupProps } from './radio-group-types';
+import styles from './radio-group.module.scss';
 
-export const RadioGroup: React.FC<IRadioGroupProps> = ({
+export const RadioGroup = ({
   options,
   name,
   selectedValue,
   onChange,
   className = '',
   groupTitle
-}) => (
+}: IRadioGroupProps) => (
   <div className={`${styles.radioGroup} ${className}`}>
     {groupTitle && <div className={styles.groupTitle}>{groupTitle}</div>}
 
