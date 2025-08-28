@@ -10,6 +10,7 @@ export function Input({
   placeholder,
   value,
   onChange,
+  onClick,
   error,
   icon,
   iconStyleOverride,
@@ -19,7 +20,15 @@ export function Input({
     <div className={clsx(styles.input, className)}>
       {label && <label className={styles.label}>{label}</label>}
 
-      <div className={styles.fieldWrapper}>
+      <div
+        className={styles.fieldWrapper}
+        role='button'
+        tabIndex={0}
+        onClick={onClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') onClick?.(e);
+        }}
+      >
         {icon && (
           <span className={styles.icon} style={iconStyleOverride}>
             {icon}
