@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import Logo from '@/shared/assets/images/logo.svg';
+import Logo from '@/shared/assets/images/logo.svg?url';
 import { Button } from '@/shared/ui/button/button';
 import { Input } from '@/shared/ui/input/input';
 import ChevronDownIcon from '@icons/chevron-down.svg?react';

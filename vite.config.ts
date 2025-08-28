@@ -9,9 +9,12 @@ const { alias } = require('./aliases.cjs'); // <- корректный импо�
 // import { alias } from './aliases.cjs';
 
 export default defineConfig({
-  plugins: [react(), svgr({
-  include: '**/*.svg'
-})],
+  plugins: [
+    react(),
+    svgr({
+      include: '**/*.svg'
+    })
+  ],
   css: {
     modules: {
       localsConvention: 'camelCase' // Чтобы обращаться как styles.myClass даже если в SCSS дефис

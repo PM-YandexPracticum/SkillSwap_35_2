@@ -8,7 +8,7 @@ export interface TCategory {
 }
 
 export interface TSubcategory {
-  subcagegoryId: number;
+  subcategoryId: number;
   title: string;
 }
 
@@ -21,7 +21,7 @@ export const categoryOptions = categories.map((category: TCategory) => ({
 
 export const subCategoryOptions = categories.flatMap((category: TCategory) =>
   category.subcategories.map((subcategory) => ({
-    value: subcategory.subcagegoryId.toString(),
+    value: subcategory.subcategoryId.toString(),
     label: subcategory.title,
     categoryId: category.categoryId.toString(),
     categoryName: category.title
