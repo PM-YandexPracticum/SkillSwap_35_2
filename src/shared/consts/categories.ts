@@ -1,8 +1,15 @@
+import business from '../assets/icons/business.svg?url';
+import creation from '../assets/icons/creation.svg?url';
+import education from '../assets/icons/education.svg?url';
+import health from '../assets/icons/health.svg?url';
+import homeSkill from '../assets/icons/home-skill.svg?url';
+import languages from '../assets/icons/languages.svg?url';
+
 export const SKILL_CATEGORIES = {
   business: {
     label: 'Бизнес и карьера',
     color: '#EEE7F7',
-    icon: '/skills-images/business.svg',
+    icon: business,
     skills: [
       'Управление командой',
       'Маркетинг и реклама',
@@ -17,7 +24,7 @@ export const SKILL_CATEGORIES = {
   creation: {
     label: 'Творчество и искусство',
     color: '#F7E7F2',
-    icon: '/skills-images/creation.svg',
+    icon: creation,
     skills: [
       'Рисование и иллюстрация',
       'Фотография',
@@ -32,7 +39,7 @@ export const SKILL_CATEGORIES = {
   languages: {
     label: 'Иностранные языки',
     color: '#EBE5C5',
-    icon: '/skills-images/languages.svg',
+    icon: languages,
     skills: [
       'Английский',
       'Французский',
@@ -46,7 +53,7 @@ export const SKILL_CATEGORIES = {
   education: {
     label: 'Образование и развитие',
     color: '#E7F2F6',
-    icon: '/skills-images/education.svg',
+    icon: education,
     skills: [
       'Личностное развитие',
       'Навыки обучения',
@@ -59,7 +66,7 @@ export const SKILL_CATEGORIES = {
   house: {
     label: 'Дом и уют',
     color: '#F7EBE5',
-    icon: '/skills-images/home.svg',
+    icon: homeSkill,
     skills: [
       'Уборка и организация',
       'Домашние финансы',
@@ -72,7 +79,7 @@ export const SKILL_CATEGORIES = {
   health: {
     label: 'Здоровье и лайфстайл',
     color: '#E9F7E7',
-    icon: '/skills-images/health.svg',
+    icon: health,
     skills: [
       'Йога и медитация',
       'Питание и ЗОЖ',
