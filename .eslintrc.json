@@ -14,6 +14,7 @@
     },
     "project": ["./tsconfig.app.json", "./tsconfig.node.json"],
     "tsconfigRootDir": ".",
+    "warnOnMultipleProjects": false,
     "warnOnUnsupportedTypeScriptVersion": false
   },
   "rules": {

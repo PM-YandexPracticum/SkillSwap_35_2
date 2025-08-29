@@ -28,18 +28,6 @@
   color: $font-color-secondary;
   font-family: $font-family-main;
 
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-decoration,
-  &::-webkit-search-results-button,
-  &::-webkit-search-results-decoration {
-    display: none;
-  }
-
-  /* Убираем крестик в IE и Edge Legacy */
-  &::-ms-clear {
-    display: none;
-  }
-
   &:focus {
     color: $font-color-primary;
   }
