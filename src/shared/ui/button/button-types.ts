@@ -8,7 +8,7 @@ export interface IButtonProps
   buttonType?: TButtonType;
   disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  text?: string;
+  text?: string | React.ReactNode;
   icon?: React.ReactNode;
   iconPosition?: TIconPosition;
   className?: string;
