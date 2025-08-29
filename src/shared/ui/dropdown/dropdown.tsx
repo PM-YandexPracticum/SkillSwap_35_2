@@ -1,16 +1,17 @@
 import clsx from 'clsx';
 import { useState, useRef, useEffect } from 'react';
-import type { MouseEventHandler } from 'react';
-
-/*import { ReactComponent as Cross } from '../../shared/assets/icons/cross.svg';
-import { ReactComponent as ChevronDown } from '../../shared/assets/icons/chevron-down.svg';
-import { ReactComponent as ChevronUp } from '../../shared/assets/icons/chevron-up.svg';
-*/
+//import type { MouseEventHandler } from 'react';
 import ChevronDown from '../../assets/icons/chevron-down.svg';
 import ChevronUp from '../../assets/icons/chevron-up.svg';
 import Cross from '../../assets/icons/cross.svg';
 import { Checkbox } from '../checkbox/checkbox';
 import styles from './dropdown.module.scss';
+
+/*import { ReactComponent as Cross } from '../../shared/assets/icons/cross.svg';
+import { ReactComponent as ChevronDown } from '../../shared/assets/icons/chevron-down.svg';
+import { ReactComponent as ChevronUp } from '../../shared/assets/icons/chevron-up.svg';
+*/
+
 import { useOutsideClickClose } from './hooks/useOutsideClickClose';
 
 export type DropdownOptionType = {
@@ -33,7 +34,7 @@ export type DropdownProps = {
   type?: 'select' | 'multiple' | 'searchable';
 };
 
-export const Dropdown: React.FC<DropdownProps> = ({
+export const Dropdown = ({
   type = 'select',
   options,
   onChange,
@@ -44,7 +45,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   helperMessage,
   className,
   value
-}) => {
+}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   //const rootRef = useRef<HTMLDivElement>(null);
@@ -61,9 +62,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   });
 
   //Переключает состояние открытия/закрытия выпадающего списка
-  const handleDisplayClickToToggleDropdown: MouseEventHandler<
-    HTMLDivElement
-  > = () => {
+  const handleDisplayClickToToggleDropdown = () => {
     setIsOpen((isCurrentlyOpen) => !isCurrentlyOpen);
   };
 
@@ -158,7 +157,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       value={isOpen ? searchQuery : getItemsText()}
       onChange={(e) => setSearchQuery(e.target.value)}
       className={inputClassName}
-      autoFocus={isOpen}
+      //  autoFocus={isOpen}
       onClick={handledropdownInputClick(hasSelectedOptions)}
       readOnly={!isOpen}
     />
@@ -166,12 +165,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   // Рендер статического инпута
   const renderStaticInput = (inputClassName: string) => (
-    <div
-      className={inputClassName}
-      onClick={handleDisplayClickToToggleDropdown}
-    >
-      {getItemsText()}
-    </div>
+    <div className={inputClassName}> {getItemsText()}</div>
   );
 
   // Обработчик клика для поискового инпута
@@ -201,17 +195,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
           type='button'
           aria-label='Очистить выбор'
         >
-          <img src={Cross} alt='cross' />
+          <Cross />
         </button>
       );
     }
 
     // В зависимости от состояния открытия показываем соответствующую иконку
-    return isOpen ? (
-      <img src={ChevronUp} alt='ChevronUp' />
-    ) : (
-      <img src={ChevronDown} alt='ChevronDown' />
-    );
+    return isOpen ? <ChevronUp /> : <ChevronDown />;
   };
 
   const renderOptionsList = () => {
@@ -230,11 +220,19 @@ export const Dropdown: React.FC<DropdownProps> = ({
           key={option.value}
           className={clsx(
             styles.selectItem,
-
             isOptionSelected && styles.selected
           )}
           // Обработчик клика по элементу
           onClick={() => handleOptionSelection(option.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault(); // предотвращаем действие по умолчанию
+              handleOptionSelection(option.value); // вызываем функцию выбора
+            }
+          }}
+          role='option'
+          aria-selected={isOptionSelected}
+          tabIndex={0} // делаем элемент доступным для фокуса
         >
           {/* Для множественного выбора показываем чекбокс */}
           {type === 'multiple' && (
@@ -270,6 +268,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
       >
         <div
           className={clsx(styles.dropdownHeader, isOpen && styles.withBorder)}
+          onClick={handleDisplayClickToToggleDropdown}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleDisplayClickToToggleDropdown();
+            }
+          }}
+          tabIndex={0}
+          role='button'
+          aria-label='Открыть выпадающий список'
         >
           {renderInputField()}
           {renderDropdownIcon()}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Logo } from './logo';
 import { BrowserRouter } from 'react-router-dom';
+import { Logo } from './logo';
 
 const meta: Meta<typeof Logo> = {
   title: 'Shared/UI/Logo',
