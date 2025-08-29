@@ -14,7 +14,8 @@
     },
     "project": ["./tsconfig.app.json", "./tsconfig.node.json"],
     "tsconfigRootDir": ".",
-    "warnOnMultipleProjects": false
+    "warnOnMultipleProjects": false,
+    "warnOnUnsupportedTypeScriptVersion": false
   },
   "rules": {
     "react/prop-types": "off",
