@@ -1,7 +1,7 @@
 .panel {
   margin: 32px 24px 0 36px;
-  width: 22, 5%;
   min-width: fit-content;
+  max-width: 324px;
   box-sizing: border-box;
   background-color: $card-color;
   white-space: nowrap;

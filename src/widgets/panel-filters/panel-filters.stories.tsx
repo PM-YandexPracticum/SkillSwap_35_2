@@ -1,6 +1,14 @@
 // panel-filters.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
+import { Provider } from 'react-redux';
+import store from '../../app/store/store';
 import { PanelFilters } from './panel-filters';
+
+const withRedux = (Story: any) => (
+  <Provider store={store}>
+    <Story />
+  </Provider>
+);
 
 const meta = {
   title: 'Widgets/PanelFilters',
@@ -12,7 +20,8 @@ const meta = {
   argTypes: {
     onFiltersChange: { action: 'filtersChanged' },
     className: { control: 'text' }
-  }
+  },
+  decorators: [withRedux]
 } satisfies Meta<typeof PanelFilters>;
 
 export default meta;
@@ -31,6 +40,7 @@ export const InContainer: Story = {
     onFiltersChange: (filters) => console.log('Filters changed:', filters)
   },
   decorators: [
+    withRedux,
     (Story) => (
       <div
         style={{

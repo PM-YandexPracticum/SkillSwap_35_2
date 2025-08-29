@@ -15,6 +15,7 @@ export const PanelFilters = ({
   const {
     filters,
     loading,
+    error,
     availableCategories,
     activeFiltersCount,
     openCategories,
@@ -43,6 +44,21 @@ export const PanelFilters = ({
         <div className={styles.loading}>Загрузка категорий...</div>
       </aside>
     );
+
+  if (error) {
+    return (
+      <aside className={`${styles.panel} ${className}`}>
+        <div className={styles.error}>
+          Ошибка загрузки категорий: {error}
+          <Button
+            buttonType='primary'
+            text='Попробовать снова'
+            onClick={() => window.location.reload()}
+          />
+        </div>
+      </aside>
+    );
+  }
 
   return (
     <aside className={`${styles.panel} ${className}`}>
@@ -154,9 +170,9 @@ export const PanelFilters = ({
         {openCats && (
           <div style={{ marginTop: 8, textAlign: 'center' }}>
             <img
-              src='https://stickerrs.com/wp-content/uploads/2024/03/Hide-the-Pain-Harold-Stickers.png'
+              src='https://cs12.pikabu.ru/post_img/big/2021/11/10/4/1636522121188593136.png'
               alt='Рикрол'
-              style={{ maxWidth: '50%' }}
+              style={{ maxWidth: '100px' }}
             />
           </div>
         )}

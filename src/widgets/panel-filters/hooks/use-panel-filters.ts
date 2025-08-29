@@ -1,12 +1,23 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { getCategoriesApi } from '@/api/skill-api';
-import type { TCategories } from '@/api/types';
+//import { getCategoriesApi } from '@/api/skill-api';
+//import type { TCategories } from '@/api/types';
+import {
+  getCategoriesThunk,
+  categoriesList,
+  categoriesIsLoading,
+  categoriesError
+} from '@/entities/categories/categories-slice';
 import { cityOptions } from '@/shared/ui/dropdown/dropdownConstants';
+import { useDispatch, useSelector } from '../../../app/store/store';
 import type { IPanelFiltersState } from '../panel-filters-types';
 
 export const usePanelFilters = (
   initialFilters?: Partial<IPanelFiltersState>
 ) => {
+  const dispatch = useDispatch();
+  const categoriesData = useSelector(categoriesList);
+  const loading = useSelector(categoriesIsLoading);
+  const error = useSelector(categoriesError);
   const [filters, setFilters] = useState<IPanelFiltersState>({
     mode: 'all',
     category: [],
@@ -16,8 +27,8 @@ export const usePanelFilters = (
     ...initialFilters
   });
 
-  const [categoriesData, setCategoriesData] = useState<TCategories[]>([]);
-  const [loading, setLoading] = useState(true);
+  //const [categoriesData, setCategoriesData] = useState<TCategories[]>([]);
+  //const [loading, setLoading] = useState(true);
   const [openCategories, setOpenCategories] = useState<{
     [id: number]: boolean;
   }>({});
@@ -28,7 +39,6 @@ export const usePanelFilters = (
     () => setOpenCities((prev) => !prev),
     []
   );
-  // visibleCities — то, что отображаем в компоненте
   const visibleCities = useMemo(
     () => (openCities ? cityOptions : cityOptions.slice(0, 6)),
     [openCities]
@@ -38,14 +48,18 @@ export const usePanelFilters = (
   const [openCats, setOpenCats] = useState(false);
   const toggleCatsOpen = useCallback(() => setOpenCats((prev) => !prev), []);
 
+  // useEffect(() => {
+  //   getCategoriesApi()
+  //     .then((res) => {
+  //       if (res.success) setCategoriesData(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, []);
+
   useEffect(() => {
-    getCategoriesApi()
-      .then((res) => {
-        if (res.success) setCategoriesData(res.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+    dispatch(getCategoriesThunk());
+  }, [dispatch]);
 
   const availableCategories = useMemo(
     () =>
@@ -165,6 +179,7 @@ export const usePanelFilters = (
   return {
     filters,
     loading,
+    error,
     availableCategories,
     activeFiltersCount,
     openCategories,
