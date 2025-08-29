@@ -1,143 +1,66 @@
-import { useState, useEffect, useMemo } from 'react';
-import { getCategoriesApi } from '@/api/skill-api';
+import { useEffect } from 'react';
 import { Button, Checkbox, RadioGroup, TitleUI } from '@/shared/ui/';
-import {
-  DEFAULT_CITIES,
-  DEFAULT_FILTERS,
-  type TCategories
-} from './panel-filters-constants';
-import type {
-  IPanelFiltersProps,
-  IPanelFiltersState
-} from './panel-filters-types';
+import { cityOptions } from '@/shared/ui/dropdown/dropdownConstants';
+import ChevronDown from '../../shared/assets/icons/chevron-down.svg?url';
+import ChevronUp from '../../shared/assets/icons/chevron-up.svg?url';
+import { usePanelFilters } from './hooks/use-panel-filters';
+import type { IPanelFiltersProps } from './panel-filters-types';
 import styles from './panel-filters.module.scss';
 
-export const PanelFilters: React.FC<IPanelFiltersProps> = ({
+export const PanelFilters = ({
   onFiltersChange,
   initialFilters,
-  availableCities = DEFAULT_CITIES,
   className = ''
-}) => {
-  // Состояние фильтров
-  const [filters, setFilters] = useState<IPanelFiltersState>({
-    ...DEFAULT_FILTERS,
-    ...initialFilters
-  });
+}: IPanelFiltersProps) => {
+  const {
+    filters,
+    loading,
+    availableCategories,
+    activeFiltersCount,
+    openCategories,
+    getSubcategoryOptions,
+    getSelectedSubcategories,
+    handleModeChange,
+    handleGenderChange,
+    handleCategoryClick,
+    handleSubcategoryChange,
+    handleCityChange,
+    handleReset,
+    openCities,
+    visibleCities,
+    toggleCitiesOpen,
+    openCats,
+    toggleCatsOpen
+  } = usePanelFilters(initialFilters);
 
-  // Состояние для загрузки категорий
-  const [categoriesData, setCategoriesData] = useState<TCategories[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // Загружаем категории из API
-  useEffect(() => {
-    getCategoriesApi()
-      .then((response) => {
-        if (response.success) {
-          setCategoriesData(response.data);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Failed to load categories:', error);
-        setLoading(false);
-      });
-  }, []);
-
-  // Преобразуем категории в формат для чекбоксов
-  const availableCategories = useMemo(
-    () =>
-      categoriesData.map((category) => ({
-        value: category.categoryId,
-        label: category.title
-      })),
-    [categoriesData]
-  );
-
-  // Колбэк при изменении фильтров
   useEffect(() => {
     onFiltersChange?.(filters);
   }, [filters, onFiltersChange]);
 
-  // Обработчики изменений
-  const handleModeChange = (value: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      mode: value as IPanelFiltersState['mode']
-    }));
-  };
-
-  const handleGenderChange = (value: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      gender: value as IPanelFiltersState['gender']
-    }));
-  };
-
-  const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    const skillId = Number(value); // преобразуем string в number
-
-    setFilters((prev) => ({
-      ...prev,
-      skills: checked
-        ? [...prev.skills, skillId]
-        : prev.skills.filter((skill) => skill !== skillId)
-    }));
-  };
-
-  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    setFilters((prev) => ({
-      ...prev,
-      cities: checked
-        ? [...prev.cities, value]
-        : prev.cities.filter((city) => city !== value)
-    }));
-  };
-
-  // Сброс фильтров
-  const handleReset = () => {
-    setFilters(DEFAULT_FILTERS);
-  };
-
-  // Подсчет активных фильтров
-  const activeFiltersCount = useMemo(
-    () =>
-      [
-        filters.mode !== 'all' ? 1 : 0,
-        filters.gender !== 'any' ? 1 : 0,
-        filters.skills.length,
-        filters.cities.length
-      ].reduce((sum, count) => sum + count, 0),
-    [filters]
-  );
-
-  if (loading) {
+  if (loading)
     return (
       <aside className={`${styles.panel} ${className}`}>
         <div className={styles.loading}>Загрузка категорий...</div>
       </aside>
     );
-  }
 
   return (
     <aside className={`${styles.panel} ${className}`}>
-      {/* Шапка с заголовком и кнопкой сброса */}
+      {/* Заголовок */}
       <div className={styles.header}>
-        <TitleUI size='H2' text={`Фильтры (${activeFiltersCount})`} />
-        {activeFiltersCount > 0 && (
-          <Button
-            buttonType='tertiary'
-            text='Сбросить Х'
-            className={styles.resetBtn}
-            onClick={handleReset}
-          />
-        )}
+        <TitleUI size='h2' text={`Фильтры (${activeFiltersCount})`} />
+
+        <Button
+          buttonType='tertiary'
+          text='Сбросить х'
+          className={`${styles.resetBtn} ${activeFiltersCount > 0 ? styles.visible : ''}`}
+          onClick={handleReset}
+        />
       </div>
 
-      {/* Секция режима */}
+      {/* Режим */}
       <div className={styles.section}>
-        <TitleUI size='H3' text='Режим' />
+        <TitleUI size='h3' text='Режим' />
         <RadioGroup
           name='mode'
           selectedValue={filters.mode}
@@ -150,24 +73,98 @@ export const PanelFilters: React.FC<IPanelFiltersProps> = ({
         />
       </div>
 
-      {/* Секция категорий */}
+      {/* Категории */}
       <div className={styles.section}>
-        <TitleUI size='H3' text='Категории' />
-        {availableCategories.map((category) => (
-          <Checkbox
-            key={category.value}
-            name='skills'
-            value={String(category.value)}
-            label={category.label}
-            checked={filters.skills.includes(category.value)}
-            onChange={handleSkillChange}
-          />
-        ))}
+        <TitleUI size='h3' text='Категории' />
+        {availableCategories.map((category) => {
+          const categoryId = Number(category.value);
+          const selectedSubs = getSelectedSubcategories(categoryId);
+          const isOpen = openCategories[categoryId] ?? false;
+
+          let parentVariant: 'tick' | 'minus' | undefined;
+          if (isOpen) parentVariant = 'minus';
+          else if (selectedSubs.length > 0) parentVariant = 'tick';
+          else parentVariant = undefined;
+
+          return (
+            <div key={category.value} className={styles.categoryItem}>
+              <div className={styles.categoryHeader}>
+                <Checkbox
+                  name='category'
+                  value={category.value.toString()}
+                  label={category.label}
+                  checked={filters.category.includes(categoryId)}
+                  variant={parentVariant}
+                  onChange={() => handleCategoryClick(categoryId)}
+                />
+                {category.subcategories?.length > 0 && (
+                  <Button
+                    buttonType='iconOnly'
+                    icon={
+                      <img
+                        src={isOpen ? ChevronUp : ChevronDown}
+                        alt='chevron'
+                        style={{ width: 16, height: 16 }}
+                      />
+                    }
+                    onClick={() => handleCategoryClick(categoryId)}
+                  />
+                )}
+              </div>
+              {/* Сабкатегории */}
+              {isOpen && category.subcategories?.length > 0 && (
+                <div className={styles.subcategories}>
+                  {getSubcategoryOptions(categoryId).map((sub) => {
+                    const subSelected = selectedSubs.includes(
+                      Number(sub.value)
+                    );
+                    return (
+                      <Checkbox
+                        key={sub.value}
+                        name={`subcategory-${categoryId}`}
+                        value={sub.value}
+                        label={sub.label}
+                        checked={subSelected}
+                        onChange={(e) => {
+                          const { value, checked } = e.target;
+                          const updated = checked
+                            ? [...selectedSubs, Number(value)]
+                            : selectedSubs.filter((id) => id !== Number(value));
+                          handleSubcategoryChange(
+                            categoryId,
+                            updated.map(String)
+                          );
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
+        <Button
+          buttonType='tertiary'
+          className={styles.showAllBtn}
+          onClick={toggleCatsOpen}
+          text={openCats ? 'Скрыть' : 'Все категории'}
+          icon={<img src={openCats ? ChevronUp : ChevronDown} alt='chevron' />}
+          iconPosition='right'
+        />
+        {openCats && (
+          <div style={{ marginTop: 8, textAlign: 'center' }}>
+            <img
+              src='https://stickerrs.com/wp-content/uploads/2024/03/Hide-the-Pain-Harold-Stickers.png'
+              alt='Рикрол'
+              style={{ maxWidth: '50%' }}
+            />
+          </div>
+        )}
       </div>
 
-      {/* Секция пола */}
+      {/* Пол */}
       <div className={styles.section}>
-        <TitleUI size='H3' text='Пол автора' />
+        <TitleUI size='h3' text='Пол автора' />
         <RadioGroup
           name='gender'
           selectedValue={filters.gender}
@@ -180,10 +177,10 @@ export const PanelFilters: React.FC<IPanelFiltersProps> = ({
         />
       </div>
 
-      {/* Секция города */}
+      {/* Города */}
       <div className={styles.section}>
-        <TitleUI size='H3' text='Город' />
-        {availableCities.map((city) => (
+        <TitleUI size='h3' text='Город' />
+        {visibleCities.map((city) => (
           <Checkbox
             key={city.value}
             name='cities'
@@ -193,6 +190,19 @@ export const PanelFilters: React.FC<IPanelFiltersProps> = ({
             onChange={handleCityChange}
           />
         ))}
+
+        {cityOptions.length > 6 && (
+          <Button
+            buttonType='tertiary'
+            className={styles.showAllBtn}
+            onClick={toggleCitiesOpen}
+            text={openCities ? 'Скрыть' : 'Все города'}
+            icon={
+              <img src={openCities ? ChevronUp : ChevronDown} alt='chevron' />
+            }
+            iconPosition='right'
+          />
+        )}
       </div>
     </aside>
   );

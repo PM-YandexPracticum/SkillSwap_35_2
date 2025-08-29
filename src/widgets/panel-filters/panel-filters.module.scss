@@ -1,23 +1,63 @@
 .panel {
   margin: 32px 24px 0 36px;
+  width: 22, 5%;
+  min-width: fit-content;
+  box-sizing: border-box;
   background-color: $card-color;
-  width: fit-content;
   white-space: nowrap;
-
 }
 
 .header {
   display: flex;
   align-items: center;
-  padding: 20px 20px 0px;  
+  padding: 20px 20px 0;
   gap: 49px;
 }
 
 .section {
   padding: 20px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .resetBtn {
+  opacity: 0;
+  font: $font-body;
+  color: #508826;
+  min-width: auto;
+  background: none;
+  border: none;
+  pointer-events: none;
+}
+
+.resetBtn.visible {
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.categoryDropdownWrapper {
+  display: flex;
+}
+
+.subcategories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px;
+  margin-top: 12px;
+}
+
+.showAllBtn {
   font: $font-body;
   color: #508826;
   min-width: auto;

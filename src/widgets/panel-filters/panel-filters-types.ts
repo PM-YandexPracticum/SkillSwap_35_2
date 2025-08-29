@@ -15,7 +15,9 @@ export interface IPanelFiltersState {
   // Режим фильтрации
   mode: 'all' | 'learn' | 'teach';
   // Выбранные навыки (ID)
-  skills: number[];
+  category: number[];
+  // ID подкатегорий по categoryId
+  subcategories: { [categoryId: number]: number[] };
   // Выбранный пол
   gender: 'any' | 'male' | 'female';
   // Выбранные города

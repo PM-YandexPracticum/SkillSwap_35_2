@@ -8,3 +8,4 @@ export { ModalOverlayUI } from './modal-overlay/modal-overlay';
 export { RadioButton } from './radio-button/radio-button';
 export { RadioGroup } from './radio-group/radio-group';
 export { TitleUI } from './title/title';
+export { Dropdown } from './dropdown/dropdown';
