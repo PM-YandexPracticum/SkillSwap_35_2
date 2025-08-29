@@ -130,6 +130,34 @@
   object-fit: cover;
 }
 
+.userAvatarButton {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.userDropdown {
+  position: absolute;
+  top: 104px;
+  right: 36px;
+  background: $card-color;
+  border: 1px solid $toggle-color;
+  border-radius: 12px;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  inline-size: 260px;
+  block-size: 152px;
+  z-index: 100;
+}
+
+.logoutButton {
+  block-size: 24px;
+}
+
 .loginButton {
   inline-size: 92px;
 }
@@ -161,5 +189,5 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: $notification-dot-color; // яркий цвет
+  background-color: $notification-dot-color;
 }
