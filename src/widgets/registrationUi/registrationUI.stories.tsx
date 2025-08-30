@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import image from '../../shared/assets/images/light-bulb.svg';
+import image from '../../shared/assets/images/light-bulb.svg/?url';
 import { RegistrationUI } from './registrationUI';
 
 const meta: Meta<typeof RegistrationUI> = {
