@@ -15,8 +15,9 @@ const meta: Meta<typeof Checkbox> = {
     },
     variant: {
       control: 'radio',
-      options: ['tick', 'minus'],
-      description: 'Вид отметки (галочка или минус)'
+      options: ['category', 'subcategory'],
+      description:
+        'Вид отметки (галочка для категории или минус для подкатегории)'
     },
     checked: {
       control: 'boolean',
@@ -38,6 +39,6 @@ export const CheckboxStory: Story = {
     name: '',
     value: '',
     checked: false,
-    variant: 'tick'
+    variant: 'category'
   }
 };
