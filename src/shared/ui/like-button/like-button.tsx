@@ -5,13 +5,14 @@ import type { TLikeButtonProps } from './type';
 
 export const LikeButtonUI = ({
   liked, // начальное состояние кнопки
-  setLiked // функция изменения состояния (например, из useState)
+  setLiked, // функция изменения состояния (например, из useState)
+  className
 }: TLikeButtonProps) => {
   const handleClick = () => {
-    setLiked((liked) => !liked);
+    setLiked(!liked);
   };
   return (
-    <button onClick={handleClick} className={styles.button}>
+    <button onClick={handleClick} className={className}>
       {liked ? <LikedIcon /> : <LikeIcon />}
     </button>
   );
