@@ -24,10 +24,10 @@ export const DefaultUserOffer: Story = {
     description:
       'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры',
     images: [
-      '/db/images/swap_01.jpg',
-      '/db/images/swap_02.jpg',
-      '/db/images/swap_03.jpg',
-      '/db/images/swap_04.jpg',
+      '/db/images/swap_01-1.jpg',
+      '/db/images/swap_01-2.jpg',
+      '/db/images/swap_01-3.jpg',
+      '/db/images/swap_01-4.jpg',
       '/db/images/user_0001_full.jpg'
     ],
     requestStatus: 'none',
