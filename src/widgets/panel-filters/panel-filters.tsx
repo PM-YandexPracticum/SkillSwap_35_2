@@ -97,9 +97,9 @@ export const PanelFilters = ({
           const selectedSubs = getSelectedSubcategories(categoryId);
           const isOpen = openCategories[categoryId] ?? false;
 
-          let parentVariant: 'tick' | 'minus' | undefined;
-          if (isOpen) parentVariant = 'minus';
-          else if (selectedSubs.length > 0) parentVariant = 'tick';
+          let parentVariant: 'category' | 'subcategory' | undefined;
+          if (isOpen) parentVariant = 'subcategory';
+          else if (selectedSubs.length > 0) parentVariant = 'category';
           else parentVariant = undefined;
 
           return (
