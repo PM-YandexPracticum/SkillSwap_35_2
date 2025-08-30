@@ -1,4 +1,5 @@
 export type TLikeButtonProps = {
   liked: boolean;
-  setLiked: (callback: (liked: boolean) => boolean) => boolean;
+  setLiked: (liked: boolean) => void;
+  className: string;
 };

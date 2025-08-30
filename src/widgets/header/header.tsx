@@ -1,26 +1,21 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Logo from '@/shared/assets/images/logo.svg?url';
 import { Button } from '@/shared/ui/button/button';
 import { Input } from '@/shared/ui/input/input';
+import { TitleUI } from '@/shared/ui/title/title';
 import ChevronDownIcon from '@icons/chevron-down.svg';
 import CrossIcon from '@icons/cross.svg';
 import LikeFilledIcon from '@icons/like-filled.svg';
 import LikeIcon from '@icons/like.svg';
+import LogoutIcon from '@icons/logout.svg';
 import MoonIcon from '@icons/moon.svg';
 import NotificationIcon from '@icons/notification.svg';
 import SearchIcon from '@icons/search.svg';
 import styles from './header.module.scss';
+import type { IHeaderProps } from './type';
 import UserAvatar from './User-photo.png';
-
-interface IHeaderProps {
-  isAuth?: boolean;
-  isFormOpen?: boolean;
-  isFiltered?: boolean;
-  hasNewNotifications?: boolean;
-  isFavorites?: boolean;
-}
 
 export const Header = ({
   isAuth,
@@ -33,6 +28,23 @@ export const Header = ({
   const location = useLocation();
   const isFavorites = isFavoritesProp ?? location.pathname === '/favorites';
   const [search, setSearch] = useState('');
+
+  // Стейт для выпадающего меню аватара
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (Ref.current && !Ref.current.contains(event.target as Node)) {
+        setIsUserDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleAvatarClick = () => setIsUserDropdownOpen((prev) => !prev);
+  const logout = () => console.log('Выход из аккаунта');
 
   return isFormOpen ? (
     <header className={styles.headerWithFormOpen}>
@@ -78,7 +90,7 @@ export const Header = ({
           <li>
             <Link to='/skills' className={styles.navLink}>
               Все навыки
-              <ChevronDownIcon className={styles.chevronIcon} />
+              <ChevronDownIcon />
             </Link>
           </li>
         </ul>
@@ -176,15 +188,35 @@ export const Header = ({
           </div>
 
           {/* Информация о пользователе */}
-          <div className={styles.userInfo}>
-            <p>Имя пользователя</p>
-            <Link to='/profile' aria-label='Профиль пользователя'>
+          <div className={styles.userInfo} ref={Ref}>
+            <p>user name</p>
+            <button
+              className={styles.userAvatarButton}
+              onClick={handleAvatarClick}
+              aria-label='Открыть меню пользователя'
+            >
               <img
                 src={UserAvatar}
                 alt='Аватар пользователя'
                 className={styles.userAvatar}
               />
-            </Link>
+            </button>
+
+            {isUserDropdownOpen && (
+              <div className={styles.userDropdown}>
+                <Link to='/profile' className={styles.dropdownLink}>
+                  <TitleUI size='h4' text='Личный кабинет' />
+                </Link>
+                <Button
+                  className={styles.logoutButton}
+                  buttonType='tertiary'
+                  text={<TitleUI size='h4' text='Выйти из аккаунта' />}
+                  icon={<LogoutIcon />}
+                  iconPosition='right'
+                  onClick={logout}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}

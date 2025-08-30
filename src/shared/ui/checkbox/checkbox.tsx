@@ -6,16 +6,16 @@ export interface CheckboxProps {
   value: string;
   checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  variant?: 'tick' | 'minus';
+  variant?: 'category' | 'subcategory';
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox = ({
   label,
   name,
   value,
   checked,
   onChange,
-  variant = 'tick'
+  variant = 'category'
 }: CheckboxProps) => (
   <div className={styles.checkbox}>
     <label className={styles.checkboxLabel}>

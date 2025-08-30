@@ -17,7 +17,7 @@ const preview: Preview = {
     layout: 'fullscreen', // убирает внутренние отступы Storybook
     viewport: {
       viewports: {
-        customViewports,
+        viewports: customViewports,
         defaultViewport: 'desktop1440' // устанавливает 1440px как viewport по умолчанию
       }
     },

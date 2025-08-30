@@ -1,20 +1,25 @@
 import clsx from 'clsx';
+import { forwardRef, type ForwardedRef } from 'react';
 import styles from './input.module.scss';
 import type { IInputProps } from './type';
 
-export function Input({
-  className,
-  inputClassName,
-  label,
-  type = 'text',
-  placeholder,
-  value,
-  onChange,
-  error,
-  icon,
-  iconStyleOverride,
-  inputPadding
-}: IInputProps) {
+export function InputBase(
+  {
+    className,
+    inputClassName,
+    label,
+    type = 'text',
+    placeholder,
+    value,
+    name,
+    onChange,
+    error,
+    icon,
+    iconStyleOverride,
+    inputPadding
+  }: IInputProps,
+  ref: ForwardedRef<HTMLInputElement>
+) {
   return (
     <div className={clsx(styles.input, className)}>
       {label && <label className={styles.label}>{label}</label>}
@@ -34,8 +39,10 @@ export function Input({
           type={type}
           placeholder={placeholder}
           value={value}
+          name={name}
           onChange={onChange}
           style={icon ? inputPadding : undefined}
+          ref={ref}
         />
       </div>
       {error && <span className={styles.error}>{error}</span>}
@@ -43,12 +50,21 @@ export function Input({
   );
 }
 
-export const InputText = (props: IInputProps) => (
-  <Input {...props} type='text' />
+// Импорт предыдущего инпута, чтобы заработали все следующие экспорты
+export const Input = forwardRef<HTMLInputElement, IInputProps>(InputBase);
+Input.displayName = 'Input';
+
+export const InputText = forwardRef<HTMLInputElement, IInputProps>(
+  (props, ref) => <Input {...props} ref={ref} type='text' />
 );
-export const InputEmail = (props: IInputProps) => (
-  <Input {...props} type='email' />
+InputText.displayName = 'InputText';
+
+export const InputEmail = forwardRef<HTMLInputElement, IInputProps>(
+  (props, ref) => <Input {...props} ref={ref} type='email' />
 );
-export const InputPassword = (props: IInputProps) => (
-  <Input {...props} type='password' />
+InputEmail.displayName = 'InputEmail';
+
+export const InputPassword = forwardRef<HTMLInputElement, IInputProps>(
+  (props, ref) => <Input {...props} ref={ref} type='password' />
 );
+InputPassword.displayName = 'InputPassword';

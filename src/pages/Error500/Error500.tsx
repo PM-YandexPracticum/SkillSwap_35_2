@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import error500 from '../../shared/assets/images/error 500.svg';
+import error500 from '../../shared/assets/images/error 500.svg?url';
 import { Button } from '../../shared/ui/button/button';
 import styles from './Error500.module.scss';
 

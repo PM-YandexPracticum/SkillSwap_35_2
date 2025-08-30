@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import image404 from '../../shared/assets/images/error 404.svg';
+import image404 from '../../shared/assets/images/error 404.svg?url';
 import { Button } from '../../shared/ui/button/button';
 import styles from './Page404.module.scss';
 //import { Footer } from '@/shared/ui/footer/Footer'; //

@@ -1,0 +1,69 @@
+.statusbar {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.heading {
+  font-family: $font-family-title;
+  font-weight: $font-weight-title;
+  font-size: $font-size-h2;
+  line-height: $font-line-height-h3;
+  letter-spacing: $font-letter-spacing-secondary;
+}
+
+.wrapper {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+}
+
+.separator {
+  height: 24px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: $disabled-color;
+    z-index: 0;
+  }
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  background-color: $card-color;
+  text-align: center;
+  width: fit-content;
+  justify-self: center;
+  padding: 0 4px;
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
+}
+
+.registration {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.link {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  text-decoration: none;
+  color: $text-link-color;
+  letter-spacing: $font-letter-spacing-secondary;
+  &:active {
+    text-decoration: underline;
+    text-decoration-color: $button-color-pressed;
+  }
+}

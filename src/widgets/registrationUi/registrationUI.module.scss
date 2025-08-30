@@ -8,11 +8,14 @@
 
 .formContent,
 .side {
-  padding: 40px 60px;
-  max-width: 556px;
+  padding: 0 60px;
+  width: 556px;
   flex: 1;
   overflow: hidden;
   box-sizing: border-box;
+  height: 692px;
+  background-color: $card-color;
+  border-radius: 12px;
 }
 
 .formContent {
@@ -49,6 +52,8 @@
   font-family: $font-family-title;
   font-weight: $font-weight-title;
   font-size: $font-size-h2;
+  letter-spacing: $font-letter-spacing-primary;
+  line-height: $font-line-height-h2;
   margin-bottom: 12px;
 }
 
@@ -56,4 +61,6 @@
   font-family: $font-family-main;
   font-weight: $font-weight-main;
   font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
 }
