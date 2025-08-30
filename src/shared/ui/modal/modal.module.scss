@@ -3,11 +3,33 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
   margin: auto;
+  border-radius: 12px;
+}
+
+.modal_dialog {
   padding: 62px 60px 72px;
   background-color: $card-color;
-  border-radius: 12px;
+}
+
+.modal_fullscreen {
+  padding: 40px 36px 0;
+  background-color: $bg-color;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  max-height: 1080px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba($overlay-color, 0.6);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
 }
 
 .header {
