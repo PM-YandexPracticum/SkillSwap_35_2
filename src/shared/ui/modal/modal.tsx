@@ -1,28 +1,64 @@
-/* eslint-disable react/prop-types */
-
-import { memo } from 'react';
-import type { FC } from 'react';
-import { ModalOverlayUI } from '../modal-overlay/modal-overlay';
+import { memo, useEffect } from 'react';
 import { TitleUI } from '../title/title';
 
 import styles from './modal.module.scss';
 import type { TModalUIProps } from './type';
 
-export const ModalUI: FC<TModalUIProps> = memo(
-  ({ title, description, onClose, children }) => (
-    <>
-      <div role='dialog' aria-modal='true' className={styles.modal}>
-        <div className={styles.header}>
-          {title ? <TitleUI size='H2' text={title} /> : null}
-          {description ? (
-            <p className={styles.description}>{description}</p>
-          ) : null}
+export const ModalUI = memo(
+  ({
+    title,
+    description,
+    onClose,
+    mode,
+    zIndex = 10,
+    children
+  }: TModalUIProps) => {
+    useEffect(() => {
+      const handleEsc = (evt: KeyboardEvent) => {
+        if (evt.key === 'Escape') {
+          onClose();
+        }
+      };
+      document.addEventListener('keydown', handleEsc);
+      return () => {
+        document.removeEventListener('keydown', handleEsc);
+      };
+    }, [onClose]);
+
+    return (
+      <div
+        role='button'
+        tabIndex={0}
+        className={styles.overlay}
+        style={{ zIndex: zIndex - 1 }}
+        onClick={onClose}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            onClose();
+          }
+        }}
+      >
+        <div
+          role='presentation'
+          className={`${styles.modal} ${styles[`modal_${mode}`]}`}
+          style={{ zIndex }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {(title || description) && (
+            <div className={styles.header}>
+              {title && (
+                <TitleUI size='h3' text={title} className={styles.title} />
+              )}
+              {description && (
+                <p className={styles.description}>{description}</p>
+              )}
+            </div>
+          )}
+          <div className={styles.content}>{children}</div>
         </div>
-        <div className={styles.content}>{children}</div>
       </div>
-      <ModalOverlayUI onClick={onClose} />
-    </>
-  )
+    );
+  }
 );
 
 ModalUI.displayName = 'ModalUI';

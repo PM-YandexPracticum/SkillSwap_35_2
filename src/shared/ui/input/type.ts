@@ -7,6 +7,7 @@ export interface IInputProps {
   type?: string; // тип поля (password, email и др)
   placeholder?: string; // подсказка в поле
   value?: string;
+  name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick?: (e?: React.MouseEvent | React.KeyboardEvent) => void;
   error?: string;

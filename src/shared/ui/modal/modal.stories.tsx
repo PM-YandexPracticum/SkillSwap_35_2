@@ -14,6 +14,8 @@ export const ModalUISwap: Story = {
   args: {
     title: 'Ваше предложение',
     description: 'Пожалуйста, проверьте и подтвердите правильность данных',
+    mode: 'dialog',
+    zIndex: 10,
     onClose: () => {},
     children: 'Встраиваемое содержимое компонента'
   }
@@ -23,6 +25,19 @@ export const ModalUIOther: Story = {
   args: {
     title: '',
     description: '',
+    mode: 'dialog',
+    zIndex: 10,
+    onClose: () => {},
+    children: 'Встраиваемое содержимое компонента'
+  }
+};
+
+export const ModalUILogin: Story = {
+  args: {
+    title: '',
+    description: '',
+    mode: 'fullscreen',
+    zIndex: 10,
     onClose: () => {},
     children: 'Встраиваемое содержимое компонента'
   }

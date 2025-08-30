@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import EditIcon from '../../assets/icons/edit.svg';
-import GoogleIcon from '../../assets/icons/Google.svg';
+import EditIcon from '@icons/edit.svg';
+import GoogleIcon from '@icons/Google.svg';
 import { Button } from './button';
 
 // Метаданные компонента
@@ -87,13 +87,14 @@ export const WithIconRight: Story = {
   args: {
     buttonType: 'primary',
     text: 'Редактировать',
-    icon: (
-      <img
-        src={EditIcon}
-        alt='Edit'
-        style={{ width: '20px', height: '20px' }}
-      />
-    ),
+    icon: <EditIcon />,
+    // (
+    //   <img
+    //     src={EditIcon}
+    //     alt='Edit'
+    //     style={{ width: '20px', height: '20px' }}
+    //   />
+    // ),
     iconPosition: 'right'
   }
 };
