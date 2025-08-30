@@ -13,7 +13,9 @@
       "jsx": true
     },
     "project": ["./tsconfig.app.json", "./tsconfig.node.json"],
-    "tsconfigRootDir": "."
+    "tsconfigRootDir": ".",
+    "warnOnMultipleProjects": false,
+    "warnOnUnsupportedTypeScriptVersion": false
   },
   "rules": {
     "react/prop-types": "off",

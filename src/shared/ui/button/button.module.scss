@@ -15,7 +15,7 @@ $disabled-text: #9ca197;
   padding: 12px 24px;
   color: $font-color-primary;
   font: $font-body;
-  $font-line-height-body: 24px;
+  letter-spacing: $font-letter-spacing-secondary;
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
@@ -42,7 +42,7 @@ $disabled-text: #9ca197;
 /* Стили для primary-кнопки */
 .primary {
   background: $accent-color;
-  
+
   &:disabled {
     background: $disabled-color;
     color: $font-color-secondary;
@@ -63,7 +63,7 @@ $disabled-text: #9ca197;
 .secondary {
   background: $card-color;
   border: 1px solid $accent-color;
-  
+
   &:disabled {
     background: $card-color;
     border: 1px solid $disabled-color;
