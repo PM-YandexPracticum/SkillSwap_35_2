@@ -1,0 +1,1 @@
+{"root":["./public/db/mock-data.ts","./public/db/cards.json","./public/db/categories.json","./public/db/skillrequests.json","./public/db/skills.json","./public/db/swaps.json","./public/db/user.json","./public/db/users.json"],"errors":true,"version":"5.8.3"}
