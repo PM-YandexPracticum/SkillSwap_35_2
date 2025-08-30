@@ -7,6 +7,7 @@ export interface IInputProps {
   type?: string; // тип поля (password, email и др)
   placeholder?: string; // подсказка в поле
   value?: string;
+  name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   error?: string;
   icon?: React.ReactNode; // иконка внутри input слева или справа

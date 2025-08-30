@@ -32,7 +32,9 @@ export const loginUserThunk = createAsyncThunk<
     localStorage.setItem('refreshToken', data.refreshToken);
     return data;
   } catch (err) {
-    return rejectWithValue('Не удалось авторизоваться в приложении');
+    return rejectWithValue(
+      'Email или пароль введён неверно. Пожалуйста проверьте правильность введённых данных'
+    );
   }
 });
 
