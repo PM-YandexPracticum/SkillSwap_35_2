@@ -20,7 +20,7 @@ export const RegistrationUI = ({
     <div className={styles.side}>
       <img src={imageSrc} alt={title} className={styles.sideImage} />
       <div className={styles.textContainer}>
-        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.title}>{title}</p>
         <p className={styles.description}>{description}</p>
       </div>
     </div>

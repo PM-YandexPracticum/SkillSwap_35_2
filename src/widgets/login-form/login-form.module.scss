@@ -1,0 +1,30 @@
+.form {
+  display: grid;
+  align-self: stretch;
+}
+
+.input:first-child {
+  margin-bottom: 16px;
+}
+
+.inputError {
+  border-color: $font-color-error;
+}
+
+.error {
+  font-family: $font-family-main;
+  color: $font-color-error;
+  font-weight: $font-weight-main;
+  font-size: $font-size-caption;
+  line-height: $font-line-height-caption;
+  letter-spacing: $font-letter-spacing-secondary;
+  margin-top: 20px;
+}
+
+.button-container {
+  margin-top: 32px;
+}
+
+.button {
+  width: 100%;
+}

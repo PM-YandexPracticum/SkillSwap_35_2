@@ -1,0 +1,9 @@
+.wrapper {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+}
+
+.button {
+  border: 1px solid $font-color-secondary;
+}

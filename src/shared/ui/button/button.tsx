@@ -9,6 +9,7 @@ export const Button = ({
   icon,
   iconPosition = 'none',
   className = '',
+  htmlType = 'button',
   ...props
 }: IButtonProps) => (
   <button
@@ -16,6 +17,7 @@ export const Button = ({
     disabled={disabled}
     onClick={onClick}
     aria-disabled={disabled}
+    type={htmlType}
     {...props}
   >
     {buttonType === 'iconOnly' ? (

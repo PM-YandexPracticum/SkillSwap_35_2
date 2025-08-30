@@ -1,7 +1,7 @@
 import categories from '../../public/db/categories.json'; // категории и сабкатегории
 import skills from '../../public/db/skills.json'; // все навыки
 import user from '../../public/db/user.json'; // профиль пользователя
-// import users from '../../public/db/users.json'; // все профили пользователей
+import users from '../../public/db/users.json'; // все профили пользователей
 
 import { setCookie, getCookie, deleteCookie } from '../shared/lib/cookie';
 import type {
@@ -18,10 +18,6 @@ import type {
 
 const mockAccessToken = 'mock_access_token_123';
 const mockRefreshToken = 'mock_refresh_token_456';
-const mockLoginData = {
-  email: 'ivan@example.ru',
-  password: '1234qwer'
-};
 
 export type TCategoriesResponse = {
   success: boolean;
@@ -89,27 +85,33 @@ export type TLoginData = {
   password: string;
 };
 
-// логин пользователя, сравниваем с моковыми данными
 export const loginUserApi = (data: TLoginData): Promise<TAuthResponse> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (
-        mockLoginData.email !== data.email &&
-        mockLoginData.password !== data.password
-      ) {
-        return reject({ success: false, message: 'Неверный email или пароль' });
+      const user = users.find(
+        (u) => u.email === data.email && u.password === data.password
+      );
+
+      if (!user) {
+        return reject({
+          success: false,
+          message:
+            'Email или пароль введён неверно. Пожалуйста проверьте правильность введённых данных'
+        });
       }
 
-      // ! Временно подставляет моковые токены
+      //! Временно подставляем моковые токены
       setCookie('accessToken', mockAccessToken);
       localStorage.setItem('refreshToken', mockRefreshToken);
 
-      resolve({
+      const authResponse: TAuthResponse = {
         success: true,
-        refreshToken: mockRefreshToken,
         accessToken: mockAccessToken,
+        refreshToken: mockRefreshToken,
         user: user
-      });
+      };
+
+      resolve(authResponse);
     }, 800);
   });
 
