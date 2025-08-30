@@ -1,0 +1,68 @@
+.userCard {
+  width: 324px; //more adaptive?
+  height: 368px; //same
+  color: $font-color-primary;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  color: $font-color-primary;
+  font-family: $font-family-main;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.userData {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.userInfo {
+  font-size: $font-size-caption;
+  line-height: $font-line-height-caption;
+  letter-spacing: 0.02em;
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  font-family: $font-family-user-name;
+  padding-bottom: 4px;
+}
+
+.likeBtn {
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+}
+
+.skillsSection {
+  font-weight: $font-weight-title;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skillsTitle {
+  padding-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.button {
+  width: 100%;
+}
