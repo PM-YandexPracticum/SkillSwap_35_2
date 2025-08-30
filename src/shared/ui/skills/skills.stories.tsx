@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Skills from './skills';
 
 const meta: Meta<typeof Skills> = {
-  title: 'Components/Skills',
+  title: 'Shared/UI/Skills',
   component: Skills,
   argTypes: {
     isOpen: {
