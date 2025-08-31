@@ -1,97 +1,137 @@
 import { ru } from 'date-fns/locale';
-import { useState } from 'react';
-import { DayPicker, MonthCaption } from 'react-day-picker';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { DayPicker } from 'react-day-picker';
+import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input/input';
 import CalendarIcon from '@icons/calendar.svg';
-import ChevronDownIcon from '@icons/chevron-down.svg';
 import 'react-day-picker/dist/style.css';
 import styles from './date-picker.module.scss';
+import type { IDatePickerProps } from './type';
 
-interface IDatePickerProps {
-  value?: Date;
-  onChange?: (date: Date | undefined) => void;
-}
 export const DatePicker = ({ value, onChange }: IDatePickerProps) => {
+  const initialDate = value ? new Date(value) : undefined;
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    initialDate
+  ); // черновой выбор
+  const [confirmedDate, setConfirmedDate] = useState<Date | undefined>(
+    initialDate
+  ); // окончательно выбранная
   const [isOpen, setIsOpen] = useState(false);
-  const [temp, setTemp] = useState<Date | undefined>();
 
-  const handleConfirm = () => {
-    onChange(temp); // отправляем дату в форму
-    setIsOpen(false);
-  };
+  const inputRef = useRef<HTMLInputElement>(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
 
-  const handleCancel = () => {
-    setTemp(value); // откатываем
+  // Мемоизируем отображаемую дату
+  const displayDate: string = useMemo(() => {
+    const dateToShow =
+      selectedDate || confirmedDate || (value ? new Date(value) : undefined);
+    return dateToShow ? dateToShow.toLocaleDateString('ru-RU') : '';
+  }, [selectedDate, confirmedDate, value]);
+
+  // Обработчик выбора дня
+  const handleSelect = useCallback((date?: Date) => {
+    setSelectedDate(date);
+  }, []);
+
+  // Подтверждение даты
+  const handleConfirm = useCallback(() => {
+    setConfirmedDate(selectedDate);
     setIsOpen(false);
-  };
+    if (onChange && selectedDate) {
+      const yyyy = selectedDate.getFullYear();
+      const mm = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(selectedDate.getDate()).padStart(2, '0');
+      onChange(`${yyyy}-${mm}-${dd}`);
+    } else if (onChange) {
+      onChange(undefined);
+    }
+    // if (onChange) {
+    //   onChange(selectedDate);
+    // }
+  }, [selectedDate, onChange]);
+
+  // Отмена чернового выбора
+  const handleCancel = useCallback(() => {
+    setSelectedDate(undefined);
+  }, []);
+
+  // Закрытие календаря при клике вне
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(e.target as Node) &&
+        inputRef.current &&
+        !inputRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+        if (confirmedDate) {
+          setSelectedDate(confirmedDate);
+        } else {
+          // иначе откатываем к входящему value
+          setSelectedDate(value);
+        }
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [value, confirmedDate]);
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
   return (
     <div className={styles.datePickerWrapper}>
       <Input
+        ref={inputRef}
         label='Дата рождения'
         placeholder='дд.мм.гггг'
-        value={value ? value.toLocaleDateString('ru-RU') : 'дд.мм.гггг'}
+        value={displayDate}
         icon={<CalendarIcon />}
         iconStyleOverride={{ right: '20px' }}
         onClick={toggleOpen}
       />
       {isOpen && (
-        <div className={styles.calendarDropdown}>
+        <div ref={calendarRef} className={styles.calendarDropdown}>
           <DayPicker
+            showOutsideDays
+            fixedWeeks
             mode='single'
             locale={ru}
-            selected={temp}
-            onSelect={setTemp}
-            fromYear={1900}
-            toYear={new Date().getFullYear()}
+            selected={selectedDate}
+            onSelect={handleSelect}
+            startMonth={new Date(1900, 0)}
+            endMonth={new Date()}
+            hideNavigation
             captionLayout='dropdown'
-            components={{
-              Chevron: (props) => {
-                if (
-                  props.orientation === 'left' ||
-                  props.orientation === 'right'
-                ) {
-                  // скрываем только стрелки переключения месяцев
-                  return <span />;
-                }
-                return <ChevronDownIcon />; // остальные (например в выпадашках) оставляем как есть
-              }
-            }}
             classNames={{
               root: styles.calendar,
-              nav: 'hidden',
               months: styles.months,
               month_caption: styles.caption,
               caption_label: styles.captionLabel,
               dropdowns: styles.dropdowns,
-              head_row: styles.headRow,
-              head_cell: styles.headCell,
-              row: styles.row,
-              cell: styles.cell,
+              dropdown_month: styles.monthsDropdown,
+              weekdays: styles.weekdays,
+              weekday: styles.weekday,
+              week: styles.week,
+              outside: styles.dayOutside,
               day: styles.day,
-              day_selected: styles.daySelected,
-              day_today: styles.dayToday,
-              day_outside: styles.dayOutside
+              day_button: styles.dayButton,
+              selected: styles.daySelected,
+              today: styles.dayToday
             }}
           />
 
-          <div className='flex justify-between mt-3'>
-            <button
-              type='button'
+          <div className={styles.actionButtonsWrapper}>
+            <Button
+              buttonType='secondary'
+              text='Отменить'
               onClick={handleCancel}
-              className='px-4 py-2 rounded-lg border border-green-500 text-green-600'
-            >
-              Отменить
-            </button>
-            <button
-              type='button'
+            />
+            <Button
+              buttonType='primary'
+              text='Выбрать'
               onClick={handleConfirm}
-              className='px-4 py-2 rounded-lg bg-green-500 text-white'
-            >
-              Выбрать
-            </button>
+            />
           </div>
         </div>
       )}

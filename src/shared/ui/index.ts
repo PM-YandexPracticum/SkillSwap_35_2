@@ -8,3 +8,4 @@ export { RadioButton } from './radio-button/radio-button';
 export { RadioGroup } from './radio-group/radio-group';
 export { TitleUI } from './title/title';
 export { Dropdown } from './dropdown/dropdown';
+export { DatePicker } from './date-picker/date-picker';

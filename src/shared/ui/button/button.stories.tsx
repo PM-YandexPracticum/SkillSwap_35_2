@@ -87,14 +87,13 @@ export const WithIconRight: Story = {
   args: {
     buttonType: 'primary',
     text: 'Редактировать',
-    icon: <EditIcon />,
-    // (
-    //   <img
-    //     src={EditIcon}
-    //     alt='Edit'
-    //     style={{ width: '20px', height: '20px' }}
-    //   />
-    // ),
+    icon: (
+      <img
+        src={EditIcon}
+        alt='Edit'
+        style={{ width: '20px', height: '20px' }}
+      />
+    ),
     iconPosition: 'right'
   }
 };
