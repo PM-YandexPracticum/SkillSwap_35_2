@@ -9,6 +9,7 @@ export interface IInputProps {
   value?: string;
   name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClick?: (e?: React.MouseEvent | React.KeyboardEvent) => void;
   error?: string;
   icon?: React.ReactNode; // иконка внутри input слева или справа
   iconStyleOverride?: React.CSSProperties; // позиционирование иконки iconStyleOverride={{ left: '12px' }}
