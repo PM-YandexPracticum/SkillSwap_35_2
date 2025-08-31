@@ -1,4 +1,4 @@
 export interface IDatePickerProps {
-  value?: Date;
+  value?: string;
   onChange?: (date: string | undefined) => void;
 }

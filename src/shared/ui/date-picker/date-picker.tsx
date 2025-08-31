@@ -9,7 +9,11 @@ import styles from './date-picker.module.scss';
 import type { IDatePickerProps } from './type';
 
 export const DatePicker = ({ value, onChange }: IDatePickerProps) => {
-  const initialDate = value ? new Date(value) : undefined;
+  const parseDate = (str: string) => {
+    const [year, month, day] = str.split('-').map(Number);
+    return new Date(year, month - 1, day); // month - 1, потому что 0 = январь
+  };
+  const initialDate = value ? parseDate(value) : undefined;
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     initialDate
   ); // черновой выбор
@@ -24,7 +28,7 @@ export const DatePicker = ({ value, onChange }: IDatePickerProps) => {
   // Мемоизируем отображаемую дату
   const displayDate: string = useMemo(() => {
     const dateToShow =
-      selectedDate || confirmedDate || (value ? new Date(value) : undefined);
+      selectedDate || confirmedDate || (value ? parseDate(value) : undefined);
     return dateToShow ? dateToShow.toLocaleDateString('ru-RU') : '';
   }, [selectedDate, confirmedDate, value]);
 
