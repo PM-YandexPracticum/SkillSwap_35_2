@@ -15,6 +15,7 @@ export const DragAndDrop = ({
   buttonText
 }: TDragAndDropProps) => {
   const [files, setFiles] = useState<File[]>([]);
+  const [onDropZone, setOnDropZone] = useState(false);
 
   const handleFileChange = (evt: SyntheticEvent) => {
     const input = evt.target as HTMLInputElement;
@@ -34,7 +35,13 @@ export const DragAndDrop = ({
     if (droppedFiles.length > 0) {
       const newFiles = Array.from(droppedFiles);
       setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+      setOnDropZone((prev) => !prev);
     }
+  };
+
+  const handleDropOver = (evt: DragEvent<HTMLDivElement>) => {
+    evt.preventDefault();
+    setOnDropZone((prev) => !prev);
   };
 
   const handleRemoveFile = (index: number) => {
@@ -48,8 +55,14 @@ export const DragAndDrop = ({
   return (
     <div
       onDrop={handleDrop}
-      onDragOver={(e) => e.preventDefault()}
-      className={styles.dropZone}
+      onDragEnter={handleDropOver}
+      onDragLeave={handleDropOver}
+      onDragOver={(evt) => {
+        evt.preventDefault();
+      }}
+      className={`${styles.dropZone} ${
+        files.length > 0 ? styles.dropZoneActive : styles.dropZoneInactive
+      } ${onDropZone ? styles.dropZoneReady : styles.dropZoneNotReady}`}
     >
       <p className={styles.dropZoneText}>{text}</p>
       <input
@@ -65,16 +78,16 @@ export const DragAndDrop = ({
         {buttonText}
       </label>
       {files.length > 0 && (
-        <div className='file-list'>
-          <div className='file-list__container'>
+        <div className={styles.fileList}>
+          <div className={styles.fileListContainer}>
             {files.map((file, index) => (
-              <div className='file-item' key={index}>
-                <div className='file-info'>
+              <div className={styles.fileItem} key={index}>
+                <div className={styles.fileInfo}>
                   <p>{file.name}</p>
                   {/* <p>{file.type}</p> */}
                 </div>
                 <button
-                  className='file-actions'
+                  className={styles.fileActions}
                   onClick={() => handleRemoveFile(index)}
                 >
                   <Cross />
