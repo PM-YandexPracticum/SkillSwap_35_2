@@ -56,8 +56,12 @@ export const DatePicker = ({ value, onChange }: IDatePickerProps) => {
 
   // Отмена чернового выбора
   const handleCancel = useCallback(() => {
-    setSelectedDate(undefined);
-  }, []);
+    if (confirmedDate) {
+      setSelectedDate(confirmedDate);
+    } else {
+      setSelectedDate(undefined);
+    }
+  }, [confirmedDate, setSelectedDate]);
 
   // Закрытие календаря при клике вне
   useEffect(() => {
@@ -73,7 +77,7 @@ export const DatePicker = ({ value, onChange }: IDatePickerProps) => {
           setSelectedDate(confirmedDate);
         } else {
           // иначе откатываем к входящему value
-          setSelectedDate(value);
+          setSelectedDate(value ? parseDate(value) : undefined);
         }
       }
     };
