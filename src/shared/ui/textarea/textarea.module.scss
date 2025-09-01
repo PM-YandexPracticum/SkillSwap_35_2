@@ -1,4 +1,4 @@
-.input {
+.textarea {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -22,12 +22,14 @@
   border-radius: 12px;
   padding: 12px 20px;
   inline-size: 100%;
+  block-size: 100%;
   font-size: $font-size-body;
   font-weight: $font-weight-main;
   line-height: $font-line-height-body;
-  color: $font-color-secondary;
   background-color: $input-color;
+  color: $font-color-secondary;
   font-family: $font-family-main;
+  resize: vertical;
 
   &:focus {
     color: $font-color-primary;
@@ -41,7 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none; // чтобы клики проходили на input
+  pointer-events: none;
 }
 
 .fieldError {
