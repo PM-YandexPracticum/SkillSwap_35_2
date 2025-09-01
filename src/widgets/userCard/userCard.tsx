@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import type { TUserCard } from '@/api/types';
+import type { TUser } from '@/api/types';
 import { formatAge } from '@/shared/lib/format-age';
 import { BadgeUI, Button } from '@/shared/ui';
 import { LikeButtonUI } from '@/shared/ui/like-button';
 import styles from './userCard.module.scss';
 
 interface UserCardProps {
-  user: TUserCard;
+  user: TUser;
+  variant: 'compact' | 'detailed';
 }
 
 //конвертер формата даты рождения для корректной работы formatAge
@@ -15,13 +16,13 @@ const convertBirthDate = (birthDate: string) => {
   return `${year}-${month}-${day}`;
 };
 
-export const UserCard = ({ user }: UserCardProps) => {
+export const UserCard = ({ user, variant }: UserCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const userAge = formatAge(convertBirthDate(user.birthDate));
 
   return (
-    <article className={styles.userCard}>
+    <article className={styles.userCard} data-variant={variant}>
       <section className={styles.userData}>
         <img
           className={styles.avatar}
@@ -34,12 +35,22 @@ export const UserCard = ({ user }: UserCardProps) => {
             {user.location}, {userAge}
           </p>
         </div>
-        <LikeButtonUI
-          setLiked={setIsLiked}
-          liked={isLiked}
-          className={styles.likeBtn}
-        />
+
+        {variant === 'compact' && (
+          <LikeButtonUI
+            setLiked={setIsLiked}
+            liked={isLiked}
+            className={styles.likeBtn}
+          />
+        )}
       </section>
+
+      {variant === 'detailed' && (
+        <div>
+          <p className=''>{user.bio}</p>
+        </div>
+      )}
+
       {/* в секции надо сделать динамическое отображение навыков, я пока не понимаю, как... */}
       <section className={styles.skillsSection}>
         <div>
@@ -51,8 +62,13 @@ export const UserCard = ({ user }: UserCardProps) => {
           <BadgeUI category='Творчество и искусство' title='Название' />
         </div>
       </section>
-
-      <Button buttonType='primary' text='Подробнее' className={styles.button} />
+      {variant === 'compact' && (
+        <Button
+          buttonType='primary'
+          text='Подробнее'
+          className={styles.button}
+        />
+      )}
     </article>
   );
 };
