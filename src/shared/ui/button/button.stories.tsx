@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import EditIcon from '@icons/edit.svg';
-import GoogleIcon from '@icons/Google.svg';
+import EditIcon from '@icons/edit.svg?url';
+import GoogleIcon from '@icons/Google.svg?url';
 import { Button } from './button';
 
 // Метаданные компонента
