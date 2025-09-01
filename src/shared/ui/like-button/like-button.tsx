@@ -12,7 +12,7 @@ export const LikeButtonUI = ({
     setLiked(!liked);
   };
   return (
-    <button onClick={handleClick} className={className}>
+    <button onClick={handleClick} className={`${styles.button} ${className}`}>
       {liked ? <LikedIcon /> : <LikeIcon />}
     </button>
   );

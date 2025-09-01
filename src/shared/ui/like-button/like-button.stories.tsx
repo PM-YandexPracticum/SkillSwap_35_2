@@ -13,13 +13,13 @@ type Story = StoryObj<typeof meta>;
 export const Liked: Story = {
   args: {
     liked: true,
-    setLiked: (clb) => false
+    setLiked: () => {}
   }
 };
 
 export const UnLiked: Story = {
   args: {
     liked: false,
-    setLiked: (clb) => true
+    setLiked: () => {}
   }
 };
