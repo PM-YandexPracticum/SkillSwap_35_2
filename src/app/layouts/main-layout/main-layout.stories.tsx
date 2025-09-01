@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { MainLayout } from './main-layout';
 
