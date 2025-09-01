@@ -104,7 +104,7 @@ export const UserOfferUI = ({
     <div className={styles.card}>
       {/*блок кнопок лайка, поделиться и т.п.*/}
       <div className={styles.cardActions}>
-        <LikeButtonUI liked={isLiked} setLiked={setIsLiked} />
+        <LikeButtonUI liked={isLiked} setLiked={setIsLiked} className='' />
       </div>
       {/*Левая сторона карточки с текстом и кнопками*/}
       <div className={styles.cardMain}>
