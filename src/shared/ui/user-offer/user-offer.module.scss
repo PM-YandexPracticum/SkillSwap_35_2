@@ -12,6 +12,7 @@
   display: flex;
   justify-content: end;
   block-size: 24px;
+  margin-block-end: 24px;
 }
 
 .card__main {
@@ -29,6 +30,8 @@
 }
 
 .card__text {
+  margin-block-start: 20px;
+  margin-block-end: 28px;
   font-family: $font-family-main;
   font-weight: $font-weight-main;
   font-size: $font-size-body;

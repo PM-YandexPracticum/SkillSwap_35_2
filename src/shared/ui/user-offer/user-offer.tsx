@@ -75,7 +75,7 @@ export const UserOfferUI = ({
   const [imagesList, setImagesList] = useState(images);
 
   // обработчик нажатия на левую кнопку-стрелку
-  const handleGaleryLeftButton = (e: SyntheticEvent) => {
+  const handleGaleryLeftButton = (_e: SyntheticEvent) => {
     let arr = [...imagesList];
     // Сохраняем последний элемент
     let lastElement = arr[arr.length - 1];
@@ -88,7 +88,7 @@ export const UserOfferUI = ({
   };
 
   // обработчик нажатия на правую кнопку-стрелку
-  const handleGaleryRightButton = (e: SyntheticEvent) => {
+  const handleGaleryRightButton = (_e: SyntheticEvent) => {
     let arr = [...imagesList];
     // Сохраняем первый элемент
     let firstElement = arr[0];
@@ -104,7 +104,7 @@ export const UserOfferUI = ({
     <div className={styles.card}>
       {/*блок кнопок лайка, поделиться и т.п.*/}
       <div className={styles.cardActions}>
-        <LikeButtonUI liked={isLiked} setLiked={setIsLiked} />
+        <LikeButtonUI liked={isLiked} setLiked={setIsLiked} className='' />
       </div>
       {/*Левая сторона карточки с текстом и кнопками*/}
       <div className={styles.cardMain}>
