@@ -243,7 +243,7 @@ export const Dropdown = ({
                 checked={isOptionSelected}
                 // Обработчик изменения состояния
                 onChange={() => handleOptionSelection(option.value)}
-                variant='tick'
+                variant='category'
               />
             </div>
           )}
