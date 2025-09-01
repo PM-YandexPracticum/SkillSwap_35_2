@@ -13,15 +13,17 @@ const meta: Meta<typeof DatePicker> = {
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
-// Базовый пример без начального значения
+// ---------- Default story ----------
 export const Default: Story = {
   render: () => {
-    const [date, setDate] = useState<Date | undefined>(undefined);
+    // Состояние хранит строку в формате YYYY-MM-DD
+    const [dateStr, setDateStr] = useState<string | undefined>(undefined);
+
     return (
       <DatePicker
-        value={date}
+        value={dateStr} // передаём строку или undefined
         onChange={(d) => {
-          setDate(d);
+          setDateStr(d); // получаем строку обратно
           console.log('selected date:', d);
         }}
       />
@@ -29,15 +31,16 @@ export const Default: Story = {
   }
 };
 
-// Пример с изначальным значением
+// ---------- Story с начальным значением ----------
 export const WithInitialValue: Story = {
   render: () => {
-    const [date, setDate] = useState<Date | undefined>(new Date(1990, 0, 1));
+    const [dateStr, setDateStr] = useState<string | undefined>('1990-01-01');
+
     return (
       <DatePicker
-        value={date}
+        value={dateStr} // передаём строку
         onChange={(d) => {
-          setDate(d);
+          setDateStr(d); // обновляем строку при выборе
           console.log('selected date:', d);
         }}
       />
