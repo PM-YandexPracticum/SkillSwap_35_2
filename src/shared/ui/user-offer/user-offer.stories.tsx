@@ -33,7 +33,7 @@ export const DefaultUserOffer: Story = {
     requestStatus: 'none',
     justAdded: false,
     isLiked: false,
-    setIsLiked: (clb) => true,
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => {}
+    setIsLiked: () => {},
+    onClick: (_e: React.MouseEvent<HTMLButtonElement>) => {}
   }
 };
