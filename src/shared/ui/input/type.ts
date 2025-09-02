@@ -1,4 +1,4 @@
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, MouseEventHandler } from 'react';
 
 export interface IInputProps {
   className?: string;
@@ -9,7 +9,9 @@ export interface IInputProps {
   value?: string;
   name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClick?: (e?: React.MouseEvent | React.KeyboardEvent) => void;
+  onClick?:
+    | MouseEventHandler<HTMLInputElement>
+    | ((e?: React.MouseEvent | React.KeyboardEvent) => void);
   error?: string;
   icon?: React.ReactNode; // иконка внутри input слева или справа
   iconStyleOverride?: React.CSSProperties; // позиционирование иконки iconStyleOverride={{ left: '12px' }}
