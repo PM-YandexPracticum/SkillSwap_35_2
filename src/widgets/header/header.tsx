@@ -134,7 +134,9 @@ export const Header = ({
               text='Войти'
               className={styles.loginButton}
               aria-label='Войти'
-              onClick={() => navigate('/login')}
+              onClick={() =>
+                navigate('/login', { state: { background: location } })
+              }
             />
             <Button
               buttonType='primary'
