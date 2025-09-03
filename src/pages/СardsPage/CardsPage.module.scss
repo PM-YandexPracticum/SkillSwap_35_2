@@ -1,0 +1,41 @@
+.page {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.filtersBar {
+  margin-top: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section {
+  margin: 20px;
+}
+
+.sectionHeader {
+  margin-top: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.header {
+  margin-top: 52px;
+}
