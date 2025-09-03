@@ -1,12 +1,13 @@
 .overlay {
-  position: fixed;
-  top: 96px;
+  position: absolute;
+  top: 94px;
   left: 36px;
-  max-width: 1136px;
+  width: 1136px;
   background: $card-color;
-  border-radius: 16px;
+  border-radius: 12px;
   border-color: $font-color-secondary;
   padding: 60px;
+  z-index: 10;
 }
 
 .content {
@@ -36,6 +37,12 @@
   border-radius: 50%;
   background-color: currentColor;
   display: inline-block;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .title {
