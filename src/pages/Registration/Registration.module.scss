@@ -1,0 +1,34 @@
+.statusbar {
+  margin-bottom: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.heading {
+  font-family: $font-family-title;
+  font-weight: $font-weight-title;
+  font-size: $font-size-h2;
+  line-height: $font-line-height-h3;
+  letter-spacing: $font-letter-spacing-secondary;
+}
+
+.bar {
+  width: 212px;
+  height: 10px;
+  display: flex;
+  gap: 16px;
+}
+
+.step {
+  height: 4px;
+  width: 60px;
+  background-color: $font-color-disabled;
+  border-radius: 8px;
+}
+
+.active {
+  background-color: $accent-color;
+}

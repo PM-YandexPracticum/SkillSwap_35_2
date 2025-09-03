@@ -56,7 +56,7 @@ export const Dropdown = ({
   //закрыть при клике на внешнее поле
   useOutsideClickClose({
     isOpen,
-    rootRef: ref as React.RefObject<HTMLDivElement>,
+    rootRef: dropdownRef as React.RefObject<HTMLDivElement>,
     onClose,
     onChange: setIsOpen
   });
