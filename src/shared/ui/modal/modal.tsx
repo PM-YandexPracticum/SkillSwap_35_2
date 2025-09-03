@@ -1,6 +1,5 @@
 import { memo, useEffect } from 'react';
 import { TitleUI } from '../title/title';
-
 import styles from './modal.module.scss';
 import type { TModalUIProps } from './type';
 

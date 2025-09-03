@@ -25,6 +25,9 @@
       ],
       "@icons/*": [
         "src/shared/assets/icons/*"
+      ],
+      "@widgets/*": [
+        "src/widgets/*"
       ]
     }
   },

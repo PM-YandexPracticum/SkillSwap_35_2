@@ -1,11 +1,8 @@
 import './app/styles/index.scss';
+import { AppRouter } from '@/app/router/app-router';
 
 function App() {
-  return (
-    <>
-      <h1>Skill swap project</h1>
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
