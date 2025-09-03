@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Logo from '@/shared/assets/images/logo.svg?url';
 import { Button } from '@/shared/ui/button/button';
 import { Input } from '@/shared/ui/input/input';
+import { Skills } from '@/shared/ui/skills/skills';
 import { TitleUI } from '@/shared/ui/title/title';
 import ChevronDownIcon from '@icons/chevron-down.svg';
 import CrossIcon from '@icons/cross.svg';
@@ -31,19 +32,31 @@ export const Header = ({
 
   // Стейт для выпадающего меню аватара
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-  const Ref = useRef<HTMLDivElement>(null);
+  const [isSkillsDropdownOpen, setIsSkillsDropdownOpen] = useState(false);
+
+  const userRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (Ref.current && !Ref.current.contains(event.target as Node)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (userRef.current && !userRef.current.contains(e.target as Node)) {
         setIsUserDropdownOpen(false);
       }
+      if (skillsRef.current && !skillsRef.current.contains(e.target as Node)) {
+        setIsSkillsDropdownOpen(false);
+      }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleAvatarClick = () => setIsUserDropdownOpen((prev) => !prev);
+  const handleSkillsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsSkillsDropdownOpen((prev) => !prev);
+  };
   const logout = () => console.log('Выход из аккаунта');
 
   return isFormOpen ? (
@@ -88,10 +101,11 @@ export const Header = ({
             </Link>
           </li>
           <li>
-            <Link to='/skills' className={styles.navLink}>
+            <Link to='' className={styles.navLink} onClick={handleSkillsClick}>
               Все навыки
               <ChevronDownIcon />
             </Link>
+            {isSkillsDropdownOpen && <Skills overlayRef={skillsRef} />}
           </li>
         </ul>
       </nav>
@@ -134,7 +148,9 @@ export const Header = ({
               text='Войти'
               className={styles.loginButton}
               aria-label='Войти'
-              onClick={() => navigate('/login')}
+              onClick={() =>
+                navigate('/login', { state: { background: location } })
+              }
             />
             <Button
               buttonType='primary'
@@ -188,7 +204,7 @@ export const Header = ({
           </div>
 
           {/* Информация о пользователе */}
-          <div className={styles.userInfo} ref={Ref}>
+          <div className={styles.userInfo} ref={userRef}>
             <p>user name</p>
             <button
               className={styles.userAvatarButton}

@@ -15,7 +15,7 @@ export const Login = () => {
 
   return (
     <>
-      <Header isFormOpen />
+      {/* <Header isFormOpen /> */}
 
       <div className={styles.statusbar}>
         <p className={styles.heading}>Вход</p>
