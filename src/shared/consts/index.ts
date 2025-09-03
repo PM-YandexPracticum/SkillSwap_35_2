@@ -1,1 +1,1 @@
-export * from '../assets/icons/categories';
+export * from './categories';
