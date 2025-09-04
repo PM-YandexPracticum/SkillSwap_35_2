@@ -1,39 +1,21 @@
-import userData from './user.json';
-import cardsData from './cards.json';
-import categoriesData from './categories.json';
-import skillRequests from './skillRequests.json';
-import swapsData from './swaps.json';
+import categories from './categories.json';
+import skills from './skills.json';
+import users from './users.json';
 
 import type {
   TCategories,
-  TSkillRequest,
-  TSwap,
-  TSkillCard,
+  TSkill,
   TUser
 } from '../../src/api/types';
 
 interface IMockData {
-  categories: TCategories[]; // query-запрос в поисковой строке будет подставлять категорию и саб-категорию
-  skills: {
-    skillsRequests: TSkillRequest[]; // карточки с навыками "Подробнее"
-    swaps: TSwap[]; // запросы на обмен
-  };
-  users: TSkillCard[]; //  список карточек пользователей
-  auth: {
-    user: TUser;
-  }; //  эндпоинты для регистрации, авторизации, выхода и редактирования профиля
-  passwordReset: string | null; // эндпоинт для формы восстановления/сброса пароля, пока зашлушка
+  categories: TCategories[]; // список категорий и подкатегорий
+  skills: TSkill[]; // список навыков
+  users: TUser[]; // список пользователей
 }
 
 export const mockData: IMockData = {
-  categories: categoriesData,
-  skills: {
-    skillsRequests: skillRequests,
-    swaps: swapsData
-  },
-  users: cardsData,
-  auth: {
-    user: userData
-  },
-  passwordReset: null
+  categories: categories,
+  skills: skills,
+  users: users
 };
