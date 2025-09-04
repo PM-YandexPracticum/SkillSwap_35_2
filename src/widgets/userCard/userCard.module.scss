@@ -1,6 +1,6 @@
 .userCard {
   width: 324px; //more adaptive?
-  height: 368px; //same
+  min-height: 368px; //same
   color: $font-color-primary;
   background-color: #fff;
   border-radius: 12px;
@@ -14,7 +14,8 @@
 }
 
 .userCard[data-variant='detailed'] {
-  height: 444px;
+  min-height: 444px;
+  height: auto;
   padding: 32px;
 }
 
@@ -47,6 +48,14 @@
   padding-bottom: 4px;
 }
 
+.userBio {
+  font-family: $font-family-main;
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
+}
+
 .likeBtn {
   background-color: transparent;
   cursor: pointer;
@@ -69,4 +78,10 @@
 
 .button {
   width: 100%;
+}
+
+.tagWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }

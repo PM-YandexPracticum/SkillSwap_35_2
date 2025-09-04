@@ -35,6 +35,8 @@ export type TSkill = {
   swapDate: string | null; // дата предложения обмена для тост-уведомления и статус бара уведомлений
 };
 
+export type TCompactSkill = Omit<TSkill, 'description' | 'images'>; // компактный вид карточки
+
 // профиль пользователя для карточки
 export type TUserCard = {
   id: string;

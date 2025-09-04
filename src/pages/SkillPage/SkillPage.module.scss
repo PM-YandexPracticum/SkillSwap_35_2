@@ -1,0 +1,29 @@
+.preloaderWrapper {
+  min-width: 436px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  padding: 60px 30px 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 100px;
+  max-height: 420px;
+}
+
+.preloaderTitle {
+  font-family: $font-family-title;
+  font-size: $font-size-h2;
+  line-height: $font-line-height-h2;
+  font-weight: $font-weight-title;
+  letter-spacing: $font-letter-spacing-primary;
+}
+
+.preloaderDescription {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-h4;
+  line-height: $font-line-height-h4;
+  letter-spacing: $font-letter-spacing-secondary;
+  text-align: center;
+}
