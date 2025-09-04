@@ -7,37 +7,38 @@ import requestIcon from '../../shared/assets/icons/request.svg?url';
 import userIcon from '../../shared/assets/icons/user.svg?url';
 import styles from './profile-sidebar.module.scss';
 
+const menuItems = [
+  {
+    to: '/requests',
+    text: 'Заявки',
+    logoUrl: requestIcon
+  },
+  {
+    to: '/exchanges',
+    text: 'Мои обмены',
+    logoUrl: messageIcon
+  },
+  {
+    to: '/favourites',
+    text: 'Избранное',
+    logoUrl: likeIcon
+  },
+  {
+    to: '/skills',
+    text: 'Мои навыки',
+    logoUrl: ideaIcon
+  },
+  {
+    to: '/profile',
+    text: 'Личные данные',
+    logoUrl: userIcon,
+    end: true
+  }
+];
+
 export const ProfileSidebar = () => {
   const location = useLocation();
 
-  const menuItems = [
-    {
-      to: '/requests',
-      text: 'Заявки',
-      logoUrl: requestIcon
-    },
-    {
-      to: '/exchanges',
-      text: 'Мои обмены',
-      logoUrl: messageIcon
-    },
-    {
-      to: '/favourites',
-      text: 'Избранное',
-      logoUrl: likeIcon
-    },
-    {
-      to: '/skills',
-      text: 'Мои навыки',
-      logoUrl: ideaIcon
-    },
-    {
-      to: '/profile',
-      text: 'Личные данные',
-      logoUrl: userIcon,
-      end: true
-    }
-  ];
 
   return (
     <aside className={styles.profile_sidebar}>
