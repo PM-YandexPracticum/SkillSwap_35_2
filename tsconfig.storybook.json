@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "./.storybook/tsbuild",
+    "baseUrl": "."
+  },
+  "include": [
+    ".storybook/**/*",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.jsx",
+    "src/**/*.stories.js",
+    "src/**/*.mdx"
+  ]
+}

@@ -1,0 +1,74 @@
+.overlay {
+  position: absolute;
+  top: 94px;
+  left: 36px;
+  width: 1136px;
+  background: $card-color;
+  border-radius: 12px;
+  border-color: $font-color-secondary;
+  padding: 60px;
+  z-index: 10;
+}
+
+.content {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.category {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  display: inline-block;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-family: $font-family-title;
+  font-weight: 500;
+  font-size: 24px;
+  color: $font-color-primary;
+}
+
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill {
+  font-size: 16px;
+  font-style: regular;
+  color: $font-family-main;
+  line-height: 24px;
+  letter-spacing: 2%;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $button-color-pressed;
+  }
+}

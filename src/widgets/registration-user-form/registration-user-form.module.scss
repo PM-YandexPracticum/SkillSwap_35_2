@@ -1,0 +1,80 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  cursor: pointer;
+}
+
+.circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  color: #8aa378;
+}
+
+.inputImage::-webkit-file-upload-button {
+  display: none;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  height: 76px;
+  > *:first-child {
+    margin: 0;
+  }
+}
+
+.selectGender {
+  min-width: 206px;
+  width: 50%;
+}
+
+.selectGender,
+.select {
+  height: 78px;
+  font-family: $font-family-main;
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  letter-spacing: $font-letter-spacing-secondary;
+  > *:first-child {
+    margin-bottom: 4px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  gap: 20px;
+}
+
+.buttonPrev,
+.buttonNext {
+  width: 100%;
+}

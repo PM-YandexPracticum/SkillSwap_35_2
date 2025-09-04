@@ -1,0 +1,55 @@
+/* Переменные */
+
+/* Шрифты */
+$font-family-main: 'Roboto', 'Arial', serif;
+$font-family-title: 'Jost', 'Arial', serif;
+$font-family-image-caption: 'Inter', 'Arial', serif;
+$font-family-user-name: 'Open-sans', 'Arial', serif;
+$font-weight-main: 400;
+$font-weight-title: 500;
+$font-weight-user-name: 600;
+
+$font-letter-spacing-primary: -0.011em;
+$font-letter-spacing-secondary: 0.02em;
+
+/* l - размер заголовков h1 */
+$font-size-h1: 32px;
+$font-line-height-h1: 40px;
+$font-h1: $font-weight-title #{$font-size-h1}/#{$font-line-height-h1}
+  $font-family-title;
+
+/* m - размер заголовков h2 */
+$font-size-h2: 24px;
+$font-line-height-h2: 32px;
+$font-h2: $font-weight-title #{$font-size-h2}/#{$font-line-height-h2}
+  $font-family-title;
+
+/* m - размер заголовков h3 */
+$font-size-h3: 20px;
+$font-line-height-h3: 24px;
+$font-h3: $font-weight-title #{$font-size-h3}/#{$font-line-height-h3}
+  $font-family-title;
+
+/* m - размер заголовков h4 */
+$font-size-h4: 16px;
+$font-line-height-h4: 24px;
+$font-h4: $font-weight-title #{$font-size-h4}/#{$font-line-height-h4}
+  $font-family-main;
+
+/* s - размер Body основного теста */
+$font-size-body: 16px;
+$font-line-height-body: 24px;
+$font-body: $font-weight-main #{$font-size-body}/#{$font-line-height-body}
+  $font-family-main;
+
+/* s - размер Caption текста кнопок, подзаголовков */
+$font-size-caption: 12px;
+$font-line-height-caption: 16px;
+$font-caption: $font-weight-main
+  #{$font-size-caption}/#{$font-line-height-caption} $font-family-main;
+
+/* Размер текста имени пользователя в карточках */
+$font-size-user-name: 20px;
+$font-line-height-user-name: 24px;
+$font-user-name: $font-weight-user-name
+  #{$font-size-user-name}/#{$font-line-height-user-name} $font-family-user-name;

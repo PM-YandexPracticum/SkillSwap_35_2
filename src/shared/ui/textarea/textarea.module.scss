@@ -1,0 +1,59 @@
+.textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  inline-size: 100%;
+}
+
+.label {
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  color: $font-color-primary;
+  font-family: $font-family-main;
+}
+
+.fieldWrapper {
+  position: relative;
+}
+
+.field {
+  border: 1px solid $font-color-secondary;
+  border-radius: 12px;
+  padding: 12px 20px;
+  inline-size: 100%;
+  block-size: 90px;
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  background-color: $input-color;
+  color: $font-color-secondary;
+  font-family: $font-family-main;
+  resize: vertical;
+
+  &:focus {
+    color: $font-color-primary;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.fieldError {
+  border-color: $font-color-error;
+}
+
+.error {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-caption;
+  font-family: $font-family-main;
+  color: $font-color-error;
+}

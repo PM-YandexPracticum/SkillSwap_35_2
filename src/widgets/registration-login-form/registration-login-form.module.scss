@@ -1,0 +1,16 @@
+.form {
+  display: grid;
+  align-self: stretch;
+}
+
+.input:first-child {
+  margin-bottom: 16px;
+}
+
+.button-container {
+  margin-top: 32px;
+}
+
+.button {
+  width: 100%;
+}

@@ -1,0 +1,74 @@
+/* color */
+
+/* Text - цвет основного текста */
+$font-color-primary: #253017;
+
+/* Caption - цвет подзаголовков */
+$font-color-secondary: #69735d;
+
+/* Disabled Text */
+$font-color-disabled: #9ca197;
+
+/* Toggle - цвет переключателя */
+$toggle-color: #b2b9a9;
+
+/* Disabled */
+$disabled-color: #e4e8df;
+
+/* Card, input - цвет фона карточек и кнопок */
+$card-color: #fff;
+
+/* Card, input - цвет фона карточек и кнопок */
+$input-color: $card-color;
+
+/* Button pressed */
+$button-color-pressed: #508826;
+
+/* Accent color - задан акцент */
+$accent-color: #abd27a;
+
+/* Button hover */
+$button-hover-color: #deebc5;
+
+/* Background color */
+$bg-color: #f9faf7;
+
+/* alarm */
+$font-color-alarm: #e0796e;
+
+/* Error */
+$font-color-error: #bf3920;
+
+/* Text link, Button pressed */
+$text-link-color: $button-color-pressed;
+
+/* Tag_Бизнес и карьера */
+
+$tag-business-color: #eee7f7;
+
+/* Tag_Творчество и искусство */
+$tag-creation-color: #f7e7f2;
+
+/* Tag_Иностранные языки */
+$tag-languages-color: #ebe5c5;
+
+/* Tag_Образование и развитие */
+$tag-education-color: #e7f2f6;
+
+/* Tag_Дом и уют */
+$tag-house-color: #f7ebe5;
+
+/* Tag_Здоровье и лайфстайл */
+$tag-health-color: #e9f7e7;
+
+/* Tag_+ */
+$tag-plus-color: #e8ecf7;
+
+/* Цвет кнопки */
+$button-color-primary-color: $accent-color;
+
+/* Цвет оверлея(без прозрачности) */
+$overlay-color: #8e8e8e;
+
+// цвет кружочка нового уведомления
+$notification-dot-color: #e0796e;

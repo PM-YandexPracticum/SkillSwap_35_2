@@ -1,0 +1,43 @@
+.footer {
+  width: 100%;
+  background-color: $card-color;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 32px 36px;
+}
+
+.footerSignature {
+  color: $font-color-primary;
+  font-family: $font-family-main;
+  font-size: $font-size-caption;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-caption;
+  line-height: 16px;
+  margin-top: 32px;
+}
+
+.footerNavBlock {
+  display: grid;
+  grid-template-columns: repeat(3, 324px);
+  justify-content: end;
+
+  /* font: $font-body; */
+  font-family: $font-family-main;
+  font-size: $font-size-body;
+  font-weight: $font-weight-main;
+  line-height: $font-line-height-body;
+  margin: 40px 0 0 189px;
+  row-gap: 12px;
+  column-gap: 24px;
+  list-style: none;
+  color: $font-color-primary;
+}
+
+.footerNavBlock a {
+  text-decoration: none;
+  color: $font-color-primary;
+
+  &:hover {
+    color: $font-color-primary;
+  }
+}

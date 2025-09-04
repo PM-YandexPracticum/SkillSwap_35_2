@@ -1,0 +1,124 @@
+.password_change_button {
+  font: $font-h4;
+  color: $button-color-pressed;
+  cursor: pointer;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.password_change_button:hover {
+  color: $button-hover-color;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+*:first-child {
+  margin: 0;
+}
+
+.birthDateField {
+  display: flex;
+  flex-direction: column;
+  width: 218px;
+}
+
+.genderField {
+  width: 218px;
+}
+
+.dropdown {
+  width: 218px;
+}
+
+.dropdownText {
+  font: $font-body;
+  margin-bottom: 16px;
+}
+
+.cityOptions {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.textareaField {
+  width: 460px;
+  min-height: 120px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.avatarContainer {
+  position: relative;
+  display: flex;
+  width: 244px;
+  height: 244px;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarEditButton {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  cursor: pointer;
+  background-color: $button-hover-color;
+  border-radius: 50%;
+  padding: 12px;
+  width: 40px;
+  height: 40px;
+}
+
+.profileContainer {
+  background-color: $card-color;
+  display: flex;
+  border-radius: 12px 12px 0 0;
+  justify-content: space-between;
+  width: 1020px;
+  padding: 60px;
+  gap: 60px;
+}
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  width: 460px;
+}
+
+.saveButton {
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* Убираем маргин у первого элемента */
+.profileForm > *:first-child {
+  margin-top: 0;
+}
+
+/* Стили для инпутов внутри формы */
+.profileForm .input {
+  margin-bottom: 8px;
+}
