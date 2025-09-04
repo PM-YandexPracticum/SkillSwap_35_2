@@ -49,14 +49,14 @@ export const Dropdown = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   //const rootRef = useRef<HTMLDivElement>(null);
-  const ref = useRef<HTMLDivElement>(null!);
+  //const ref = useRef<HTMLDivElement>(null!);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedOptions, setSelectedValues] = useState<string[]>([]);
 
   //закрыть при клике на внешнее поле
   useOutsideClickClose({
     isOpen,
-    rootRef: dropdownRef as React.RefObject<HTMLDivElement>,
+    rootRef: dropdownRef, ////изменено. Было: rootRef: ref as React.RefObject<HTMLDivElement>
     onClose,
     onChange: setIsOpen
   });
