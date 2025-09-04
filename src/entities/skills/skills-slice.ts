@@ -157,7 +157,7 @@ export const getSkillById = (skillId: string) =>
 // related выдачи
 
 // популярное
-export const getPopularCards = createSelector([skillCards], (cards) =>
+export const getPopularCards = createSelector([skillsRootState], (cards) =>
   [...cards].sort(
     (a, b) =>
       (b.favorite.likeOwners?.length || 0) -
@@ -166,7 +166,7 @@ export const getPopularCards = createSelector([skillCards], (cards) =>
 );
 
 // новые
-export const getNewCards = createSelector([skillCards], (cards) =>
+export const getNewCards = createSelector([skillsRootState], (cards) =>
   [...cards].sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
   )
