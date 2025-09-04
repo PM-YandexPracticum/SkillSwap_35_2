@@ -1,4 +1,6 @@
 import { useState, type SyntheticEvent } from 'react';
+import MoreOptions from '@/shared/assets/icons/more-square.svg';
+import ShareIcon from '@/shared/assets/icons/share.svg';
 import { TitleUI } from '@/shared/ui/title';
 import ChevronRight from '../../assets/icons/chevron-right.svg';
 import ClockIcon from '../../assets/icons/clock.svg';
@@ -59,6 +61,7 @@ const CardGalery = ({
 );
 
 export const UserOfferUI = ({
+  className,
   skillName,
   categoryName,
   subcategoryName,
@@ -68,6 +71,7 @@ export const UserOfferUI = ({
   justAdded,
   isLiked,
   setIsLiked,
+  onShare,
   onClick,
   onClickReady = () => {}
 }: TUserOfferProps) => {
@@ -101,10 +105,12 @@ export const UserOfferUI = ({
   };
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${className}`}>
       {/*блок кнопок лайка, поделиться и т.п.*/}
       <div className={styles.cardActions}>
         <LikeButtonUI liked={isLiked} setLiked={setIsLiked} className='' />
+        <Button buttonType='iconOnly' icon={<ShareIcon />} onClick={onShare} />
+        <MoreOptions />
       </div>
       {/*Левая сторона карточки с текстом и кнопками*/}
       <div className={styles.cardMain}>
