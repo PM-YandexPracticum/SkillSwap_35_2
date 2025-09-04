@@ -15,6 +15,16 @@ import styles from './users-profile.module.scss';
 const DEFAULT_AVATAR =
   'https://media.istockphoto.com/id/614724736/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%BF%D1%80%D0%B0%D0%B7%D0%B4%D0%BD%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D0%B4%D0%B5%D0%BD%D1%8C-%D0%BD%D0%BE%D1%8F%D0%B1%D1%80%D1%8F.jpg?s=612x612&w=0&k=20&c=Oh8GH3HpO2S3MS4orAyoUkXLKPoiFqKOZptKpXaSmew=';
 
+const INITIAL_ERRORS = {
+  name: '',
+  email: '',
+  password: '',
+  gender: '',
+  city: '',
+  description: '',
+  birthDate: ''
+};
+
 type UserInLocalStorage = {
   description: string;
   password: string;
@@ -38,11 +48,11 @@ export const getStoredUserData = (): UserInLocalStorage | null => {
     const userData: UserInLocalStorage = JSON.parse(storedUserJson);
     return userData && typeof userData === 'object' ? userData : null;
   } catch (error) {
-    console.error(error);
+    console.error('Error reading user data:', error);
     try {
       localStorage.removeItem('user');
     } catch (cleanupError) {
-      console.error(cleanupError);
+      console.error('Error removing corrupted data:', cleanupError);
     }
     return null;
   }
@@ -72,12 +82,18 @@ const areObjectsEqual = (obj1: any, obj2: any): boolean => {
   return true;
 };
 
+// Функция для проверки наличия ошибок
+const hasErrors = (errors: typeof INITIAL_ERRORS): boolean =>
+  Object.values(errors).some((error) => error !== '');
+
 export const UsersProfile: FC = () => {
   const userData = getStoredUserData();
   const [isPasswordFieldVisible, setIsPasswordFieldVisible] = useState(false);
   const [formData, setFormData] = useState<UserInLocalStorage>(() =>
     userData ? { ...userData } : ({} as UserInLocalStorage)
   );
+
+  const [errors, setErrors] = useState(INITIAL_ERRORS);
 
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
 
@@ -86,6 +102,9 @@ export const UsersProfile: FC = () => {
 
     setIsSaveButtonDisabled(!isDataChanged);
   }, [userData, formData]);
+    const hasValidationErrors = hasErrors(errors);
+    setIsSaveButtonDisabled(!isDataChanged || hasValidationErrors);
+  }, [userData, formData, errors]);
 
   const handleFieldChange =
     (field: keyof UserInLocalStorage) =>
@@ -96,12 +115,14 @@ export const UsersProfile: FC = () => {
   const handleGenderSelect = (value: string | string[]) => {
     if (typeof value === 'string') {
       setFormData((prev) => ({ ...prev, gender: value }));
+      setErrors((prev) => ({ ...prev, gender: '' }));
     }
   };
 
   const handleCitySelect = (value: string | string[]) => {
     if (typeof value === 'string') {
       setFormData((prev) => ({ ...prev, city: value }));
+      setErrors((prev) => ({ ...prev, city: '' }));
     }
   };
 
@@ -192,6 +213,7 @@ export const UsersProfile: FC = () => {
               placeholder='Не выбран'
               value={formData.gender || ''}
               onChange={handleGenderSelect}
+              error={!!errors.gender}
               className={clsx(styles.dropdown, styles.dropdownText)}
             />
           </div>
@@ -206,6 +228,7 @@ export const UsersProfile: FC = () => {
               placeholder='Не указан'
               value={formData.city || ''}
               onChange={handleCitySelect}
+              error={!!errors.city}
               className={styles.dropdownText}
             />
           </div>
@@ -215,6 +238,7 @@ export const UsersProfile: FC = () => {
             placeholder='Расскажите немного о себе'
             value={formData.description || ''}
             onChange={handleFieldChange('description')}
+            error={errors.description}
             icon={<EditIcon />}
             iconStyleOverride={{ right: '20px' }}
             textareaClassName={styles.textareaField}

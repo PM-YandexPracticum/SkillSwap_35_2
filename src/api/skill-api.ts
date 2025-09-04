@@ -85,6 +85,14 @@ export type TLoginData = {
   password: string;
 };
 
+export const checkEmailApi = (email: string): Promise<boolean> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      const exists = users.some((user) => user.email === email);
+      resolve(exists);
+    }, 150);
+  });
+
 export const loginUserApi = (data: TLoginData): Promise<TAuthResponse> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -129,42 +137,28 @@ export const logoutApi = () =>
     }, 800);
   });
 
-/*
-// регистрация
-export const registerUserApi = (data: TRegisterData): Promise<TAuthResponse> =>
-  new Promise((resolve, reject) => {
+export type TUsersResponse = {
+  success: boolean;
+  data: TUser[];
+};
+
+// получает список всех пользователей
+export const getUsersApi = (): Promise<TUsersResponse> =>
+  new Promise((resolve) => {
     setTimeout(() => {
-      // проверяем, есть ли такой пользователь среди зарегистрированных
-      const isExist = users.some((u) => u.email === data.email);
+      resolve({
+        success: true,
+        data: users
+      });
+    }, 1000);
+  });
 
-      if (isExist) {
-        return reject({
-          success: false,
-          message: 'Пользователь уже существует'
-        });
-      }
-
-      // заполняем поля для нового пользователя из data
-      const newUser: TUser = {
-        email: data.email,
-        password: data.password,
-        name: data.name,
-        avatar: data.avatar,
-        birthDate: data.birthDate,
-        gender: data.gender,
-        city: data.city,
-        wantToLearn: data.wantToLearn,
-        skill: {
-          title: data.title,
-          category: data.category,
-          subcategory: data.subcategory,
-          description: data.description
-        }
-      };
-
-      // добавляем пользователя в массив пользователей
-      users.push(newUser);
-
+// регистрация - сохраняет нового пользователя в локальном хранилище
+export const registerUserApi = (data: TUser): Promise<TAuthResponse> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+      //! Временно подставляем моковые токены
       setCookie('accessToken', mockAccessToken);
       localStorage.setItem('refreshToken', mockRefreshToken);
 
@@ -172,8 +166,16 @@ export const registerUserApi = (data: TRegisterData): Promise<TAuthResponse> =>
         success: true,
         refreshToken: mockRefreshToken,
         accessToken: mockAccessToken,
-        user: user
+        user: data
       });
     }, 800);
   });
-*/
+
+// регистрация - сохраняет новый навык в локальном хранилище
+export const registerSkillApi = (data: TSkill): Promise<TSkill> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      localStorage.setItem('currentSkill', JSON.stringify(data));
+      return resolve(data);
+    }, 1000);
+  });

@@ -1,0 +1,110 @@
+.modalContent {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  min-width: 904px;
+  min-height: 324px;
+}
+
+.description {
+  display: grid;
+  gap: 22px;
+}
+
+.caption {
+  display: grid;
+  gap: 4px;
+}
+
+.title {
+  font-family: $font-family-title;
+  font-size: $font-size-h1;
+  line-height: $font-line-height-h1;
+  font-weight: $font-weight-title;
+  letter-spacing: $font-letter-spacing-primary;
+}
+
+.category {
+  font-family: $font-family-main;
+  font-size: $font-size-caption;
+  line-height: $font-line-height-caption;
+  font-weight: $font-weight-main;
+  letter-spacing: $font-letter-spacing-secondary;
+  color: $font-color-secondary;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 420px;
+  text-overflow: ellipsis;
+}
+
+.text {
+  font-family: $font-family-main;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  font-weight: $font-weight-main;
+  letter-spacing: $font-letter-spacing-secondary;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 420px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-areas:
+    'main main main thumb1'
+    'main main main thumb2'
+    'main main main thumb3';
+  gap: 24px;
+}
+
+.main {
+  grid-area: main;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 1 / 1;
+  width: 324px;
+  height: 324px;
+}
+
+.thumb {
+  position: relative;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 1 / 1;
+  width: 92px;
+  height: 92px;
+}
+
+.overlay {
+  @extend .thumb;
+
+  position: relative;
+}
+
+.extraImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: $font-family-image-caption;
+  font-size: $font-size-body;
+  line-height: $font-line-height-body;
+  font-weight: $font-weight-main;
+  z-index: 22;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.buttonEdit,
+.buttonSubmit {
+  width: 100%;
+}

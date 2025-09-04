@@ -64,16 +64,14 @@ export type TRegisterUser = {
   name: string;
   birthDate: string;
   gender: string;
-  wantTolearn: {
-    category: number;
-    subcategory: TSubcategories[];
-  };
+  location: string;
+  wantToLearn: TSubcategories[];
 };
 
 // третий экран регистрации
 export type TRegisterSkill = {
   canTeach: TSkillInfo;
-  images: [];
+  images: string[];
   description: string;
 };
 
