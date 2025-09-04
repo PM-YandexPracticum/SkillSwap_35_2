@@ -6,7 +6,6 @@ import { getCategoriesThunk } from '@/entities/categories/categories-slice';
 import { getSkillsThunk } from '@/entities/skills/skills-slice';
 import { getUsersThunk } from '@/entities/user/user-slice';
 
-
 function App() {
   const dispatch = useDispatch();
 

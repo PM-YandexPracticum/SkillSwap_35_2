@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { TSkill } from '@/api/types';
 import {
   categoriesList,
@@ -25,6 +26,7 @@ export const UserCard = ({ skill, variant }: UserCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
   const categoriesData = useSelector(categoriesList);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userAge = formatAge(convertBirthDate(skill.skillOwner.birthDate));
   useEffect(() => {
     dispatch(getCategoriesThunk());
@@ -85,7 +87,7 @@ export const UserCard = ({ skill, variant }: UserCardProps) => {
 
       {variant === 'detailed' && (
         <div>
-          <p className=''>{skill.skillOwner.bio}</p>
+          <p className={styles.userBio}>{skill.skillOwner.bio}</p>
         </div>
       )}
 
@@ -103,13 +105,15 @@ export const UserCard = ({ skill, variant }: UserCardProps) => {
         </div>
         <div>
           <p className={styles.skillsTitle}>Хочет научиться:</p>
-          {skill.wantToLearn.map((subcategory) => (
-            <BadgeUI
-              key={subcategory.subcategoryId}
-              category={getCategoryForSubcategory(subcategory.subcategoryId)}
-              title={subcategory.title}
-            />
-          ))}
+          <div className={styles.tagWrapper}>
+            {skill.wantToLearn.map((subcategory) => (
+              <BadgeUI
+                key={subcategory.subcategoryId}
+                category={getCategoryForSubcategory(subcategory.subcategoryId)}
+                title={subcategory.title}
+              />
+            ))}
+          </div>
         </div>
       </section>
       {variant === 'compact' && (
@@ -117,6 +121,7 @@ export const UserCard = ({ skill, variant }: UserCardProps) => {
           buttonType='primary'
           text='Подробнее'
           className={styles.button}
+          onClick={() => navigate(`/skills/${skill.skillId}`)}
         />
       )}
     </article>
