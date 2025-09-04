@@ -92,11 +92,16 @@ export const UsersProfile: FC = () => {
   const [formData, setFormData] = useState<UserInLocalStorage>(() =>
     userData ? { ...userData } : ({} as UserInLocalStorage)
   );
+
   const [errors, setErrors] = useState(INITIAL_ERRORS);
+
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
 
   useEffect(() => {
     const isDataChanged = !areObjectsEqual(userData, formData);
+
+    setIsSaveButtonDisabled(!isDataChanged);
+  }, [userData, formData]);
     const hasValidationErrors = hasErrors(errors);
     setIsSaveButtonDisabled(!isDataChanged || hasValidationErrors);
   }, [userData, formData, errors]);
