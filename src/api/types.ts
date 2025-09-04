@@ -35,6 +35,8 @@ export type TSkill = {
   swapDate: string | null; // дата предложения обмена для тост-уведомления и статус бара уведомлений
 };
 
+export type TCompactSkill = Omit<TSkill, 'description' | 'images'>; // компактный вид карточки
+
 // профиль пользователя для карточки
 export type TUserCard = {
   id: string;
@@ -64,16 +66,14 @@ export type TRegisterUser = {
   name: string;
   birthDate: string;
   gender: string;
-  wantTolearn: {
-    category: number;
-    subcategory: TSubcategories[];
-  };
+  location: string;
+  wantToLearn: TSubcategories[];
 };
 
 // третий экран регистрации
 export type TRegisterSkill = {
   canTeach: TSkillInfo;
-  images: [];
+  images: string[];
   description: string;
 };
 

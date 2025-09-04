@@ -1,0 +1,38 @@
+.wrapper {
+  min-width: 436px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.icon {
+  padding: 12.5px;
+}
+
+.text {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+}
+
+.title {
+  font-family: $font-family-title;
+  font-size: $font-size-h2;
+  line-height: $font-line-height-h2;
+  font-weight: $font-weight-title;
+  letter-spacing: $font-letter-spacing-primary;
+}
+
+.descriptiion {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-size: $font-size-h4;
+  line-height: $font-line-height-h4;
+  letter-spacing: $font-letter-spacing-secondary;
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+}

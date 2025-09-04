@@ -6,6 +6,7 @@ import {
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { TSkillsResponse } from '@/api/skill-api';
+import { registerSkillApi } from '@/api/skill-api';
 import { getSkillsApi } from '@/api/skill-api';
 import type { TSkill } from '@/api/types';
 import type { RootState } from '@/app/store/store';
@@ -21,6 +22,20 @@ export const getSkillsThunk = createAsyncThunk<
     return data;
   } catch (err) {
     return rejectWithValue('Не удалось получить список навыков');
+  }
+});
+
+// добавление нового навыка
+export const registerNewSkillThunk = createAsyncThunk<
+  TSkill,
+  TSkill,
+  { rejectValue: string }
+>('skills/newSkills', async (skill, { rejectWithValue }) => {
+  try {
+    const data = await registerSkillApi(skill);
+    return data;
+  } catch (err) {
+    return rejectWithValue('Не удалось добавить навык');
   }
 });
 
@@ -97,6 +112,20 @@ export const skillsSlice = createSlice({
         state.isLoading = false;
         state.skills = action.payload.data;
       });
+
+    builder
+      .addCase(registerNewSkillThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(registerNewSkillThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message ?? 'Ошибка загрузки навыков';
+      })
+      .addCase(registerNewSkillThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.skills.push(action.payload);
+      });
   }
 });
 
@@ -128,7 +157,7 @@ export const getSkillById = (skillId: string) =>
 // related выдачи
 
 // популярное
-export const getPopularCards = createSelector([skillCards], (cards) =>
+export const getPopularCards = createSelector([skillsRootState], (cards) =>
   [...cards].sort(
     (a, b) =>
       (b.favorite.likeOwners?.length || 0) -
@@ -137,7 +166,7 @@ export const getPopularCards = createSelector([skillCards], (cards) =>
 );
 
 // новые
-export const getNewCards = createSelector([skillCards], (cards) =>
+export const getNewCards = createSelector([skillsRootState], (cards) =>
   [...cards].sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
   )

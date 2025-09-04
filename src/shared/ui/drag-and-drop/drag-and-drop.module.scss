@@ -33,6 +33,7 @@
   line-height: $font-line-height-body;
   letter-spacing: $font-letter-spacing-secondary;
   color: $font-color-secondary;
+  text-align: center;
 }
 
 .drop-zone__input {
@@ -60,6 +61,10 @@
   svg {
     fill: $button-hover-color;
   }
+}
+
+.fileListContainer {
+  display: flex;
 }
 
 .file-item {

@@ -39,6 +39,7 @@ const menuItems = [
 export const ProfileSidebar = () => {
   const location = useLocation();
 
+
   return (
     <aside className={styles.profile_sidebar}>
       {menuItems.map((item) => (
